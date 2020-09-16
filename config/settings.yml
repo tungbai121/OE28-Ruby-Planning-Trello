@@ -11,3 +11,9 @@ user:
     length: 50
   password:
     length: 6
+validate:
+  max_board_name: 35
+  max_board_description: 255
+data:
+  confirm: 1
+  notconfirm: 0

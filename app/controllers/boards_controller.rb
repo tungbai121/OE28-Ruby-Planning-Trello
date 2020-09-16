@@ -2,7 +2,21 @@ class BoardsController < ApplicationController
   before_action :user_board
   before_action :check_board, :check_member, only: :show
 
-  def new; end
+  def new
+    @board = Board.new
+  end
+
+  def create
+    @board = Board.new board_params
+    if @board.save
+      current_user.join_board @board, params[:type]
+      flash[:success] = t ".success"
+      redirect_to root_path
+    else
+      flash[:danger] = t ".fail"
+      render :new
+    end
+  end
 
   def show
     @labels = @board.labels
@@ -24,5 +38,9 @@ class BoardsController < ApplicationController
 
     flash[:danger] = t ".cant_find"
     redirect_to root_path
+  end
+
+  def board_params
+    params.require(:board).permit Board::PERMIT_ATTRIBUTES
   end
 end

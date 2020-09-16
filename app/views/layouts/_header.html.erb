@@ -16,7 +16,9 @@
                 <%= t ".favoriteboards" %>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board", collection: @favorite_boards, as: :board %>
+                <%= render partial: "shared/header_board",
+                  collection: @favorite_boards,
+                  as: :board %>
               </div>
             </div>
             <div class="table-list">
@@ -24,7 +26,9 @@
                 <%= t ".myboards" %>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board", collection: @my_boards, as: :board %>
+                <%= render partial: "shared/header_board",
+                  collection: @my_boards,
+                  as: :board %>
               </div>
             </div>
           </div>
@@ -46,7 +50,7 @@
             <%= t ".new" %>
           </div>
           <div class="dropdown-content">
-            <%= link_to t(".newboard"), "#" %>
+            <%= link_to t(".newboard"), new_board_path %>
           </div>
         </div>
       </div>
