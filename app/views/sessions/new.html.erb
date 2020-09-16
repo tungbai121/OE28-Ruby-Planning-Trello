@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag "sessions", media: "all", "data-turbolinks-track": "reload" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= t ".title" %></title>
+</head>
+<body>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="background">
+    <div class="logo">
+      <%= t ".logo" %>
+    </div>
+    <div class="form-wrapper">
+      <%= form_for :session, url: login_path do |f| %>
+        <%= f.label t ".email_label" %>
+        <%= f.email_field :email, class: "form-control" %>
+        <%= f.label t ".password_label" %>
+        <%= f.password_field :password, class: "form-control" %>
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span><%= t ".remember" %></span>
+        <% end %>
+        <%= f.submit t(".login"), class: "btn btn-primary mt-3" %>
+      <% end %>
+    </div>
+    <%= link_to t(".en"), locale: :en %>
+    <%= link_to t(".vi"), locale: :vi %>
+  </div>
+  <%= render "layouts/footer" %>
+</body>
+</html>

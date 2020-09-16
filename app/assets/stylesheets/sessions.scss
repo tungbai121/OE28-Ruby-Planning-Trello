@@ -1,0 +1,63 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'bootstrap';
+@import 'layouts/footer';
+@import 'color';
+
+.background{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95vh;
+
+  .logo{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-wrapper{
+    display: flex;
+    justify-content: center;
+
+    .form-group{
+      background-color: $white;
+      width: 400px;
+      padding: 40px 30px;
+      box-shadow: $shadow 0 0 10px;
+
+      .signup{
+        text-align: center;
+        padding: 10px 0px;
+        color: $gray;
+        font-size: 20px;
+      }
+
+      input{
+        margin: 10px 0px;
+      }
+
+      button{
+        width: 100%;
+        display: block;
+        margin: 10px 0px;
+      }
+
+      .register{
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+
+  .language{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+
+    select{
+      width: 15%;
+    }
+  }
+}
