@@ -1,0 +1,22 @@
+@import 'color';
+
+#sidebar-list {
+  padding: 30px 0px 0px 0px;
+  list-style-type: none;
+
+  li {
+    margin: 10px 0px;
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 10px 10px;
+      border-radius: 4px;
+      color: white;
+      background-color: $lightblue;
+      &:hover {
+        color: $white;
+        background-color: $lightskyblue;
+      }
+    }
+  }
+}

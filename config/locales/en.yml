@@ -1,1 +1,40 @@
 en:
+  static_pages:
+    home:
+      title: Home
+      favoriteboards: Favorite Boards
+      myboards: My Boards
+  layouts:
+    header:
+      home: Home
+      boards: Board
+      favoriteboards: Favorite Boards
+      myboards: My Boards
+      add: Add
+      new: new
+      newboard: New Board
+      username: User
+      account: Account
+      newuser: New User
+      accountinfo: Account info
+      activity: Activity
+      tags: Tags
+      setting: Setting
+      logout: Logout
+    sidebar:
+      board: Board
+      home: Home
+  boards:
+    menu:
+      menu: Menu
+      description: Description
+      addlabel: More
+      label: Labels
+      add: Add
+      searchlabel: Search for labels
+      search: Search
+    show:
+      cant_find: Can't find board
+      public: Public
+      private: Private
+      nomember: You are not member of this board

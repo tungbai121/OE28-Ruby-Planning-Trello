@@ -1,0 +1,97 @@
+<header class="sticky-top">
+  <div class="row">
+    <div class="col-lg-4 d-flex justify-content-start header-left">
+      <%= link_to t(".home"), root_path, class: "header-item-btn" %>
+      <div id="header-table" class="dropdown header-item">
+        <button id="table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= t ".boards" %>
+        </button>
+        <div aria-labelledby="table-dropdown" class="dropdown-menu collapse-dropdown">
+          <div class="table-search">
+            <input type="text" placeholder="search" class="header-item-btn">
+          </div>
+          <div class="table">
+            <div class="table-list">
+              <div class="list-header">
+                <%= t ".favoriteboards" %>
+              </div>
+              <div class="list">
+                <%= render partial: "shared/header_board", collection: @favorite_boards, as: :board %>
+              </div>
+            </div>
+            <div class="table-list">
+              <div class="list-header">
+                <%= t ".myboards" %>
+              </div>
+              <div class="list">
+                <%= render partial: "shared/header_board", collection: @my_boards, as: :board %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="text">
+    </div>
+    <div class="col-lg-4 d-flex justify-content-center header-logo">
+      <%# TO DO %>
+      <%# <img src="" alt=""> %>
+    </div>
+    <div class="col-lg-4 d-flex justify-content-end header-right">
+      <div class="d-inline dropdown header-item">
+        <button id="add-table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= t ".add" %>
+        </button>
+        <div aria-labelledby="add-table-dropdown" class="dropdown-menu-right dropdown-menu">
+          <div class="dropdown-header">
+            <%= t ".new" %>
+          </div>
+          <div class="dropdown-content">
+            <%= link_to t(".newboard"), "#" %>
+          </div>
+        </div>
+      </div>
+      <div id="user" class="d-inline dropleft header-item">
+        <button id="user-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= t ".username" %>
+        </button>
+        <div aria-labelledby="user-dropdown" class="dropdown-menu">
+          <div class="dropdown-header">
+            <%= t ".account" %>
+          </div>
+          <div class="dropdown-content">
+            <div>
+              <div class="user-info">
+                <%# TO DO %>
+                <%# <div class="user-img">
+                  <img src="" alt="">
+                </div> %>
+                <div class="user-name">
+                  <p></p>
+                  <p></p>
+                </div>
+              </div>
+              <a href=""><%= t ".newuser" %></a>
+              <ul class="list-type-none p-0">
+                <li>
+                  <%= link_to t(".accountinfo"), "#" %>
+                </li>
+                <li>
+                  <%= link_to t(".activity"), "#" %>
+                </li>
+                <li>
+                  <%= link_to t(".tags"), "#" %>
+                </li>
+                <li>
+                  <%= link_to t(".setting"), "#" %>
+                </li>
+                <li>
+                  <%= link_to t(".logout"), "#" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
