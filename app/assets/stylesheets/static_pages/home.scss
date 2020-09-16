@@ -1,0 +1,44 @@
+@import 'color';
+
+.board-list {
+  padding: 10px 0px;
+
+  .header {
+    p {
+      padding: 10px 0px;
+      font-weight: 600;
+      color: $white;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .list-item {
+      width: 25%;
+      height: 100px;
+      margin: 5px 5px;
+      border-radius: 5px;
+      padding: 10px 10px;
+      transition: 0.3s;
+      background-color: $lightblue;
+
+      &:hover {
+        background-color: $mediumaquamarine;
+      }
+
+      p {
+        color: $gray;
+      }
+    }
+
+    .new-item {
+      background-color: $lightcyan;
+    }
+  }
+}
+
+body {
+  background-size: cover;
+}

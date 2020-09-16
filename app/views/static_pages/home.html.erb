@@ -1,0 +1,9 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "static_pages/home", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<% provide :title, t(".title") %>
+
+<main>
+  <%= t ".success" %>
+</main>
