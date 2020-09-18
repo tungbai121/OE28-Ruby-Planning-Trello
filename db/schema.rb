@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_083514) do
+ActiveRecord::Schema.define(version: 2020_09_16_064241) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -32,18 +32,26 @@ ActiveRecord::Schema.define(version: 2020_09_15_083514) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tag_id", null: false
+    t.index ["tag_id"], name: "index_checklists_on_tag_id"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tag_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["tag_id"], name: "index_comments_on_tag_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "board_id", null: false
+    t.index ["board_id"], name: "index_labels_on_board_id"
   end
 
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,12 +60,16 @@ ActiveRecord::Schema.define(version: 2020_09_15_083514) do
     t.boolean "closed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "board_id", null: false
+    t.index ["board_id"], name: "index_lists_on_board_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "board_id", null: false
+    t.index ["board_id"], name: "index_notifications_on_board_id"
   end
 
   create_table "tag_labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_083514) do
     t.boolean "close"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "list_id", null: false
+    t.index ["list_id"], name: "index_tags_on_list_id"
   end
 
   create_table "user_boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,4 +120,11 @@ ActiveRecord::Schema.define(version: 2020_09_15_083514) do
     t.string "password_digest"
   end
 
+  add_foreign_key "checklists", "tags"
+  add_foreign_key "comments", "tags"
+  add_foreign_key "comments", "users"
+  add_foreign_key "labels", "boards"
+  add_foreign_key "lists", "boards"
+  add_foreign_key "notifications", "boards"
+  add_foreign_key "tags", "lists"
 end

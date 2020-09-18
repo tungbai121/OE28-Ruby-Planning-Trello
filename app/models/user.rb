@@ -7,7 +7,7 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     dependent: :destroy
   has_many :join_tags, through: :tag_users, source: :tag
-  has_many :comments, dependent: :delete_all
+  has_many :comments, dependent: :destroy
 
   has_secure_password
 end

@@ -7,8 +7,8 @@ class Tag < ApplicationRecord
     foreign_key: :tag_id,
     dependent: :destroy
   has_many :add_users, through: :tag_users, source: :user
-  has_many :comments, dependent: :delete_all
-  has_many :attachments, as: :attachmentable, dependent: :delete_all
-  has_many :checklists, dependent: :delete_all
+  has_many :comments, dependent: :destroy
+  has_many :attachments, as: :attachmentable, dependent: :destroy
+  has_many :checklists, dependent: :destroy
   belongs_to :list
 end

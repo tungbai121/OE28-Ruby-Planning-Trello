@@ -1,0 +1,130 @@
+@import 'color';
+
+header {
+  background-color: $main;
+  padding: 10px 5px;
+
+  .dropdown-menu {
+    padding: 10px 20px;
+    max-width: 500px;
+  }
+
+  .header-item-btn {
+    padding: 10px 10px;
+    background-color: $grayitem;
+    border-radius: 3px;
+    margin: 0px 5px;
+    border: none;
+    color: $white;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grayitemhover;
+    }
+  }
+
+  .header-left {
+    .header-item {
+      margin: 0px 3px;
+    }
+
+    #home {
+      color: $white;
+    }
+
+    #header-table {
+      .table-search {
+        margin-bottom: 10px;
+      }
+
+      .table {
+        padding: 0px 5px;
+
+        .table-list {
+          .list-header {
+            margin-top: 10px;
+            padding-left: 10px;
+            color: $gray;
+          }
+
+          .collapse-btn {
+            border: none;
+            border-radius: 5px;
+            display: inline;
+            padding: 5px 5px;
+            background-color: $gray;
+          }
+
+          .table-box {
+            margin-bottom: 5px;
+            padding: 10px 0px;
+            display: flex;
+            border: 1px solid $gray;
+
+            .table-img {
+              width: 20%;
+            }
+
+            .table-content {
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .header-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-right {
+    .header-item {
+      margin: 0px 3px;
+
+      .dropdown-header {
+        padding: 10px 0px;
+        text-align: center;
+        color: $gray;
+        border-bottom: 1px solid $gray;
+      }
+
+      .dropdown-content {
+        margin-top: 10px;
+      }
+    }
+
+    #user {
+      .user-info {
+        display: flex;
+        margin-bottom: 10px;
+
+        .user-img {
+          width: 25%;
+        }
+        .user-name {
+          width: 75%;
+          p {
+            margin: 0px;
+          }
+        }
+      }
+      ul {
+        padding: 0px;
+        margin-top: 10px;
+
+        li {
+          a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}

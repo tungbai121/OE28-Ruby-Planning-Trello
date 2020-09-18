@@ -1,10 +1,7 @@
 class StaticPagesController < ApplicationController
-  include SessionsHelper
+  before_action :user_board
 
   def home
-    return if logged_in?
-
-    flash[:warning] = t ".loginwarning"
-    redirect_to login_path
+    redirect_to login_path unless logged_in?
   end
 end

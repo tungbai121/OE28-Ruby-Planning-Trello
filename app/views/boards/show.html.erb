@@ -1,0 +1,50 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "boards/show", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<% content_for :js do %>
+  <%= javascript_pack_tag "board_show", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<%= render "boards/menu" %>
+
+<main>
+  <div class="board-info">
+    <div class="item">
+      <div class="item-btn">
+        <%= @board.name %>
+      </div>
+      <div class="dropdown">
+        <button class="item-btn dropdown-toggle" type="button" id="board-status-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if @board.status %>
+            <%= t ".public" %>
+          <% else %>
+            <%= t ".private" %>
+          <% end %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="board-status-btn">
+          <a class="dropdown-item" href="#"><%= t ".public" %></a>
+          <a class="dropdown-item" href="#"><%= t ".private" %></a>
+        </div>
+      </div>
+      <%# TO DO %>
+      <%# <div class="dropdown">
+        <button class="item-btn dropdown-toggle" type="button" id="board-member-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          member
+        </button>
+        <div class="dropdown-menu" aria-labelledby="board-member-btn">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div> %>
+    </div>
+    <div class="item">
+      <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>
+    </div>
+  </div>
+  <%# TO DO %>
+  <%# <div class="board-wrapper">
+    taglist
+  </div> %>
+</main>

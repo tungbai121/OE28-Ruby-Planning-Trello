@@ -1,3 +1,5 @@
 //= link_tree ../images
-//= link_directory ../stylesheets
-//= link static_pages/home
+//= link_directory ../stylesheets .css
+//= link static_pages/home.css
+//= link boards/show.css
+//= link boards/menu.css
