@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  include SessionsHelper
-
   layout false
 
   def new; end

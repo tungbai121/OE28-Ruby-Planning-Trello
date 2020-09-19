@@ -1,0 +1,7 @@
+<% if flash %>
+  <%= content_tag :script do %>
+    <% flash.each do |type, message| %>
+      <%= toastr_flash "#{type}" %>('<%= message %>')
+    <% end %>
+  <% end %>
+<% end %>
