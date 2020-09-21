@@ -34,4 +34,8 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.assets.quiet = true
+
+  config.assets.check_precompiled_asset = false
+
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

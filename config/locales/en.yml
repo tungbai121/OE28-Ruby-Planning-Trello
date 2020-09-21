@@ -38,3 +38,19 @@ en:
       public: Public
       private: Private
       nomember: You are not member of this board
+  registers:
+    create:
+        failed: Register failed
+    form:
+      name: Name
+      email: Email
+      password: Password
+      confirm_password: Confirm password
+      register: Register
+    new:
+      title: Planning | Register
+      logo: Logo
+      sign_up: Sign Up
+      login: Login
+      english: English
+      vietnamese: Vietnamese

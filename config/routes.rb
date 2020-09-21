@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new", as: "login"
     post "/login", to: "sessions#create"
 
+    get "/register", to: "registers#new", as: "register"
+    post "/register", to: "registers#create"
+
+    resources :users
     resources :boards
   end
 end

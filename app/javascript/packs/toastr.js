@@ -1,0 +1,1 @@
+global.toastr = require('toastr')

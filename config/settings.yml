@@ -1,0 +1,13 @@
+gravatar:
+  default_size: 80
+  normal_size: 50
+url:
+  gravatar: https://secure.gravatar.com/avatar/
+user:
+  email:
+    length: 255
+    regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+  name:
+    length: 50
+  password:
+    length: 6
