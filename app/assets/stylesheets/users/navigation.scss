@@ -1,0 +1,41 @@
+@import 'color';
+
+nav {
+  background-color: $brownsmoke;
+
+  .avatar {
+    padding: 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+      width: 90px;
+      height: 90px;
+    }
+
+    .name {
+      font-size: 25px;
+      margin-right: 10px;
+    }
+
+    .email {
+      margin-top: 5px;
+      color: $gray;
+    }
+  }
+
+  .user-menu {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+
+    .item {
+      border-radius: 3px;
+      margin: 0px 10px;
+      padding: 10px 15px;
+      background-color: $white;
+    }
+  }
+}

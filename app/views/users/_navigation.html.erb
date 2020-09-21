@@ -1,0 +1,21 @@
+<nav>
+  <div class="user-info">
+    <div class="avatar">
+      <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
+      <div>
+        <div class="name">
+          <%= @user.name %>
+        </div>
+        <div class="email">
+          <%= @user.email %>
+        </div>
+      </div>
+    </div>
+    <div class="user-menu">
+      <%= link_to t(".profile"), @user, class: "item" %>
+      <%= link_to t(".activity"), "#", class: "item" %>
+      <%= link_to t(".tag"), "#", class: "item" %>
+      <%= link_to t(".setting"), "#", class: "item" %>
+    </div>
+  </div>
+</nav>
