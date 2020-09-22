@@ -30,4 +30,6 @@ class Board < ApplicationRecord
     .where(user_boards: {user_id: user_id,
                          starred: nil})
   end)
+
+  scope :opened, ->{where closed: nil}
 end

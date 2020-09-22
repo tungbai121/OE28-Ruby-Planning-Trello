@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
     resources :users, only: %i(show edit update)
     resources :boards
+    patch "/status", to: "boards#update_board_status", as: "status"
+    patch "/close", to: "boards#update_board_closed", as: "board_closed"
     resources :labels, only: :create
   end
 end

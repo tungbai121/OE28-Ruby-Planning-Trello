@@ -34,22 +34,37 @@ en:
       add: Add
       searchlabel: Search for labels
       search: Search
+      description_btn: Save
+      close: X
+      closed: Close board
     show:
-      cant_find: Can't find board
+      cant_find: Can't find board or the board is closed
       public: Public
       private: Private
       nomember: You are not member of this board
+      edit: Edit
+      public: Public
+      private: Private
+      submit: Submit
     create:
       success: Board added
       fail: Fail to add new board
     new:
       submit: Create
+    update_board_status:
+      success: Status updated
+      error: Failed
+    update_board_closed:
+      closed: Board is closed, you will not be able to view the board from now on
   labels:
     create:
       success: Label created
       fail: Invalid length
     find_board:
       cant_find: Can't find board
+    update:
+      success: Updated
+      fail: Update failed
   registers:
     create:
         failed: Register failed

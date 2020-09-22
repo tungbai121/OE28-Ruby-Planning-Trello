@@ -1,6 +1,9 @@
 class BoardsController < ApplicationController
+  before_action :logged_in_user
   before_action :user_board
   before_action :check_board, :check_member, only: :show
+  before_action :find_board,
+                only: %i(update update_board_status update_board_closed)
 
   def new
     @board = Board.new
@@ -22,6 +25,31 @@ class BoardsController < ApplicationController
     @labels = @board.labels
   end
 
+  def update
+    if @board.update board_params
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".error"
+    end
+    redirect_to @board
+  end
+
+  def update_board_status
+    if params[:board_status].to_i.eql? Settings.data.confirm
+      @board.update_attribute :status, Settings.data.confirm
+    else
+      @board.update_attribute :status, nil
+    end
+    flash[:success] = t ".success"
+    redirect_to @board
+  end
+
+  def update_board_closed
+    @board.update_attribute :closed, params[:closed].to_i
+    flash[:warning] = t ".closed"
+    redirect_to root_path
+  end
+
   private
 
   def check_member
@@ -34,6 +62,14 @@ class BoardsController < ApplicationController
 
   def check_board
     @board = Board.find_by id: params[:id]
+    return unless @board.closed
+
+    flash[:danger] = t ".cant_find"
+    redirect_to root_path
+  end
+
+  def find_board
+    @board = Board.find_by id: params[:board_id]
     return if @board
 
     flash[:danger] = t ".cant_find"
