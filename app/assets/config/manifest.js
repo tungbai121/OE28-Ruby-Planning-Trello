@@ -4,3 +4,5 @@
 //= link boards/new.css
 //= link boards/show.css
 //= link boards/menu.css
+//= link users/show
+//= link users/navigation

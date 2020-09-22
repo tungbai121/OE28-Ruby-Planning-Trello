@@ -1,0 +1,33 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "users/show", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<%= provide :title, @user.name %>
+
+<%= render "navigation" %>
+
+<main>
+  <div class="container">
+    <div class="activities">
+      <div class="header">
+        <%= t ".activities" %>
+      </div>
+
+      <div class="content">
+        <div class="activity">
+          <div class="user-ava">
+            <%= image_tag "avatar.jpg", class: "rounded rounded-circle" %>
+          </div>
+          <div class="content">
+            <span class="name"><%= t ".name" %></span>
+            <span class="action"><%= t ".activity" %></span>
+            <div class="info">
+              <span><%= t ".at_time"%></span>
+              <span><%= t ".on_board" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

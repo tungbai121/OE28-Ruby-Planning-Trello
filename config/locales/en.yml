@@ -16,10 +16,11 @@ en:
       username: User
       account: Account
       newuser: New User
-      accountinfo: Account info
-      activity: Activity
+      add_account: Add account
+      profile: Profile
+      activities: Activities
       tags: Tags
-      setting: Setting
+      settings: Settings
       logout: Logout
     sidebar:
       board: Board
@@ -65,6 +66,17 @@ en:
       submit: Create
       name: Name
       description: Description
+  users:
+    navigation:
+      profile: Profile
+      activities: Activities
+      tags: Tags
+      settings: Settings
+    activities:
+      activities: Activities
+    show:
+      please_log_in: Please login!
+      user_not_found: User not found!
 
   activerecord:
       attributes:
