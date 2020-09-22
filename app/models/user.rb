@@ -25,6 +25,12 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def join_board board, type
+    check = type.to_i.eql? Settings.data.confirm
+    join_boards << board
+    board.user_boards.first.update_attribute(:starred, true) if check
+  end
+
   private
 
   def downcase_email

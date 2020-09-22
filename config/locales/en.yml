@@ -38,6 +38,11 @@ en:
       public: Public
       private: Private
       nomember: You are not member of this board
+    create:
+      success: Board added
+      fail: Fail to add new board
+    new:
+      submit: Create
   registers:
     create:
         failed: Register failed
@@ -54,3 +59,24 @@ en:
       login: Login
       english: English
       vietnamese: Vietnamese
+    new:
+      newboard: New board
+      newdescribe: A board create
+      submit: Create
+      name: Name
+      description: Description
+
+  activerecord:
+      attributes:
+        board:
+          name: Name
+          description: Description
+      errors:
+        models:
+          board:
+            attributes:
+              name:
+                blank: is empty
+                invalid: is invalid
+              decription:
+                blank: is empty

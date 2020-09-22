@@ -17,7 +17,12 @@
               <p><%= t ".favoriteboards" %></p>
             </div>
             <div class="list">
-              <%= render partial: "shared/board", collection: @favorite_boards, as: :board %>
+              <%= render partial: "shared/board",
+                collection: @favorite_boards,
+                as: :board %>
+              <%= link_to t(".newboard"),
+                new_board_path(type: Settings.data.confirm),
+                class: "list-item new-item" %>
             </div>
           </div>
         <% else %>
@@ -29,7 +34,12 @@
               <p><%= t ".myboards" %></p>
             </div>
             <div class="list">
-              <%= render partial: "shared/board", collection: @my_boards, as: :board %>
+              <%= render partial: "shared/board",
+                collection: @my_boards,
+                as: :board %>
+              <%= link_to t(".newboard"),
+                new_board_path(type: Settings.data.notconfirm),
+                class: "list-item new-item" %>
             </div>
           </div>
         <% else %>
