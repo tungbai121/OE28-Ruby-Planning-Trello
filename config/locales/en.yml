@@ -67,6 +67,23 @@ en:
       name: Name
       description: Description
   users:
+    update:
+      success: Update successfully
+      failed: Update failed
+    activities:
+      activities: Activities
+    form:
+      name: Name
+      bio: Bio
+      save: Save
+      change_password: Change password
+      password: Password
+      confirm_password: Confirm password
+      change: Change
+    info:
+      heading: Manage your personal information
+      description: Here's where you can change your profile information and find out what users and other Power-Ups will be able to see. To learn more, see our Terms of Service or Privacy Policy.
+      info: Information
     navigation:
       profile: Profile
       activities: Activities

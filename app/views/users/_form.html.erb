@@ -1,0 +1,10 @@
+<%= form_for @user, remote: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :name, t(".name") %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.label :password, t(".password") %>
+  <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
+  <%= f.label :confirm_password, t(".confirm_password") %>
+  <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".confirm_password") %>
+  <%= f.submit t(".save"), class: "btn btn-success form-control" %>
+<% end %>
