@@ -60,11 +60,20 @@ en:
     create:
       success: Label created
       fail: Invalid length
-    find_board:
       cant_find: Can't find board
     update:
-      success: Updated
-      fail: Update failed
+      success: Label updated
+      fail: Invalid length
+      cant_find: Can't find board
+    destroy:
+      success: Label deleted
+      fail: Failed to delet label
+      cant_find: Can't find board
+  shared:
+    label:
+      change: Change
+      confirm: Are you sure?
+      delete: Delete
   registers:
     create:
         failed: Register failed
