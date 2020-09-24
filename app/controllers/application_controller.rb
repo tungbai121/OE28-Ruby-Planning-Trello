@@ -14,8 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   def user_board
-    @favorite_boards = Board.favorite current_user.id
-    @my_boards = Board.nonfavorite current_user.id
+    opened_board = Board.opened
+    @favorite_boards = opened_board.favorite current_user.id
+    @my_boards = opened_board.nonfavorite current_user.id
   end
 
   def user_params

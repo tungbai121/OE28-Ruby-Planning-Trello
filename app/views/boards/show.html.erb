@@ -11,8 +11,17 @@
 <main>
   <div class="board-info">
     <div class="item">
-      <div class="item-btn">
+      <div id="edit"><%= t ".edit" %></div>
+      <div class="item-btn input" id="board-name">
         <%= @board.name %>
+      </div>
+      <div id="board-name-form">
+        <%= form_with model: @board, method: :patch, url: board_path do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <%= hidden_field_tag :board_id, @board.id %>
+          <%= f.text_field :name, class: "form-control", value: "#{@board.name}" %>
+          <%= f.submit t(".submit"), class: "btn btn-primary mt-3" %>
+        <% end %>
       </div>
       <div class="dropdown">
         <button class="item-btn dropdown-toggle" type="button" id="board-status-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,8 +32,14 @@
           <% end %>
         </button>
         <div class="dropdown-menu" aria-labelledby="board-status-btn">
-          <a class="dropdown-item" href="#"><%= t ".public" %></a>
-          <a class="dropdown-item" href="#"><%= t ".private" %></a>
+          <%= link_to t(".public"),
+            status_url(board_status: Settings.data.confirm, board_id: @board.id),
+            class: "dropdown-item",
+            method: :patch %>
+          <%= link_to t(".private"),
+            status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
+            class: "dropdown-item",
+            method: :patch %>
         </div>
       </div>
       <%# TO DO %>

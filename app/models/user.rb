@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.user.email.regex
+
   USER_PARAMS = %i(name email password password_confirmation).freeze
 
   has_many :user_boards, class_name: UserBoard.name,

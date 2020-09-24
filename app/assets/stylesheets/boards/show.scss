@@ -8,14 +8,26 @@ main {
     justify-content: space-between;
 
     .item {
+      align-self: flex-start;
       padding: 5px 10px;
       display: flex;
+
+      #edit{
+        background-color: $main;
+        border-radius: 3px;
+        padding: 3px 5px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        cursor: pointer;
+      }
 
       .item-btn {
         padding: 10px 10px;
         background-color: $grayitem;
         border-radius: 3px;
-        margin: 0px 5px;
+        margin: 0 5px;
         border: none;
         color: $white;
         font-weight: 600;
@@ -25,6 +37,11 @@ main {
         &:hover {
           background-color: $grayitemhover;
         }
+      }
+
+      #board-name-form{
+        display: none;
+        padding: 0 10px;
       }
     }
   }
