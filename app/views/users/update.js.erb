@@ -1,0 +1,7 @@
+<% unless @user.errors.any? %>
+  $('title').html('<%= @user.name %>');
+  $('#user-dropdown').html('<%= @user.name %>');
+  $('.name').html('<%= @user.name %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');
+$('.edit_user').html('<%= j render "form" %>');

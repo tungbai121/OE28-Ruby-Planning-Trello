@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get "/register", to: "registers#new", as: "register"
     post "/register", to: "registers#create"
 
-    resources :users, only: :show
+    resources :users, only: %i(show edit update)
     resources :boards
   end
 end

@@ -1,0 +1,18 @@
+<div class="info">
+  <h2><%= t ".heading" %></h2>
+  <p><%= t ".description" %></p>
+</div>
+<div class="form-wrapper">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="section-header">
+        <%= t ".info" %>
+      </div>
+      <%= render "form" %>
+    </div>
+    <div class="col-lg-6">
+      <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
+      <%= file_field_tag :avatar, accept: Settings.image.accept_types %>
+    </div>
+  </div>
+</div>

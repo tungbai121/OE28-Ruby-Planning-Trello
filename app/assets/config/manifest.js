@@ -6,3 +6,4 @@
 //= link boards/menu.css
 //= link users/show
 //= link users/navigation
+//= link users/info

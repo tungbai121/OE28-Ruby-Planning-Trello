@@ -17,3 +17,5 @@ validate:
 data:
   confirm: 1
   notconfirm: 0
+image:
+  accept_types: "image/jpeg, image/gif, image/png"

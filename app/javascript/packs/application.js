@@ -5,7 +5,7 @@ require('channels')
 require('jquery')
 require('packs/toastr')
 import 'bootstrap'
-//= require jquery_ujs
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
