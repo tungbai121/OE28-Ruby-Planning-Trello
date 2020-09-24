@@ -44,6 +44,12 @@ en:
       fail: Fail to add new board
     new:
       submit: Create
+  labels:
+    create:
+      success: Label created
+      fail: Invalid length
+    find_board:
+      cant_find: Can't find board
   registers:
     create:
         failed: Register failed

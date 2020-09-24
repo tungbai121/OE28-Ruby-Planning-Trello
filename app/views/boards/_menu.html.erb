@@ -22,10 +22,11 @@
             <%= t ".addlabel" %>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownLabel">
-            <div>
-              <input class="form-control" type="text">
-              <button class="btn btn-success"><%= t ".add" %></button>
-            </div>
+            <%= form_for :label, url: labels_path do |f| %>
+              <%= hidden_field_tag :board_id, @board.id %>
+              <%= f.text_field :content, class: "form-control" %>
+              <%= f.submit t(".add"), class: "d-block btn btn-success mt-3" %>
+            <% end %>
           </div>
         </div>
       </div>
