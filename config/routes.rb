@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     post "/register", to: "registers#create"
 
     resources :users, only: %i(show edit update)
-    resources :boards
+    resources :boards do
+      resource :tags, only: :create, as: "create_tag"
+    end
+
     patch "/status", to: "boards#update_board_status", as: "status"
     patch "/close", to: "boards#update_board_closed", as: "board_closed"
     resources :labels, only: %i(create update destroy)

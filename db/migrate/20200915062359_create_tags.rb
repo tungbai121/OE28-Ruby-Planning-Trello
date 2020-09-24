@@ -7,7 +7,7 @@ class CreateTags < ActiveRecord::Migration[6.0]
       t.datetime :deadline
       t.boolean :completed
       t.datetime :completed_at
-      t.boolean :close
+      t.boolean :closed
 
       t.timestamps
     end
