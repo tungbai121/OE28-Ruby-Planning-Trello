@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
 
   def show
     @labels = @board.labels
+    @tag = Tag.new
   end
 
   def update

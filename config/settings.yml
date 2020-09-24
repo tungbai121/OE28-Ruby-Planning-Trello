@@ -20,3 +20,11 @@ data:
   notconfirm: 0
 image:
   accept_types: "image/jpeg, image/gif, image/png"
+tag:
+  name:
+    length: 200
+  description:
+    length: 1000
+number:
+  zero: 0
+  one: 1
