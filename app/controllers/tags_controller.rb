@@ -67,7 +67,7 @@ class TagsController < ApplicationController
 
   def position
     lastpos = @list.tags.opened.last_position
-    return lastpos + Settings.number.one if lastpos
+    return lastpos + Settings.number.one if lastpos.present?
 
     Settings.number.zero
   end

@@ -1,0 +1,24 @@
+<div class="tag">
+  <div class="tag-header">
+    <div><%= tag.name %></div>
+    <div class="dropdown">
+      <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to t(".change_label"), "#", class: "dropdown-item", "data-target": "#label-1", "data-toggle": "modal" %>
+        <%= link_to t(".change_member"), "#", class: "dropdown-item", "data-target": "#member-1", "data-toggle": "modal" %>
+        <%= link_to t(".change_position"), "#", class: "dropdown-item", "data-target": "#position-1", "data-toggle": "modal" %>
+        <%= link_to t(".change_deadline"), "#", class: "dropdown-item", "data-target": "#deadline-1", "data-toggle": "modal" %>
+        <%= link_to t(".archive"), "#", class: "dropdown-item" %>
+      </div>
+    </div>
+  </div>
+  <div class="tag-body">
+    <span class="deadline"><%= t ".deadline" %></span>
+    <%# TO DO render "users/member" %>
+    <span class="member">
+      <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
+    </span>
+  </div>
+</div>
+
+<%= render "tags/modal" %>
