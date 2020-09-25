@@ -1,0 +1,129 @@
+.board-taglist {
+  align-self: flex-start;
+  box-shadow: $shadow 0 0 10px;
+  width: 20%;
+  margin: 15px 15px 0 0;
+  padding: 10px 10px;
+  background-color: $secondary;
+  border-radius: 3px;
+
+  .header {
+    justify-content: space-between;
+    display: flex;
+    padding: 10px 10px;
+
+    .list-menubtn {
+      padding: 5px 5px;
+      border-radius: 2px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $lightblue;
+      }
+    }
+  }
+
+  .tags {
+    padding: 10px 10px;
+    max-height: 400px;
+    overflow: scroll;
+
+    .tag {
+      margin: 10px 0;
+      background-color: $white;
+      padding: 10px 10px;
+      border-radius: 3px;
+
+      .tag-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .menu-btn {
+          border-radius: 2px;
+          transition: 0.2s;
+          padding: 3px 5px;
+          transition: 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $lightcoral;
+          }
+
+          &:after {
+            content: none;
+          }
+        }
+
+        .dropdown-item {
+          text-decoration: none;
+          padding: 5px 10px;
+        }
+
+        .item-btn {
+          text-decoration: none;
+          padding: 5px 10px;
+          display: block;
+        }
+      }
+
+      .tag-body {
+        display: flex;
+        justify-content: space-between;
+
+        .member {
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .add {
+    .add-btn {
+      padding: 5px 0;
+      margin: 5px 0;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+
+    input {
+      margin: 10px 0;
+    }
+  }
+}
+
+.list-add {
+  width: 20%;
+  background-color: $secondary;
+  margin: 15px 15px 0 0;
+  padding: 0;
+  height: 50px;
+  border-radius: 4px;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray;
+  }
+
+  .add-btn {
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  button{
+    margin-top: 5px;
+    width: 100%;
+  }
+}

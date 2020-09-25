@@ -139,3 +139,12 @@ en:
                 invalid: is invalid
               decription:
                 blank: is empty
+  lists:
+    lists:
+      activities: Activities
+      moving: Moving
+      add: Add
+      move: Move
+      closed: Close
+      order: Order
+      addtag: Add new tag
