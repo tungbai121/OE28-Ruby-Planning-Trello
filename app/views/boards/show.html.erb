@@ -58,9 +58,18 @@
       <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>
     </div>
   </div>
-  <%# TO DO %>
-  <%# <div class="board-wrapper">
-    taglist
-  </div> %>
-  <%= render "tags/form" %>
+  <div class="board-wrapper">
+    <%= render partial: "lists/list", collection: @lists, as: :list %>
+    <%# TO DO %>
+    <%# <div class="board-taglist list-add"> %>
+      <%# <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div> %>
+      <%# <div class="collapse" id="add-list"> %>
+        <%# <%= form_for :list, url: create_list_path do |f| %>
+          <%# <%= hidden_field_tag :board_id, @board.id %>
+          <%# <%= f.text_field :name, class: "form-control" %>
+          <%# <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>
+        <%# <% end %>
+      <%# </div> %>
+    <%# </div> %>
+  </div>
 </main>

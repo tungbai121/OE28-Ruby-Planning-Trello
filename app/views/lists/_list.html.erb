@@ -23,15 +23,15 @@
     <p><%= list.name %></p>
     <div class="dropdown">
       <a class="list-menubtn" type="button" id="list-menubtn-<%= list.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        ...
+        <%= t ".dots" %>
       </a>
       <div class="dropdown-menu" aria-labelledby="list-menubtn-1">
         <a class="header"><%= t ".activities" %></a>
         <div class="dropdown-divider"></div>
-        <a data-toggle="collapse" data-target="#add-tag-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
-        <a class="dropdown-item" href="#" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></a>
-        <a class="dropdown-item" href="#"><%= t ".order" %></a>
-        <a class="dropdown-item" href="#"><%= t ".closed" %></a>
+        <div data-toggle="collapse" data-target="#add-tag-<%= list.id %>" class="dropdown-item"><%= t ".add" %></div>
+        <div class="dropdown-item" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></div>
+        <div class="dropdown-item"><%= t ".order" %></div>
+        <div class="dropdown-item"><%= t ".closed" %></div>
       </div>
     </div>
   </div>
@@ -43,8 +43,7 @@
   <div class="add">
     <div class="add-btn" data-toggle="collapse" data-target="#add-tag-<%= list.id %>">+ <%= t ".addtag" %></div>
     <div class="collapse" id="add-tag-<%= list.id %>">
-      <input class="form-control" type="text">
-      <button class="btn btn-success"><%= t ".add" %></button>
+      <%= render "tags/form", list: list %>
     </div>
   </div>
 </div>
