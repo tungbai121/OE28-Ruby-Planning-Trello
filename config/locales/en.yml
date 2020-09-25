@@ -53,6 +53,9 @@ en:
       fail: Fail to add new board
     new:
       submit: Create
+    update:
+      success: Updated
+      error: Update failed, length is invalid
     update_board_status:
       success: Status updated
       error: Failed

@@ -1,0 +1,14 @@
+<% if @board.errors.present? %>
+  alert('<%= @board.errors.messages %>');
+<% else %>
+  if ($('#board-name').hasClass('input')) {
+    $('#board-name').html('<%= @board.name %>');
+    $('#board-description-value').html('<%= @board.description %>');
+  }
+  else {
+    $('#edit').click();
+    $('#board-name').html('<%= @board.name %>');
+    $('#board-description-value').val('<%= @board.description %>');
+  }
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

@@ -1,0 +1,10 @@
+<% if @board.errors.present? %>
+  alert('<%= @board.errors %>');
+<% else %>
+  $('#board-status-btn').html('<% if @board.status %>'+
+                                '<%= t ".public" %>'+
+                              '<% else %>'+
+                                '<%= t ".private" %>'+
+                              '<% end %>')
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');
