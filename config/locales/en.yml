@@ -46,6 +46,8 @@ en:
       public: Public
       private: Private
       submit: Submit
+      menu: Menu
+      addlist: Add list
     create:
       success: Board added
       fail: Fail to add new board
@@ -55,7 +57,7 @@ en:
       success: Status updated
       error: Failed
     update_board_closed:
-      closed: Board is closed, you will not be able to view the board from now on
+      closed: Board is closed, you will not be able to view the board from now
   labels:
     create:
       success: Label created
@@ -74,6 +76,10 @@ en:
       change: Change
       confirm: Are you sure?
       delete: Delete
+  tags:
+    form:
+      add: Add
+      enter_name: Enter name...
   registers:
     create:
         failed: Register failed
@@ -140,7 +146,7 @@ en:
               decription:
                 blank: is empty
   lists:
-    lists:
+    list:
       activities: Activities
       moving: Moving
       add: Add
@@ -148,3 +154,4 @@ en:
       closed: Close
       order: Order
       addtag: Add new tag
+      dots: ...

@@ -28,3 +28,8 @@ tag:
 number:
   zero: 0
   one: 1
+validate:
+  max_board_name: 40
+  max_board_description: 255
+  max_list_name: 30
+  max_label_content: 30
