@@ -24,6 +24,7 @@ class BoardsController < ApplicationController
   def show
     @labels = @board.labels
     @tag = Tag.new
+    @list = List.new
     @lists = @board.lists.opened
   end
 

@@ -39,3 +39,5 @@ spec/helpers/
 spec/models/
 spec/requests/
 spec/views
+
+config/application.yml
