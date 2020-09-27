@@ -38,4 +38,15 @@ Rails.application.configure do
   config.assets.check_precompiled_asset = false
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {host: ENV["host"]}
+  config.action_mailer.smtp_settings = {
+    user_name: ENV["mail_user_name"],
+    password: ENV["mail_user_password"],
+    address: ENV["mail_address"],
+    port: ENV["mail_port"],
+    authentication: :plain,
+    enable_strattls_auto: true
+  }
 end

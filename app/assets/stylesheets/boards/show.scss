@@ -44,6 +44,40 @@ main {
         display: none;
         padding: 0 10px;
       }
+
+      #member-btn{
+        .addmember{
+          width: 250px;
+          padding: 10px 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          button{
+            width: 100%;
+            margin-top: 5px;
+          }
+        }
+
+        .member-list{
+          display: flex;
+          justify-content: center;
+          width: 400px;
+
+          .user{
+            margin: 0 5px;
+            background-color: $secondary;
+            padding: 4px 6px;
+            border-radius: 3px;
+          }
+        }
+
+        .addmember{
+          form{
+            width: 100%;
+          }
+        }
+      }
     }
   }
 

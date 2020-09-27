@@ -48,6 +48,8 @@ en:
       submit: Submit
       menu: Menu
       addlist: Add list
+      member: Member
+      add: Add
     create:
       success: Board added
       fail: Fail to add new board
@@ -158,6 +160,12 @@ en:
     show:
       please_log_in: Please login!
       user_not_found: User not found!
+  add_members:
+    new:
+      success: Email has sended
+    edit:
+      success: Join
+      fail: Fail
 
   activerecord:
       attributes:
@@ -188,3 +196,10 @@ en:
       success: New list has been added
       fail: Fail to add new list
       cant_find: Can't find board
+  user_mailer:
+    user_invitation:
+      invitation: You have been invited to join our board
+      title: Invitation
+      hi: Hello,
+      welcome: Welcome to our website
+      activate: Join our board

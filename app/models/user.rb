@@ -33,6 +33,10 @@ class User < ApplicationRecord
     board.user_boards.first.update_attribute(:starred, true) if check
   end
 
+  def send_email_join board_id
+    UserMailer.user_invitation(self, board_id).deliver_now
+  end
+
   private
 
   def downcase_email

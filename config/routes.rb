@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     patch "/status", to: "boards#update_board_status", as: "status"
     patch "/close", to: "boards#update_board_closed", as: "board_closed"
     resource :lists, only: :create
+    resources :add_members, only: %i(new edit)
   end
 end
