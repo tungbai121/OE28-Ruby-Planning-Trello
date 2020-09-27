@@ -7,11 +7,11 @@ class TagsController < ApplicationController
     @tag = @list.tags.build tag_params.merge(position: position)
 
     if @tag.save
-      flash[:success] = t ".success"
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".failed"
+      flash.now[:danger] = t ".failed"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   private

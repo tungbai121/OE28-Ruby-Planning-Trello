@@ -1,0 +1,9 @@
+<% if @label.errors.present? %>
+  $('.add-label').html('<%= j render "labels/add", label: @label %>');
+<% else %>
+  $('#board-label').addClass('show');
+  $('<%= j render "labels/label", label: @label %>').appendTo('#board-label');
+  $('.add-label').html('<%= j render "labels/add", label: Label.new %>');
+  $('#label-content').val('');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

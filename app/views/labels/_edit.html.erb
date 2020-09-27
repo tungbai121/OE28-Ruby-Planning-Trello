@@ -1,0 +1,7 @@
+<%= form_for :label, url: board_update_label_path(@board, id: label.id), html: {id: "edit_label_#{label.id}"}, method: :patch, remote: true do |f| %>
+  <%= f.text_field :content, class: "form-control", id: nil, value: label.content %>
+  <%= display_error label, :content , t(".content") %>
+  <%= link_to t(".delete"), board_destroy_label_path(@board, id: label.id),
+      data: {confirm: t(".confirm")}, class: "btn btn-danger mt-3 float-right", method: :delete, remote: true %>
+  <%= f.submit t(".change"), class: "btn btn-success mt-3 mr-2 float-right" %>
+<% end %>

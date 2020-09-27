@@ -11,11 +11,14 @@ Rails.application.routes.draw do
     resources :users, only: %i(show edit update)
     resources :boards do
       resource :tags, only: :create, as: "create_tag"
+
+      post "labels/create", to: "labels#create", as: "create_label"
+      patch "labels/:id", to: "labels#update", as: "update_label"
+      delete "labels/:id", to: "labels#destroy", as: "destroy_label"
     end
 
     patch "/status", to: "boards#update_board_status", as: "status"
     patch "/close", to: "boards#update_board_closed", as: "board_closed"
-    resources :labels, only: %i(create update destroy)
     resource :lists, only: :create
   end
 end

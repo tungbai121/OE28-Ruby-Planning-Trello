@@ -20,31 +20,11 @@
       <% end %>
     </div>
     <div class="item label-wrapper">
-      <% if @labels.present? %>
-        <div class="label" data-toggle="collapse" data-target="#board-label"><%= t ".label" %></div>
-      <% end %>
+      <div class="label" data-toggle="collapse" data-target="#board-label"><%= t ".label" %></div>
       <div class="collapse" id="board-label">
-        <%= render partial: "shared/label", collection: @labels, as: :label %>
+        <%= render @labels %>
       </div>
-      <div class="add">
-        <div class="dropdown">
-          <button
-            class="dropdown-toggle add-btn"
-            type="button" id="dropdownLabel"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            <%= t ".addlabel" %>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownLabel">
-            <%= form_for :label, url: labels_path do |f| %>
-              <%= hidden_field_tag :board_id, @board.id %>
-              <%= f.text_field :content, class: "form-control" %>
-              <%= f.submit t(".add"), class: "d-block btn btn-success mt-3" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render "labels/add", label: @label %>
     </div>
     <div class="item search-wrapper">
       <div class="dropdown">
@@ -64,9 +44,6 @@
         </div>
       </div>
     </div>
-    <%= link_to t(".closed"),
-      board_closed_path(board_id: @board.id, closed: Settings.data.confirm),
-      class: "btn btn-danger",
-      method: :patch %>
+    <%= link_to t(".closed"), board_closed_path(board_id: @board.id, closed: Settings.data.confirm), class: "btn btn-danger", method: :patch %>
   </div>
 </article>

@@ -1,0 +1,7 @@
+<% if @label.errors.present? %>
+  $('#edit_label_<%= @label.id %>').html('<%= j render "labels/edit", label: @label %>');
+<% else %>
+  $('#label-content-<%= @label.id %>').html('<%= @label.content %>');
+  $('.dropdown-menu').removeClass('show');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

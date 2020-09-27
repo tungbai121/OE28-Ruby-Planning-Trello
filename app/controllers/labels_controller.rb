@@ -1,33 +1,34 @@
 class LabelsController < ApplicationController
   before_action :find_board
   before_action :find_label, except: :create
+  before_action :load_labels
 
   def create
-    label = @board.labels.build label_params
-    if label.save
-      flash[:success] = t ".success"
+    @label = @board.labels.build label_params
+    if @label.save
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   def update
     if @label.update label_params
-      flash[:success] = t ".success"
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   def destroy
     if @label.destroy
-      flash[:primary] = t ".success"
+      flash.now[:primary] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   private
@@ -41,7 +42,8 @@ class LabelsController < ApplicationController
   end
 
   def find_label
-    @label = Label.find_by id: params[:label_id]
+    @label = Label.find_by id: params[:id]
+
     return if @label
 
     flash[:warning] = t ".cant_find"
@@ -50,5 +52,9 @@ class LabelsController < ApplicationController
 
   def label_params
     params.require(:label).permit Label::PERMIT_ATTRIBUTES
+  end
+
+  def load_labels
+    @labels = @board.labels
   end
 end

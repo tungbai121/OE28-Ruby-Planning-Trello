@@ -37,4 +37,10 @@ $(function() {
       $('#edit').text('close');
     }
   });
+
+  $(document).mouseup(function (e) {
+    var container = $('.add');
+    if (!container.is(e.target) && container.has(e.target).length === 0)
+      container.find('.collapse').removeClass('show');
+  });
 });

@@ -1,5 +1,6 @@
-<%= form_for @tag, url: board_create_tag_path(@board) do |f| %>
-  <%= f.text_field :name, placeholder: t(".enter_name"), class: "form-control" %>
-  <%= hidden_field_tag :list_id, list.id %>
+<%= form_for @tag, url: board_create_tag_path(@board), method: :post, remote: true, html: {id: "list-#{list.id}-new_tag"} do |f| %>
+  <%= f.text_field :name, placeholder: t(".enter_name"), class: "form-control", id: "input-list-#{list.id}" %>
+  <%= display_error f.object, :name , t(".name") %>
+  <%= hidden_field_tag :list_id, list.id, id: "list-#{list.id}" %>
   <%= f.submit t(".add"), class: "btn btn-success" %>
 <% end %>
