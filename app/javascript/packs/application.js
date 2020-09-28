@@ -10,5 +10,5 @@ import 'bootstrap'
 import $ from 'jquery'
 global.$ = $
 global.jQuery = $
-require('jquery-ui');
 require('packs/board_show')
+require('jquery-ui');

@@ -49,4 +49,5 @@ Rails.application.configure do
     authentication: :plain,
     enable_strattls_auto: true
   }
+  config.consider_all_requests_local = false
 end

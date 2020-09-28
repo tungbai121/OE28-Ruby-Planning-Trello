@@ -24,13 +24,13 @@ class BoardsController < ApplicationController
   def show
     @data = {
       labels: @board.labels,
-      tag: Tag.new,
       lists: @board.lists.opened.order_position,
       positions: List.inside_board(@board.id)
                      .available_positions
                      .order_position
                      .positions
     }
+    @tag = Tag.new
   end
 
   def update
@@ -69,11 +69,7 @@ class BoardsController < ApplicationController
   end
 
   def check_board
-    @board = Board.find_by id: params[:id]
-    return unless @board.closed
-
-    flash[:danger] = t ".cant_find"
-    redirect_to root_path
+    @board = Board.find params[:id]
   end
 
   def find_board
