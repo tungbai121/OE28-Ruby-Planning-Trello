@@ -1,4 +1,4 @@
-.board-taglist {
+.board-list {
   align-self: flex-start;
   box-shadow: $shadow 0 0 10px;
   width: 20%;
@@ -25,8 +25,8 @@
 
   .tags {
     padding: 10px 10px;
-    max-height: 400px;
-    overflow: scroll;
+    max-height: 500px;
+    overflow: auto;
 
     .tag {
       margin: 10px 0;

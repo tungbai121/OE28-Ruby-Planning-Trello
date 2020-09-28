@@ -59,6 +59,16 @@ en:
     update_board_closed:
       closed: Board is closed, you will not be able to view the board from now
   labels:
+    add:
+      add: Add
+      addlabel: Add label
+      enter_content: Enter content...
+      content: Content
+    edit:
+      change: Change
+      delete: Delete
+      confirm: Confirm
+      content: Content
     create:
       success: Label created
       fail: Invalid length
@@ -79,7 +89,22 @@ en:
   tags:
     form:
       add: Add
-      enter_name: Enter name...
+      enter_name: Enter tag name...
+      name: Name
+    create:
+      success: Tag create successfully
+      failed: Tag create failed
+    load_board:
+      board_closed: Board has been closed
+      board_not_found: Board not found
+    load_list:
+      list_closed: List has been closed
+      list_not_found: List not found
+    check_list_in_board:
+      list_not_in_board: List not in board
+    check_permission:
+      permission_denied: Permission denied
+      user_not_in_board: You are not member of this board
   registers:
     create:
         failed: Register failed

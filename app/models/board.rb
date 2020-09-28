@@ -31,5 +31,5 @@ class Board < ApplicationRecord
                          starred: nil})
   end)
 
-  scope :opened, ->{where closed: nil}
+  scope :opened, ->{where closed: false}
 end

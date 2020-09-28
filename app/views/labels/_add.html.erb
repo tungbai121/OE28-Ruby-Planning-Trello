@@ -1,0 +1,19 @@
+<div class="add-label">
+  <div class="dropdown">
+    <button
+      class="dropdown-toggle add-btn"
+      type="button" id="dropdownLabel"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
+      <%= t ".addlabel" %>
+    </button>
+    <div id="add-label-form" class="dropdown-menu" aria-labelledby="dropdownLabel">
+      <%= form_for :label, url: board_create_label_path(@board), remote: true do |f| %>
+        <%= f.text_field :content, class: "form-control", id: "label-content", placeholder: t(".enter_content") %>
+        <%= display_error @label, :content , t(".content") %>
+        <%= f.submit t(".add"), class: "d-block btn btn-success mt-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
