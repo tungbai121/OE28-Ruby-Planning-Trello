@@ -26,15 +26,16 @@ class BoardsController < ApplicationController
     @tag = Tag.new
     @list = List.new
     @lists = @board.lists.opened
+    @label = Label.new
   end
 
   def update
     if @board.update board_params
-      flash[:success] = t ".success"
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".error"
+      flash.now[:danger] = t ".error"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   def update_board_status
@@ -44,7 +45,7 @@ class BoardsController < ApplicationController
       @board.update_attribute :status, nil
     end
     flash[:success] = t ".success"
-    redirect_to @board
+    respond_to :js
   end
 
   def update_board_closed

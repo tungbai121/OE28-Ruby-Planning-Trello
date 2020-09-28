@@ -7,15 +7,13 @@
   <div class="content">
     <div class="item description-wrapper">
       <div class="description" data-toggle="collapse" data-target="#board-description"><%= t ".description" %></div>
-      <%= form_with model: @board,
-        html: {class: "collapse", id: "board-description"},
-        method: :patch,
-        url: board_path do |f| %>
+      <%= form_with model: @board, html: {class: "collapse", id: "board-description"}, method: :patch, url: board_path, remote: true do |f| %>
         <%= render "shared/error_messages", object: f.object %>
         <%= hidden_field_tag :board_id, @board.id %>
         <%= f.text_area :description,
           value: "#{@board.description}",
-          class: "form-control" %>
+          class: "form-control",
+          id: "board-description-value" %>
         <%= f.submit t(".description_btn"), class: "btn btn-success mt-3" %>
       <% end %>
     </div>

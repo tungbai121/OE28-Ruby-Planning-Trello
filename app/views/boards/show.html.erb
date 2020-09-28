@@ -16,7 +16,7 @@
         <%= @board.name %>
       </div>
       <div id="board-name-form">
-        <%= form_with model: @board, method: :patch, url: board_path do |f| %>
+        <%= form_with model: @board, method: :patch, url: board_path, remote: true do |f| %>
           <%= render "shared/error_messages", object: f.object %>
           <%= hidden_field_tag :board_id, @board.id %>
           <%= f.text_field :name, class: "form-control", value: "#{@board.name}" %>
@@ -35,11 +35,13 @@
           <%= link_to t(".public"),
             status_url(board_status: Settings.data.confirm, board_id: @board.id),
             class: "dropdown-item",
-            method: :patch %>
+            method: :patch,
+            remote: true %>
           <%= link_to t(".private"),
             status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
             class: "dropdown-item",
-            method: :patch %>
+            method: :patch,
+            remote: true %>
         </div>
       </div>
       <%# TO DO %>
