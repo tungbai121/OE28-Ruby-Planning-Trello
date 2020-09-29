@@ -44,17 +44,23 @@
             remote: true %>
         </div>
       </div>
-      <%# TO DO %>
-      <%# <div class="dropdown">
+      <div class="dropdown" id="member-btn">
         <button class="item-btn dropdown-toggle" type="button" id="board-member-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          member
+          <%= t ".member" %>
         </button>
         <div class="dropdown-menu" aria-labelledby="board-member-btn">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="member-list">
+            <%= render partial: "boards/user", collection: @board.add_users, as: :user %>
+          </div>
+          <div class="addmember w-100">
+            <%= form_with url: new_add_member_path, method: :get do |f| %>
+              <%= hidden_field_tag :board_id, @board.id %>
+              <%= email_field_tag :email, nil, class: "form-control" %>
+              <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
+            <% end %>
+          </div>
         </div>
-      </div> %>
+      </div>
     </div>
     <div class="item">
       <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>

@@ -1,0 +1,8 @@
+<h1><%= t ".title" %></h1>
+<p><%= t ".hi" %> <%= @user.name %></p>
+<p><%= t ".welcome" %></p>
+<%= link_to t(".activate"),
+  edit_add_member_url(id: @user.id,
+  email: @user.email,
+  board_id: @board_id)
+%>
