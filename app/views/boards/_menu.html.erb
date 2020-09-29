@@ -20,7 +20,7 @@
     <div class="item label-wrapper">
       <div class="label" data-toggle="collapse" data-target="#board-label"><%= t ".label" %></div>
       <div class="collapse" id="board-label">
-        <%= render @labels %>
+        <%= render @data[:labels] %>
       </div>
       <%= render "labels/add", label: @label %>
     </div>

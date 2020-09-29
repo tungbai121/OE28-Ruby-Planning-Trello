@@ -22,11 +22,15 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @labels = @board.labels
-    @tag = Tag.new
-    @list = List.new
-    @lists = @board.lists.opened
-    @label = Label.new
+    @data = {
+      labels: @board.labels,
+      tag: Tag.new,
+      lists: @board.lists.opened.order_position,
+      positions: List.inside_board(@board.id)
+                     .available_positions
+                     .order_position
+                     .positions
+    }
   end
 
   def update
