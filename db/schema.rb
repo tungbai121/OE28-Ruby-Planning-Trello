@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 2020_09_25_093814) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "list_id", null: false
     t.index ["list_id"], name: "index_tags_on_list_id"
-    t.index ["position", "list_id"], name: "index_tags_on_position_and_list_id", unique: true
   end
 
   create_table "user_boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|

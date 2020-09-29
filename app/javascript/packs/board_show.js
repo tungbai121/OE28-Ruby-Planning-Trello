@@ -43,4 +43,26 @@ $(function() {
     if (!container.is(e.target) && container.has(e.target).length === 0)
       container.find('.collapse').removeClass('show');
   });
+
+  $.ajaxSetup({
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+  });
+
+  $('.tags').sortable({
+    connectWith: '.tags',
+    cursor: "grabbing",
+    placeholder: "sortable-placeholder",
+    update: function(e, ui) {
+      tagIds = $(this).sortable('serialize');
+      sortableId = $(this).parent().attr('id');
+      listId = sortableId.split('-').pop();
+      params = tagIds.concat("&&list[]=", listId);
+
+      $.ajax({
+        url: $(this).data('url'),
+        type: "PATCH",
+        data: params
+      });
+    }
+  });
 });

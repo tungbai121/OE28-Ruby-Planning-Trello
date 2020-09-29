@@ -1,4 +1,4 @@
-<div class="tag">
+<li class="tag" id="<%= dom_id tag %>">
   <div class="tag-header">
     <div><%= tag.name %></div>
     <div class="dropdown">
@@ -19,6 +19,6 @@
       <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
     </span>
   </div>
-</div>
+</li>
 
-<%= render "tags/modal" %>
+<%# TO DO = render "tags/modal" %>

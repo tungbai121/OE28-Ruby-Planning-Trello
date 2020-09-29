@@ -14,6 +14,16 @@ class TagsController < ApplicationController
     respond_to :js
   end
 
+  def sort
+    tag_ids = params[:tag]
+    list_id = params[:list][0]
+    return unless tag_ids.present? && list_id.present?
+
+    tag_ids.each_with_index do |id, index|
+      Tag.update id, position: index, list_id: list_id
+    end
+  end
+
   private
 
   def tag_params
@@ -59,10 +69,11 @@ class TagsController < ApplicationController
       return if permission.leader? || permission.member?
 
       flash[:danger] = t ".permission_denied"
+      redirect_to @board
+    else
+      flash[:danger] = t ".user_not_in_board"
+      redirect_to root_url
     end
-
-    flash[:danger] = t ".user_not_in_board"
-    redirect_to root_url
   end
 
   def position
