@@ -1,3 +1,7 @@
+ul li {
+  list-style-type: none;
+}
+
 .board-list {
   align-self: flex-start;
   box-shadow: $shadow 0 0 10px;
@@ -33,6 +37,11 @@
       background-color: $white;
       padding: 10px 10px;
       border-radius: 3px;
+      display: list-item;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       .tag-header {
         display: flex;
@@ -126,4 +135,10 @@
     margin-top: 5px;
     width: 100%;
   }
+}
+
+.sortable-placeholder {
+  border: 1px dashed $border-tag-placeholder;
+  background-color: $bg-tag-placeholder;
+  height: 80px;
 }

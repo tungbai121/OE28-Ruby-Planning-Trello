@@ -1,13 +1,13 @@
 <% if @tag.errors.present? %>
   $('#add-tag-list-<%= @list.id %>').html('<%= j render "tags/form", list: @list %>');
 <% else %>
-  $('#board-list-<%= @list.id %>').html('<%= j render "lists/component", list: @list %>');
+  $('<%= j render "tags/tag", tag: @tag %>').appendTo('#tags-list-<%= @list.id %>');
+  $('#add-tag-list-<%= @list.id %>').html('<%= j render "tags/form", list: @list %>');
   $('#input-list-<%= @list.id %>').val('');
+  $('#add-tag-list-<%= @list.id %>').addClass('show');
+  $('#input-list-<%= @list.id %>').focus();
 
   element = document.querySelector('#tags-list-<%= @list.id %>');
   element.scrollTop = element.scrollHeight - element.clientHeight;
-
-  $('#add-tag-list-<%= @list.id %>').addClass('show');
-  $('#input-list-<%= @list.id %>').focus();
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');

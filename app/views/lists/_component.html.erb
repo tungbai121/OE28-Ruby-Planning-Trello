@@ -18,6 +18,7 @@
     </div>
   </div>
 </div>
+
 <div class="header">
   <p><%= list.name %></p>
   <div class="dropdown">
@@ -35,9 +36,9 @@
   </div>
 </div>
 
-<div class="tags" id="tags-list-<%= list.id %>">
+<ul class="tags" id="tags-list-<%= list.id %>" data-url="<%= board_sort_tag_path(@board) %>">
   <%= render partial: "tags/tag", collection: list.tags %>
-</div>
+</ul>
 <hr>
 <div class="add">
   <div class="add-btn" data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>">
@@ -47,4 +48,3 @@
     <%= render "tags/form", list: list %>
   </div>
 </div>
-

@@ -2,10 +2,6 @@
   <%= stylesheet_link_tag "boards/show", "data-turbolinks-track": "reload" %>
 <% end %>
 
-<% content_for :js do %>
-  <%= javascript_pack_tag "board_show", "data-turbolinks-track": "reload" %>
-<% end %>
-
 <%= render "boards/menu" %>
 
 <main>
@@ -66,9 +62,9 @@
       <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>
     </div>
   </div>
-  <div class="board-wrapper">
+  <ul class="board-wrapper">
     <%= render partial: "lists/list", collection: @lists, as: :list %>
-    <div class="board-taglist list-add">
+    <ul class="board-list list-add">
       <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
       <div class="collapse" id="add-list">
         <%= form_for @list do |f| %>
