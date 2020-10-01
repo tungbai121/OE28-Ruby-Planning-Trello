@@ -2,6 +2,10 @@
   <%= stylesheet_link_tag "boards/show", "data-turbolinks-track": "reload" %>
 <% end %>
 
+<% content_for :js do %>
+  <%= javascript_pack_tag "board_show", "data-turbolinks-track": "reload" %>
+<% end %>
+
 <%= render "boards/menu" %>
 
 <main>
@@ -63,12 +67,11 @@
     </div>
   </div>
   <ul class="board-wrapper">
-    <%= render partial: "lists/list", collection: @lists, as: :list %>
+    <%= render partial: "lists/list", collection: @data[:lists], as: :list %>
     <ul class="board-list list-add">
       <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
       <div class="collapse" id="add-list">
-        <%= form_for @list do |f| %>
-          <%= render "shared/error_messages", object: f.object %>
+        <%= form_for :list, url: lists_path do |f| %>
           <%= hidden_field_tag :board_id, @board.id %>
           <%= f.text_field :name, class: "form-control" %>
           <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>

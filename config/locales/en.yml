@@ -182,6 +182,9 @@ en:
               decription:
                 blank: is empty
   lists:
+    change_position:
+      success: Moved
+      fail: Fail
     list:
       activities: Activities
       moving: Moving
@@ -192,10 +195,22 @@ en:
       addtag: Add new tag
       dots: ...
       addtag  : Add new tag
+      rename: Rename
+      close: Close
     create:
       success: New list has been added
       fail: Fail to add new list
       cant_find: Can't find board
+    component:
+      move: Move
+      rename: Rename
+      close: Close
+      dots: ...
+      edit: Edit
+      position: Position
+    update:
+      success: Updated
+      fail: Update failed
   user_mailer:
     user_invitation:
       invitation: You have been invited to join our board
@@ -203,3 +218,6 @@ en:
       hi: Hello,
       welcome: Welcome to our website
       activate: Join our board
+    update:
+      success: List has been updated
+      fail: Update failed

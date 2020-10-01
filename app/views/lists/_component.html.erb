@@ -7,31 +7,59 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%# TO DO %>
-      <%#<div class="modal-body">
-        <p>Modal body text goes here.</p>
+      <div class="modal-body">
+        <%= form_with url: position_list_path, method: :patch do |f| %>
+          <%= hidden_field_tag :board_id, @board.id %>
+          <%= hidden_field_tag :list_id, list.id %>
+          <%= f.label t ".position" %>
+          <%= select_tag :position, options_from_collection_for_select(@data[:positions], "position", "position"), class: "form-control mt-2" %>
+          <%= f.submit t(".move"), class: "btn btn-success mt-3" %>
+        <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"><%= t ".move" %><%#</button>
-      </div>%>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="list-name-<%= list.id %>" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= list.name %> - <%= t ".rename" %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: list, url: list_path do |f| %>
+          <%= hidden_field_tag :board_id, @board.id %>
+          <%= hidden_field_tag :list_id, list.id %>
+          <%= f.text_field :name, value: "#{list.name}", class: "form-control" %>
+          <%= f.submit t(".rename"), class: "btn btn-success mt-3" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="header">
-  <p><%= list.name %></p>
+  <div data-target="#list-name-<%= list.id %>" data-toggle="modal" class="edit-list" id="edit-list-<%= list.id %>"><%= t ".edit" %></div>
+  <p class="list-name" id="list-name-<%= list.id %>"><%= list.name %></p>
   <div class="dropdown">
     <a class="list-menubtn" type="button" id="list-menubtn-<%= list.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      ...
+      <%= t ".dots" %>
     </a>
     <div class="dropdown-menu" aria-labelledby="list-menubtn-1">
       <a class="header"><%= t ".activities" %></a>
       <div class="dropdown-divider"></div>
-      <a data-toggle="collapse" data-target="#add-tag-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
+      <a data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
       <a class="dropdown-item" href="#" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></a>
       <a class="dropdown-item" href="#"><%= t ".order" %></a>
-      <a class="dropdown-item" href="#"><%= t ".closed" %></a>
+      <%= link_to t(".close"), closed_list_path(list_id: list.id, board_id: @board.id), method: :patch, class: "dropdown-item" %>
     </div>
   </div>
 </div>
