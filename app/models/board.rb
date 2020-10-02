@@ -28,4 +28,5 @@ class Board < ApplicationRecord
   end)
 
   scope :opened, ->{where closed: false}
+  scope :closed, ->{where closed: true}
 end

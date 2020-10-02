@@ -1,0 +1,6 @@
+<% if @board.errors.present? %>
+  alert('<%= @board.errors.messages %>');
+<% else %>
+  $('#board-wrapper').html('<%= j render partial: "users/closed_board", collection: @closed_board, as: :board %>')
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

@@ -7,3 +7,4 @@
 //= link users/show
 //= link users/navigation
 //= link users/info
+//= link users/closed

@@ -33,3 +33,5 @@ validate:
   max_board_description: 255
   max_list_name: 30
   max_label_content: 30
+date:
+  form: "%d/%m/%Y"
