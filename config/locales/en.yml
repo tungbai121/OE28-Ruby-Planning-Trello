@@ -55,6 +55,9 @@ en:
       fail: Fail to add new board
     new:
       submit: Create
+      name: Name
+      description: Description
+      newdescribe: This is your new board
     update:
       success: Updated
       error: Update failed, length is invalid
@@ -110,6 +113,12 @@ en:
     check_permission:
       permission_denied: Permission denied
       user_not_in_board: You are not member of this board
+      enter_name: Enter name...
+    modal:
+      add: Add
+      addlabel: Add label
+    label:
+      labeldelete: X
   registers:
     create:
         failed: Register failed
@@ -132,6 +141,12 @@ en:
       submit: Create
       name: Name
       description: Description
+  sessions:
+    new:
+      email_label: Email
+      password_label: Password
+      remember: Remember me
+      login: Login
   users:
     update:
       success: Update successfully
@@ -166,6 +181,16 @@ en:
     edit:
       success: Join
       fail: Fail
+  tag_labels:
+    create:
+      success: New label is added
+      fail: Can't add some label
+      cant_find: Cant't find board
+    destroy:
+      success: Label is deleted
+      fail: Can't delete label
+      cant_find: Cant't find board
+      cant_delete: Delete failed
 
   activerecord:
       attributes:
@@ -221,3 +246,6 @@ en:
     update:
       success: List has been updated
       fail: Update failed
+  error:
+    404_error:
+      error: There is something wrong

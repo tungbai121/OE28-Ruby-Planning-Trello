@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def rescue_404_exception
+    render file: Rails.root.join("public", "404.html").to_s, layout: false,
+           status: :not_found
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

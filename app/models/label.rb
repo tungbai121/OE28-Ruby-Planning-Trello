@@ -8,4 +8,6 @@ class Label < ApplicationRecord
 
   validates :content, presence: true,
     length: {maximum: Settings.validate.max_label_content}
+
+  scope :exclude_ids, ->(ids){where.not id: ids}
 end

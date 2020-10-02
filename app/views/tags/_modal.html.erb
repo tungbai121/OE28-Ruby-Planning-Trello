@@ -1,4 +1,4 @@
-<div id="label-1" class="modal" tabindex="-1" role="dialog">
+<div id="label-<%= my_tag.id %>" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,17 +8,33 @@
         </button>
       </div>
       <div class="modal-body">
-        <%# TO DO <p>Modal body text goes here.</p> %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t ".addlabel" %>
+          </button>
+          <div class="dropdown-menu label-select-wrapper" aria-labelledby="dropdownMenuButton">
+            <div class="label-select">
+              <%= form_with url: board_tag_labels_path(@board), remote: true do |f| %>
+                <%= hidden_field_tag :board_id, @board.id %>
+                <%= hidden_field_tag :tag_id, my_tag.id %>
+                <div id="labels_checkbox-<%= my_tag.id %>">
+                  <%= render partial: "tags/label_checkbox", collection: @board.labels.exclude_ids(my_tag.labels), as: :label %>
+                </div>
+                <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-<%= my_tag.id %>"><%= t ".close" %></button>
         <button type="button" class="btn btn-primary"><%= t ".save_change" %></button>
       </div>
     </div>
   </div>
 </div>
 
-<div id="member-1" class="modal" tabindex="-1" role="dialog">
+<div id="member-<%= my_tag.id %>" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -38,7 +54,7 @@
   </div>
 </div>
 
-<div id="position-1" class="modal" tabindex="-1" role="dialog">
+<div id="position-<%= my_tag.id %>" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -58,7 +74,7 @@
   </div>
 </div>
 
-<div id="deadline-1" class="modal" tabindex="-1" role="dialog">
+<div id="deadline-<%= my_tag.id %>" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

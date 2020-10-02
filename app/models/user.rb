@@ -31,6 +31,7 @@ class User < ApplicationRecord
     check = type.to_i.eql? Settings.data.confirm
     join_boards << board
     board.user_boards.first.update_attribute(:starred, true) if check
+    board.user_boards.first.update_attribute(:role_id, :leader)
   end
 
   def send_email_join board_id

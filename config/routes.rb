@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: %i(show edit update)
     resources :boards do
       resource :tags, only: :create, as: "create_tag"
-
+      resource :tag_labels, only: %i(create destroy)
       post "labels/create", to: "labels#create", as: "create_label"
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     resources :add_members, only: %i(new edit)
     patch "list/changeposition", to: "lists#change_position", as: "position_list"
     patch "list/closed", to: "lists#closed_list", as: "closed_list"
+
+    match "*unmatched", to: "application#rescue_404_exception", via: :all
   end
 end

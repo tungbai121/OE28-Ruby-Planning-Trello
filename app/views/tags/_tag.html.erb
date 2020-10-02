@@ -1,13 +1,16 @@
 <li class="tag" id="<%= dom_id tag %>">
+  <div class="label-wrapper" id="label-wrapper-<%= tag.id %>">
+    <%= render partial: "tags/label", collection: tag.labels, as: :label, locals: {tag_id: tag.id} %>
+  </div>
   <div class="tag-header">
     <div><%= tag.name %></div>
     <div class="dropdown">
       <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%= link_to t(".change_label"), "#", class: "dropdown-item", "data-target": "#label-1", "data-toggle": "modal" %>
-        <%= link_to t(".change_member"), "#", class: "dropdown-item", "data-target": "#member-1", "data-toggle": "modal" %>
-        <%= link_to t(".change_position"), "#", class: "dropdown-item", "data-target": "#position-1", "data-toggle": "modal" %>
-        <%= link_to t(".change_deadline"), "#", class: "dropdown-item", "data-target": "#deadline-1", "data-toggle": "modal" %>
+        <%= link_to t(".change_label"), "#", class: "dropdown-item", "data-target": "#label-#{tag.id}", "data-toggle": "modal" %>
+        <%= link_to t(".change_member"), "#", class: "dropdown-item", "data-target": "#member-#{tag.id}", "data-toggle": "modal" %>
+        <%= link_to t(".change_position"), "#", class: "dropdown-item", "data-target": "#position-#{tag.id}", "data-toggle": "modal" %>
+        <%= link_to t(".change_deadline"), "#", class: "dropdown-item", "data-target": "#deadline-#{tag.id}", "data-toggle": "modal" %>
         <%= link_to t(".archive"), "#", class: "dropdown-item" %>
       </div>
     </div>
@@ -21,4 +24,4 @@
   </div>
 </li>
 
-<%# TO DO = render "tags/modal" %>
+<%= render partial: "tags/modal", locals: {my_tag: tag} %>
