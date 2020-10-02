@@ -14,28 +14,62 @@
   .list {
     display: flex;
     flex-wrap: wrap;
+  }
 
-    .list-item {
-      width: 25%;
-      height: 100px;
-      margin: 5px 5px;
-      border-radius: 5px;
-      padding: 10px 10px;
-      transition: 0.3s;
-      background-color: $lightblue;
+  .list-item {
+    width: 25%;
+    height: 100px;
+    margin: 5px 5px;
+    border-radius: 5px;
+    padding: 10px 10px;
+    transition: 0.3s;
+    background-color: rgba($color: $lightblue, $alpha: 0.7);
+    transition: 0.2s;
+    cursor: pointer;
 
-      &:hover {
-        background-color: $mediumaquamarine;
-      }
+    &:hover {
+      transform: scale(1.05);
+    }
 
-      p {
-        color: $gray;
+    .item-name{
+      height: 90%;
+      display: flex;
+      justify-content: center;
+
+      a{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+        color: $white;
       }
     }
 
-    .new-item {
-      background-color: $lightcyan;
+    .member{
+      height: 10%;
+      display: flex;
+      justify-content: flex-end;
+
+      .number{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        background-color: rgba($color: $main, $alpha: 0.9);
+        color: $white;
+      }
     }
+  }
+
+  .new-item {
+    background-color: $lightcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
   }
 }
 

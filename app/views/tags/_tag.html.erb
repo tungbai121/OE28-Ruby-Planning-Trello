@@ -17,10 +17,9 @@
   </div>
   <div class="tag-body">
     <span class="deadline"><%= t ".deadline" %></span>
-    <%# TO DO render "users/member" %>
-    <span class="member">
-      <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
-    </span>
+    <div class="member-wrapper" id="member-wrapper-<%= tag.id %>">
+      <%= render partial: "tags/member", collection: tag.users, as: :member, locals: {tag_id: tag.id} %>
+    </div>
   </div>
 </li>
 

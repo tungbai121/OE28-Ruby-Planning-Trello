@@ -38,13 +38,29 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><%= t ".change_member" %></h5>
+        <h5 class="modal-title"><%= my_tag.name %> - <%= t ".change_member" %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%# TO DO <p>Modal body text goes here.</p> %>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t ".adduser" %>
+          </button>
+          <div class="dropdown-menu label-select-wrapper" aria-labelledby="dropdownMenuButton">
+            <div class="label-select">
+              <%= form_with url: board_tag_users_path(@board), remote: true do |f| %>
+                <%= hidden_field_tag :board_id, @board.id %>
+                <%= hidden_field_tag :tag_id, my_tag.id %>
+                <div id="users-checkbox-<%= my_tag.id %>">
+                  <%= render partial: "tags/user_checkbox", collection: @board.add_users.exclude_ids(my_tag.users), as: :member %>
+                </div>
+                <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>

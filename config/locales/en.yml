@@ -117,8 +117,11 @@ en:
     modal:
       add: Add
       addlabel: Add label
+      adduser: Add member
     label:
       labeldelete: X
+    member:
+      memberdelete: Delete
   registers:
     create:
         failed: Register failed
@@ -191,6 +194,13 @@ en:
       fail: Can't delete label
       cant_find: Cant't find board
       cant_delete: Delete failed
+  tag_users:
+    create:
+      success: Added
+      fail: Can't add this user
+    destroy:
+      success: Deleted
+      fail: Can't delete
 
   activerecord:
       attributes:

@@ -1,0 +1,18 @@
+<div class="dropdown">
+  <div class="dropdown-toggle user"
+      id="dropdownLabel"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
+    <%= member.name %>
+  </div>
+  <div class="dropdown-menu" aria-labelledby="dropdownLabel">
+    <div class="member-options">
+      <%= link_to t(".memberdelete"),
+        board_tag_users_path(@board, user_id: member.id, tag_id: tag_id),
+        method: :delete,
+        class: "delete btn btn-danger",
+        remote: true %>
+    </div>
+  </div>
+</div>
