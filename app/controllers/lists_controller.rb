@@ -19,6 +19,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    restore_position
     if @list.update list_params
       flash[:success] = t ".success"
     else
@@ -100,5 +101,15 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit List::PERMIT_ATTRIBUTES
+  end
+
+  def restore_position
+    return if params[:list][:closed].blank?
+
+    @list.position = if @board.lists.maximum(:position).nil?
+                       Settings.data.notconfirm
+                     else
+                       @board.lists.max_position + Settings.data.confirm
+                     end
   end
 end

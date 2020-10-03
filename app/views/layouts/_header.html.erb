@@ -73,7 +73,7 @@
               <ul class="list-type-none p-0">
                 <li><%= link_to t(".profile"), current_user %></li>
                 <li><%= link_to t(".activities"), "#" %></li>
-                <li><%= link_to t(".tags"), "#" %></li>
+                <li><%= link_to t(".closed"), user_closed_path(current_user) %></li>
                 <li><%= link_to t(".settings"), "#" %></li>
                 <li><%= link_to t(".logout"), "#" %></li>
               </ul>

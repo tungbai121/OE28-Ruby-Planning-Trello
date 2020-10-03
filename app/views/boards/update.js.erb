@@ -10,5 +10,6 @@
     $('#board-name').html('<%= @board.name %>');
     $('#board-description-value').val('<%= @board.description %>');
   }
+  $('#board-wrapper').html('<%= j render partial: "users/closed_board", collection: @closed_board, as: :board %>')
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');
