@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
-  before_action :find_board
+  before_action :find_board, except: :destroy
   before_action :find_list, only: %i(update change_position closed_list)
+  before_action :find_list_destroy, only: :destroy
 
   def create
     @list = @board.lists.build list_params
@@ -26,6 +27,16 @@ class ListsController < ApplicationController
     redirect_to @board
   end
 
+  def destroy
+    if @list.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".fail"
+    end
+    @closed_list = List.closed_lists current_user.join_boards.ids
+    respond_to :js
+  end
+
   def change_position
     old_position = @list.position
     new_position = params[:position].to_i
@@ -43,9 +54,9 @@ class ListsController < ApplicationController
     if @list.update closed: true, position: nil
       move_lists = @board.lists.greater position_remove
       List.decrease_position move_lists
-      flash[:warning] = "closed"
+      flash[:warning] = t ".closed"
     else
-      flash[:danger] = "fail"
+      flash[:danger] = t ".fail"
     end
     redirect_to @board
   end
@@ -81,6 +92,10 @@ class ListsController < ApplicationController
                         .not_id(changed_list_id)
       List.increase_position move_lists
     end
+  end
+
+  def find_list_destroy
+    @list = List.find params[:id]
   end
 
   def list_params

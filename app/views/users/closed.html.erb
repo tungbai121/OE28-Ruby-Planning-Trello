@@ -1,0 +1,30 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "users/closed", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<%= provide :title, @user.name %>
+
+<%= render "navigation" %>
+
+<ul id="tab" class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#board-wrapper"><%= t ".board" %></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#list-wrapper"><%= t ".list" %></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#tag-wrapper"><%= t ".tag" %></a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div id="board-wrapper" class="container tab-pane active"><br>
+    <%= render partial: "users/closed_board", collection: @closed_board, as: :board %>
+  </div>
+  <div id="list-wrapper" class="container tab-pane fade"><br>
+    <%= render partial: "users/closed_list", collection: @closed_list, as: :list %>
+  </div>
+  <div id="tag-wrapper" class="container tab-pane fade"><br>
+    <%= render "users/closed_tag" %>
+  </div>
+</div>

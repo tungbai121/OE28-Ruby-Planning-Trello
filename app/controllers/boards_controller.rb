@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
-  before_action :logged_in_user
-  before_action :user_board
-  before_action :check_board, :check_member, only: :show
+  before_action :logged_in_user, :user_board
+  before_action :check_board, only: %i(show destroy)
+  before_action :check_member, only: :show
   before_action :find_board,
                 only: %i(update update_board_status update_board_closed)
 
@@ -39,6 +39,16 @@ class BoardsController < ApplicationController
     else
       flash.now[:danger] = t ".error"
     end
+    respond_to :js
+  end
+
+  def destroy
+    if @board.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".fail"
+    end
+    @closed_board = current_user.join_boards.closed
     respond_to :js
   end
 

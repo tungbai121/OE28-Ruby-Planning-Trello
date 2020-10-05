@@ -20,6 +20,7 @@ class List < ApplicationRecord
   scope :available_positions, ->{where.not position: nil}
   scope :positions, ->{select :position}
   scope :order_position, ->{order position: :asc}
+  scope :closed_lists, ->(board_ids){where board_id: board_ids, closed: true}
 
   class << self
     def increase_position lists

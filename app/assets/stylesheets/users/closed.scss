@@ -1,0 +1,63 @@
+@import 'users/navigation';
+@import 'color';
+
+#tab {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tab-content {
+  #board-wrapper, #list-wrapper {
+    .board {
+      margin-bottom: 15px;
+      padding: 10px 10px;
+      background-color: $whitesmoke;
+      box-shadow: 0 2px 2px $gray;
+
+      .name {
+        font-weight: 600;
+      }
+
+      .info {
+        small {
+          color: $gray;
+        }
+      }
+    }
+
+    .list {
+      margin-bottom: 15px;
+      padding: 10px 10px;
+      background-color: $whitesmoke;
+      box-shadow: 0 2px 2px $gray;
+
+      .name {
+        font-weight: 600;
+      }
+
+      .info {
+        small {
+          color: $gray;
+        }
+      }
+    }
+  }
+
+  #board-wrapper, #list-wrapper {
+    .board, .list {
+      display: flex;
+
+      .content {
+        width: 80%;
+      }
+
+      .modify {
+        display: flex;
+        align-items: center;
+        width: 20%;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

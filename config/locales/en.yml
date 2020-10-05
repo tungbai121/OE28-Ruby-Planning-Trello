@@ -66,6 +66,9 @@ en:
       error: Failed
     update_board_closed:
       closed: Board is closed, you will not be able to view the board from now
+    destroy:
+      success: Deleted
+      fail: Can't delete
   labels:
     add:
       add: Add
@@ -171,13 +174,15 @@ en:
     navigation:
       profile: Profile
       activities: Activities
-      tags: Tags
+      closed: Closed
       settings: Settings
     activities:
       activities: Activities
     show:
       please_log_in: Please login!
       user_not_found: User not found!
+    closed_board:
+      confirm: Are you sure?
   add_members:
     new:
       success: Email has sended
@@ -246,6 +251,11 @@ en:
     update:
       success: Updated
       fail: Update failed
+    destroy:
+      success: Deleted
+      fail: Can't delete
+    closed_list:
+      closed: Closed
   user_mailer:
     user_invitation:
       invitation: You have been invited to join our board

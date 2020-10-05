@@ -1,0 +1,18 @@
+<div class="board">
+  <div class="content">
+    <span class="name"><%= board.name %></span>
+    <div class="info">
+      <small><%= board.created_at.strftime Settings.date.form %></small>
+    </div>
+    <div class="description"><%= board.description %></div>
+  </div>
+  <div class="modify">
+    <%#TO DO%>
+    <%#<button class="btn btn-success mr-2">Restore</button>%>
+    <%= link_to t(".delete"), board_path(board.id),
+      class: "btn btn-danger",
+      method: :delete,
+      data: {confirm: t(".confirm")},
+      remote: true %>
+  </div>
+</div>
