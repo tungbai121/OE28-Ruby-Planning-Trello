@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
       patch "tags/sort", to: "tags#sort", as: "sort_tag"
+      resource :tag_users, only: %i(create destroy)
     end
 
     patch "/status", to: "boards#update_board_status", as: "status"

@@ -1,0 +1,7 @@
+<% if @error.present? %>
+  alert('<%= @error %>');
+<% else %>
+  $('#member-wrapper-<%= @edited_tag.id %>').html('<%= j render partial: "tags/member", collection: @tag_users, as: :member, locals: {tag_id: @edited_tag.id} %>');
+  $('#users-checkbox-<%= @edited_tag.id %>').html('<%= j render partial: "tags/user_checkbox", collection: @board.add_users.exclude_ids(@edited_tag.users), as: :member %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

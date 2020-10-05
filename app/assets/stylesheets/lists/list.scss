@@ -43,23 +43,27 @@ ul li {
         cursor: pointer;
       }
 
-      .label-wrapper{
+      .tag-header {
+        padding-top: 10px;
+      }
+
+      .label-wrapper {
         display: flex;
         flex-wrap: wrap;
 
-        .label{
+        .label {
           display: flex;
           margin-right: 5px;
 
-          &:hover > .delete{
+          &:hover > .delete {
             opacity: 1;
           }
 
-          &:hover > .content{
+          &:hover > .content {
             border-radius: 0 0 0 3px;
           }
 
-          .content{
+          .content {
             font-size: 13px;
             border-radius: 0 0 3px 3px;
             padding: 2px 3px;
@@ -67,7 +71,7 @@ ul li {
             color: $white;
           }
 
-          .delete{
+          .delete {
             color: $white;
             border-radius: 0 3px 3px 0;
             padding: 2px 3px;
@@ -76,7 +80,7 @@ ul li {
             opacity: 0;
             transition: 0.2s;
 
-            &:hover{
+            &:hover {
               cursor: pointer;
               transform: scale(1.4);
               background-color: $main;
@@ -129,6 +133,15 @@ ul li {
             height: 30px;
           }
         }
+      }
+
+      .user {
+        cursor: pointer;
+      }
+
+      .member-options {
+        display: flex;
+        justify-content: center;
       }
     }
   }
@@ -186,10 +199,10 @@ ul li {
   height: 80px;
 }
 
-.label-select-wrapper{
+.label-select-wrapper {
   width: 100%;
 
-  .label-select{
+  .label-select {
     padding: 10px 15px;
   }
 }

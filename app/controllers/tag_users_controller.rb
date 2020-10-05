@@ -1,14 +1,14 @@
-class TagLabelsController < ApplicationController
+class TagUsersController < ApplicationController
   before_action :find_board, :find_tag
   before_action :find_relation, only: :destroy
 
   def create
-    label_ids = params[:label]
+    user_ids = params[:user]
     new_relations = []
-    label_ids.each do |item|
-      new_relations << TagLabel.new(label_id: item, tag_id: params[:tag_id])
+    user_ids.each do |item|
+      new_relations << TagUser.new(user_id: item, tag_id: params[:tag_id])
     end
-    if TagLabel.import new_relations
+    if TagUser.import new_relations
       flash[:success] = t ".success"
     else
       flash[:danger] = t ".fail"
@@ -32,7 +32,8 @@ class TagLabelsController < ApplicationController
   end
 
   def find_relation
-    @relation = TagLabel.find_relation params[:tag_id], params[:label_id]
+    @relation = TagUser.find_by tag_id: params[:tag_id],
+                                user_id: params[:user_id]
     return if @relation
 
     flash[:danger] = t ".cant_delete"
@@ -41,6 +42,6 @@ class TagLabelsController < ApplicationController
 
   def find_tag
     @edited_tag = Tag.find params[:tag_id]
-    @tag_labels = @edited_tag.labels
+    @tag_users = @edited_tag.users
   end
 end

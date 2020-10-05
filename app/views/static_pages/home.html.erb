@@ -14,7 +14,7 @@
         <% if @favorite_boards.present? %>
           <div class="board-list">
             <div class="header">
-              <p><%= t ".favoriteboards" %></p>
+              <p><%= t ".favoriteboards" %><span>(<%= @favorite_boards.size %>)</span></p>
             </div>
             <div class="list">
               <%= render partial: "shared/board",
@@ -33,7 +33,7 @@
         <% if @my_boards.present? %>
           <div class="board-list">
             <div class="header">
-              <p><%= t ".myboards" %></p>
+              <p><%= t ".myboards" %><span>(<%= @my_boards.size %>)</span></p>
             </div>
             <div class="list">
               <%= render partial: "shared/board",

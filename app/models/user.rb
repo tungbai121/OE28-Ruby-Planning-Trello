@@ -23,6 +23,8 @@ class User < ApplicationRecord
     length: {minimum: Settings.user.password.length},
     allow_nil: true
 
+  scope :exclude_ids, ->(ids){where.not(id: ids)}
+
   before_save :downcase_email
 
   has_secure_password
