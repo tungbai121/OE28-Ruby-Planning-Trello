@@ -12,6 +12,7 @@ class User < ApplicationRecord
     dependent: :destroy
   has_many :join_tags, through: :tag_users, source: :tag
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :email, presence: true,
     length: {maximum: Settings.user.email.length},

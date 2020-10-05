@@ -8,3 +8,4 @@
 //= link users/navigation
 //= link users/info
 //= link users/closed
+//= link users/activities

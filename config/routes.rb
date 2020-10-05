@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     post "/register", to: "registers#create"
 
     resources :users, only: %i(show edit update) do
-      get "/closed", to: "users#closed", as: "closed"
+      resources :activities, only: :index
+      resources :closed, only: :index
     end
     resources :boards do
       resource :tag_labels, only: %i(create destroy)

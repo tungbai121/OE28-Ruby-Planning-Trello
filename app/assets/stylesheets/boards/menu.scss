@@ -115,5 +115,18 @@
         }
       }
     }
+
+    .notification {
+      border-radius: 3px;
+      padding: 10px 10px;
+      margin-top: 5px;
+      background-color: $secondary;
+
+      .time {
+        small {
+          color: $gray;
+        }
+      }
+    }
   }
 }

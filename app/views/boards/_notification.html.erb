@@ -1,0 +1,6 @@
+<div class="notification">
+  <%= notification.user.name %> <%= notification.content %> <%= notification.board.name %>
+  <div class="time">
+    <small><%= notification.created_at.strftime Settings.date.form %></small>
+  </div>
+</div>

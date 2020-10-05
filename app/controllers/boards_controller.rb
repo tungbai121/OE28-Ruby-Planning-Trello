@@ -28,7 +28,8 @@ class BoardsController < ApplicationController
       positions: List.inside_board(@board.id)
                      .available_positions
                      .order_position
-                     .positions
+                     .positions,
+      notifications: @board.notifications
     }
     @tag = Tag.new
     @checklist = Checklist.new
