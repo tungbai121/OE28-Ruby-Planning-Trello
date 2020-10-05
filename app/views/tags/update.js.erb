@@ -1,0 +1,6 @@
+<% unless @tag.errors.any? %>
+  $('.tag-<%= @tag.id %>-name').text('<%= @tag.name %>');
+  $('#tag-description').text('<%= @tag.description %>');
+<% end %>
+$('#edit_tag').html('<%= j render "tags/edit_form", tag: @tag %>');
+$('#toastr').html('<%= j render "shared/toastr" %>');

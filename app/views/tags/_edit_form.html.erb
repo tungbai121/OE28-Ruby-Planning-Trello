@@ -1,0 +1,9 @@
+<%= form_for :tag, url: board_tag_path(@board), method: :patch, remote: true do |f| %>
+  <%= f.label :name, t(".name") %>
+  <%= f.text_field :name, placeholder: t(".enter_name"), class: "form-control" %>
+  <%= display_error tag, :name, t(".name") %>
+  <%= f.label :description, t(".description") %>
+  <%= f.text_area :description, placeholder: t(".enter_description"), class: "form-control" %>
+  <%= display_error tag, :description , t(".description") %>
+  <%= f.submit t(".save_change"), class: "btn btn-success mt-3 mb-2" %>
+<% end %>

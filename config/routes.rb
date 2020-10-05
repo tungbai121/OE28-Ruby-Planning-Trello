@@ -12,12 +12,14 @@ Rails.application.routes.draw do
       get "/closed", to: "users#closed", as: "closed"
     end
     resources :boards do
-      resource :tags, only: :create, as: "create_tag"
       resource :tag_labels, only: %i(create destroy)
       post "labels/create", to: "labels#create", as: "create_label"
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
-      patch "tags/sort", to: "tags#sort", as: "sort_tag"
+
+      resources :tags, only: %i(create edit update)
+      patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
+
       resource :tag_users, only: %i(create destroy)
     end
 
