@@ -21,7 +21,7 @@
                 <div id="edit_tag">
                   <%= render "tags/edit_form", tag: @tag %>
                 </div>
-                <%= render "tags/checklist", tag: @tag %>
+                <%= render "tags/checklist", checklists: @tag.checklists %>
                 <%= render "tags/attachment" %>
               </div>
             </div>
@@ -32,6 +32,7 @@
                 <%= render "tags/add_label" %>
                 <%= render "tags/deadline" %>
               </div>
+              <%= link_to "Close tag", "#", class: "btn btn-danger" %>
             </div>
           </div>
         </div>
