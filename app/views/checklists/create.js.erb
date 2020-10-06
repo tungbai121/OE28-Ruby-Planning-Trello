@@ -1,0 +1,8 @@
+<% if @checklist.errors.present? %>
+  $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
+<% else %>
+  $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
+  $('#checklist_name').val('');
+  $('#checklist_name').focus();
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');
