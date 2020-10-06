@@ -1,9 +1,7 @@
 <div class="edit-section">
-  <%= form_for :checklist, url: "#", html: {class: "checklist"} do |f| %>
-    <%= f.label :checklist, t(".checklist") %>
-    <%= f.text_field :name, placeholder: t(".enter_checklist_name"), class: "form-control" %>
-    <%= f.submit t(".add_checklist"), class: "btn btn-success add-btn" %>
-  <% end %>
+  <div id="checklist">
+    <%= render "checklists/add_form", tag: @tag %>
+  </div>
   <%= link_to t(".checklists"), "#checklists", class: "expand-btn", "data-toggle": :collapse, role: :button, "aria-expanded": false %>
   <div class="collapse" id="checklists">
     <div class="card card-body">

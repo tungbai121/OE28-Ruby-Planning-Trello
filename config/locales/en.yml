@@ -69,6 +69,14 @@ en:
     destroy:
       success: Deleted
       fail: Can't delete
+  checklists:
+    create:
+      success: Checklist added
+      failed: Add checklist failed
+    add_form:
+      checklist: Checklist
+      enter_checklist_name: Enter checklist name
+      add_checklist: Add checklist
   labels:
     add:
       add: Add
@@ -160,8 +168,6 @@ en:
       add_attachment: Add attachment
       attachment_list: Attachment list
     checklist:
-      enter_checklist_name: Enter checklist name
-      add_checklist: Add checklist
       checklists: Checklists
     deadline:
       deadline: Deadline

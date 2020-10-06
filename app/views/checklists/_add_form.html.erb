@@ -1,0 +1,7 @@
+<%= form_for :checklist, url: board_tag_checklists_path(@board, tag), method: :post,
+  html: {class: "checklist"}, remote: true do |f| %>
+  <%= f.label :checklist, t(".checklist") %>
+  <%= f.text_field :name, placeholder: t(".enter_checklist_name"), class: "form-control" %>
+  <%= display_error @checklist, :name, "Name" %>
+  <%= f.submit t(".add_checklist"), class: "btn btn-success add-btn" %>
+<% end %>
