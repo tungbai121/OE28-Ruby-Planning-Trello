@@ -41,6 +41,7 @@ ul li {
 
       &:hover {
         cursor: pointer;
+        background-color: $whitesmoke;
       }
 
       .tag-header {
@@ -94,6 +95,15 @@ ul li {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
+
+        .tag-name {
+          text-decoration: none;
+          color: $taner;
+
+          &:hover {
+            color: $tan;
+          }
+        }
 
         .menu-btn {
           border-radius: 2px;

@@ -1,7 +1,8 @@
 class TagsController < ApplicationController
-  before_action :logged_in_user, :load_board, :load_list,
-                :check_list_in_board,
-                :check_permission, only: :create
+  before_action :logged_in_user, :load_board,
+                :check_permission, only: %i(create edit update)
+  before_action :load_list, :check_list_in_board, only: :create
+  before_action :load_tag, only: %i(edit update)
 
   def create
     @tag = @list.tags.build tag_params.merge(position: position)
@@ -14,14 +15,17 @@ class TagsController < ApplicationController
     respond_to :js
   end
 
-  def sort
-    tag_ids = params[:tag]
-    list_id = params[:list][0]
-    return unless tag_ids.present? && list_id.present?
+  def edit
+    respond_to :js
+  end
 
-    tag_ids.each_with_index do |id, index|
-      Tag.update id, position: index, list_id: list_id
+  def update
+    if @tag.update tag_params
+      flash.now[:success] = t ".success"
+    else
+      flash.now[:danger] = t ".failed"
     end
+    respond_to :js
   end
 
   private
@@ -31,29 +35,11 @@ class TagsController < ApplicationController
   end
 
   def load_board
-    @board = Board.find_by id: params[:board_id]
-    if @board
-      return unless @board.closed
-
-      flash[:danger] = t ".board_closed"
-    else
-      flash[:danger] = t ".board_not_found"
-    end
-
-    redirect_to root_url
+    @board = Board.find params[:board_id]
   end
 
   def load_list
-    @list = List.find_by id: params[:list_id]
-    if @list
-      return unless @list.closed
-
-      flash[:danger] = t ".list_closed"
-    else
-      flash[:danger] = t ".list_not_found"
-    end
-
-    redirect_to @board
+    @list = List.find params[:list_id]
   end
 
   def check_list_in_board
@@ -74,6 +60,10 @@ class TagsController < ApplicationController
       flash[:danger] = t ".user_not_in_board"
       redirect_to root_url
     end
+  end
+
+  def load_tag
+    @tag = Tag.find params[:id]
   end
 
   def position

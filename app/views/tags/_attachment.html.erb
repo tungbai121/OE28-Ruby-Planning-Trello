@@ -1,0 +1,15 @@
+<div class="edit-section">
+  <%= form_for :attachment, html: {class: "attachment"} do |f| %>
+    <%= f.label :attachment, t(".attachment") %>
+    <div class="form-inline">
+      <%= f.file_field :attachment %>
+      <%= f.submit t(".add_attachment"), class: "btn btn-success add-btn" %>
+    </div>
+  <% end %>
+  <%= link_to t(".attachment_list"), "#attachments", class: "expand-btn", "data-toggle": :collapse, role: :button, "aria-expanded": false %>
+  <div class="collapse" id="attachments">
+    <div class="card card-body">
+      <%# TO DO render "attachments" %>
+    </div>
+  </div>
+</div>

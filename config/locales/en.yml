@@ -125,6 +125,54 @@ en:
       labeldelete: X
     member:
       memberdelete: Delete
+    load_tag:
+      tag_not_found: Tag not found
+    update:
+      success: Tag update successfully
+      failed: Tag update failed
+    edit_form:
+      name: Name
+      enter_name: Enter tag name
+      description: Description
+      enter_description: Enter tag description...
+      save_change: Save change
+    edit_modal:
+      edit_tag: Edit tag
+      checklist: Checklist
+      join_tag: Join tag
+    add_label:
+      enter_label_content: Enter label content
+      content: Content
+      label_list: Label list
+      create_new_label: Create a new label
+    assignment:
+      enter_checklist_name: Enter checklist name
+      add_checklist: Add checklist
+      checklists: Checklists
+      add_attachment: Add attachment
+      attachment_list: Attachment list
+      join_tag: Join tag
+      assignment: Assignment
+      enter_email: Enter member email
+      email: Email
+      add_member: Add member
+    attachment:
+      add_attachment: Add attachment
+      attachment_list: Attachment list
+    checklist:
+      enter_checklist_name: Enter checklist name
+      add_checklist: Add checklist
+      checklists: Checklists
+    deadline:
+      deadline: Deadline
+      set_deadline: Set deadline
+      enter_label_content: Enter label content
+      content: Content
+      label_list: Label list
+      create_new_label: Create a new label
+      deadline: Deadline
+      set_deadline: Set deadline
+
   registers:
     create:
         failed: Register failed

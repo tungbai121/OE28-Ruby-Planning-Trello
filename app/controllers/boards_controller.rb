@@ -31,6 +31,7 @@ class BoardsController < ApplicationController
                      .positions
     }
     @tag = Tag.new
+    @checklist = Checklist.new
   end
 
   def update

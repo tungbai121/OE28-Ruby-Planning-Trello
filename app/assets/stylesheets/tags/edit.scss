@@ -1,0 +1,133 @@
+@import 'color';
+
+.tag-info {
+  background-color: $brownsmoke;
+
+  .tag-name {
+    padding: 50px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      display: block;
+    }
+
+    .info {
+      display: block;
+    }
+  }
+
+  .member {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin: 0 2px;
+    }
+  }
+
+  .tag-description {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.form-wrapper {
+  #edit_tag {
+    label {
+      font-weight: 600;
+      margin: 10px 10px 0 0;
+    }
+  }
+
+  .edit-section {
+    .expand-btn {
+      border-radius: 3px;
+      color: $gray;
+      width: 100%;
+      background-color: $brownsmoke;
+      padding: 10px 10px;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .collapse {
+      margin-bottom: 20px;;
+    }
+
+    .card-body {
+      padding: 10px 20px;
+    }
+
+    .add-btn {
+      margin: 10px 0;
+    }
+
+    .checkbox {
+      span, input {
+        display: inline;
+        margin: 0 5px;
+      }
+    }
+
+    .checklist {
+      label {
+        font-weight: 600;
+        margin: 20px 10px 0 0;
+      }
+    }
+
+    .attachment {
+      margin-top: 20px;
+
+      label {
+        font-weight: 600;
+        margin: 0 10px 0 0;
+      }
+
+      .form-inline {
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.edit-wrapper {
+  label {
+    font-weight: 600;
+    margin: 10px 10px 0 0;
+  }
+
+  .join {
+    margin-top: 34px;
+  }
+
+  .edit-section {
+    margin-bottom: 25px;
+
+    .expand-btn {
+      border-radius: 3px;
+      color: $gray;
+      background-color: $brownsmoke;
+      padding: 10px 10px;
+      margin-bottom: 2px;
+    }
+
+    .card {
+      margin-bottom: 2px;
+    }
+
+    .custom-checkbox {
+        .custom-control-label {
+          font-weight: 0;
+        }
+      }
+  }
+
+  input {
+    margin-bottom: 5px;
+  }
+}

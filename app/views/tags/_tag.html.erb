@@ -3,7 +3,9 @@
     <%= render partial: "tags/label", collection: tag.labels, as: :label, locals: {tag_id: tag.id} %>
   </div>
   <div class="tag-header">
-    <div><%= tag.name %></div>
+    <%= link_to edit_board_tag_path(@board, tag.id), class: "tag-name", remote: true do %>
+      <h6 class="tag-<%= tag.id %>-name"><%= tag.name %></h6>
+    <% end %>
     <div class="dropdown">
       <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

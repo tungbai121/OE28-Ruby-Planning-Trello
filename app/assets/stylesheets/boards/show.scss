@@ -1,6 +1,7 @@
 @import 'boards/menu';
 @import 'color';
 @import 'lists/list';
+@import 'tags/edit';
 
 main {
   .board-info {
@@ -91,4 +92,10 @@ main {
 body {
   background-size: cover;
   background-image: url("https://i.pinimg.com/originals/cb/c2/2c/cbc22ca5a3d7568a742262639a9f6b3f.jpg");
+}
+
+#edit-tag-modal {
+  .modal-xl {
+    max-width: 50%;
+  }
 }

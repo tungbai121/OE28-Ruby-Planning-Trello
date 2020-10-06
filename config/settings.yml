@@ -35,3 +35,6 @@ validate:
   max_label_content: 30
 date:
   form: "%d/%m/%Y"
+checklist:
+  name:
+    length: 200

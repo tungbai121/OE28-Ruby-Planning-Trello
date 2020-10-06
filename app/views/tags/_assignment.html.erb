@@ -1,0 +1,10 @@
+<div class="edit-section">
+  <div id="add_memeber mb-10">
+    <%= form_for :assignment, url: "#" do |f| %>
+      <%= f.label :assign, t(".assignment") %>
+      <%= f.text_field :email, placeholder: t(".enter_email"), class: "form-control" %>
+      <%= display_error f.object, :email , t(".email") %>
+      <%= f.submit t(".add_member"), class: "btn btn-success add-member" %>
+    <% end %>
+  </div>
+</div>
