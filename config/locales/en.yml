@@ -202,6 +202,8 @@ en:
       name: Name
       description: Description
   sessions:
+    create:
+      error: Account do not exist
     new:
       email_label: Email
       password_label: Password

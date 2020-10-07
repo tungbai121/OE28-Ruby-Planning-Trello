@@ -12,7 +12,7 @@
   <% end %>
   <div class="background">
     <div class="logo">
-      <%= t ".logo" %>
+      <%= icon "fas", "globe-asia" %>
     </div>
     <div class="form-wrapper">
       <%= form_for :session, url: login_path do |f| %>
@@ -24,11 +24,9 @@
           <%= f.check_box :remember_me %>
           <span><%= t ".remember" %></span>
         <% end %>
-        <%= f.submit t(".login"), class: "btn btn-primary mt-3" %>
+        <%= f.submit t(".login"), class: "btn btn-primary mt-3 submit" %>
       <% end %>
     </div>
-    <%= link_to t(".en"), locale: :en %>
-    <%= link_to t(".vi"), locale: :vi %>
   </div>
   <%= render "layouts/footer" %>
 </body>

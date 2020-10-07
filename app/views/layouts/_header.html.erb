@@ -1,15 +1,12 @@
 <header class="sticky-top">
   <div class="row">
     <div class="col-lg-4 d-flex justify-content-start header-left">
-      <%= link_to t(".home"), root_path, class: "header-item-btn" %>
+      <%= link_to icon("fas", "home"), root_path, class: "header-item-btn" %>
       <div id="header-table" class="dropdown header-item">
         <button id="table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
           <%= t ".boards" %>
         </button>
         <div aria-labelledby="table-dropdown" class="dropdown-menu collapse-dropdown">
-          <div class="table-search">
-            <input type="text" placeholder="search" class="header-item-btn">
-          </div>
           <div class="table">
             <div class="table-list">
               <div class="list-header">
@@ -37,13 +34,12 @@
       <input type="text">
     </div>
     <div class="col-lg-4 d-flex justify-content-center header-logo">
-      <%# TO DO %>
-      <%# <img src="" alt=""> %>
+      <%= icon "fas", "globe-asia" %>
     </div>
     <div class="col-lg-4 d-flex justify-content-end header-right">
       <div class="d-inline dropdown header-item">
         <button id="add-table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
-          <%= t ".add" %>
+          <%= icon "fas", "plus-circle" %>
         </button>
         <div aria-labelledby="add-table-dropdown" class="dropdown-menu-right dropdown-menu">
           <div class="dropdown-header">
@@ -66,7 +62,7 @@
             <div>
               <div class="user-info">
                 <div class="user-name">
-                  <p><%= current_user.email %></p>
+                  <p><span><%= icon "fas", "envelope" %></span><%= current_user.email %></p>
                 </div>
               </div>
               <%= link_to t(".add_account"), "#" %>

@@ -70,7 +70,7 @@
 <hr>
 <div class="add">
   <div class="add-btn" data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>">
-    + <%= t ".add_tag" %>
+    <%= icon "fas", "plus-circle" %><%= t ".add_tag" %>
   </div>
   <div class="collapse", id="add-tag-list-<%= list.id %>">
     <%= render "tags/form", list: list %>
