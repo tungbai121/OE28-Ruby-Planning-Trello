@@ -1,0 +1,5 @@
+<div class="custom-control custom-checkbox">
+  <%= check_box_tag "checkitem-#{checkitem.id}", nil, checkitem.checked?, class: "custom-control-input input-box",
+  "data-url": "#{board_tag_checklist_path(@board, @tag, checkitem)}" %>
+  <%= label_tag "checkitem-#{checkitem.id}", checkitem.name, class: "custom-control-label" %>
+</div>

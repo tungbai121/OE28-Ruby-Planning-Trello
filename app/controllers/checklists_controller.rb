@@ -1,10 +1,20 @@
 class ChecklistsController < ApplicationController
   before_action :logged_in_user, :load_data,
-                :check_permission, only: :create
+                :check_permission, only: %i(create update)
+  before_action :load_checklist, only: :update
   def create
     @checklist = @tag.checklists.build checklist_params
 
     if @checklist.save
+      flash.now[:success] = t ".success"
+    else
+      flash.now[:danger] = t ".failed"
+    end
+    respond_to :js
+  end
+
+  def update
+    if @checklist.update checklist_params
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"
@@ -34,5 +44,9 @@ class ChecklistsController < ApplicationController
       flash[:danger] = t ".user_not_in_board"
       redirect_to root_url
     end
+  end
+
+  def load_checklist
+    @checklist = Checklist.find params[:id]
   end
 end

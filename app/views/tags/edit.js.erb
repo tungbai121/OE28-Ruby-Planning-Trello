@@ -1,2 +1,12 @@
 $('#tag-modal').html('<%= j render "edit_modal", tag: @tag %>');
 $('#edit-tag-modal').modal('show');
+
+$(".input-box").change(function () {
+  $.ajax({
+    url: $(this).data('url'),
+    type: "PATCH",
+    data: {"checklist": {
+      "checked": this.checked
+    }}
+  });
+});
