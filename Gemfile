@@ -9,6 +9,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap", "~> 4.0.0"
 gem "config"
 gem "figaro"
+gem "font-awesome-sass", "~> 5.13.0"
 gem "jbuilder", "~> 2.7"
 gem "mysql2"
 gem "puma", "~> 4.1"

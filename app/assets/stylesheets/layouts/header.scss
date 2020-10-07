@@ -9,6 +9,10 @@ header {
     max-width: 500px;
   }
 
+  .dropdown-toggle::after {
+    display:none;
+  }
+
   .header-item-btn {
     padding: 10px 10px;
     background-color: $grayitem;
@@ -30,23 +34,25 @@ header {
       margin: 0px 3px;
     }
 
+    .dropdown-menu {
+      width: 300px;
+    }
+
     #home {
       color: $white;
     }
 
     #header-table {
-      .table-search {
-        margin-bottom: 10px;
-      }
-
       .table {
         padding: 0px 5px;
 
         .table-list {
           .list-header {
-            margin-top: 10px;
+            margin: 10px 0;
             padding-left: 10px;
             color: $gray;
+            text-align: center;
+            font-size: 18px;
           }
 
           .collapse-btn {
@@ -58,18 +64,11 @@ header {
           }
 
           .table-box {
+            border-radius: 3px;
             margin-bottom: 5px;
-            padding: 10px 0px;
+            padding: 10px 10px;
             display: flex;
-            border: 1px solid $gray;
-
-            .table-img {
-              width: 20%;
-            }
-
-            .table-content {
-              width: 80%;
-            }
+            border: 1px solid $secondary;
           }
         }
       }
@@ -80,6 +79,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $white;
+    font-size: 30px;
   }
 
   .header-right {
@@ -95,20 +96,41 @@ header {
 
       .dropdown-content {
         margin-top: 10px;
+
+        a {
+          color: $main;
+          padding: 10px 10px;
+          border-end-start-radius: 3px;
+          display: block;
+          text-decoration: none;
+          text-align: center;
+
+          &:hover {
+            background-color: $secondary;
+          }
+        }
       }
     }
 
     #user {
+      .dropdown-menu {
+        width: 300px;
+      }
+
       .user-info {
         display: flex;
         margin-bottom: 10px;
 
-        .user-img {
-          width: 25%;
-        }
         .user-name {
-          width: 75%;
+          width: 100%;
+          text-align: center;
+
+          i {
+            margin-right: 5px;
+          }
+
           p {
+            text-align: center;
             margin: 0px;
           }
         }
@@ -117,16 +139,22 @@ header {
       ul {
         padding: 0px;
         margin-top: 10px;
+        list-style-type: none;
 
         li {
+          padding: 7px 0px;
           a {
-            padding: 10px 20px;
+            padding: 10px 5px;
             text-decoration: none;
             color: $gray;
 
             &:hover {
               color: $chocolate;
             }
+          }
+
+          &:hover{
+            background-color: $secondary;
           }
         }
       }
