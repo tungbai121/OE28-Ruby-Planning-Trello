@@ -119,15 +119,33 @@
     .card {
       margin-bottom: 2px;
     }
-
-    .custom-checkbox {
-        .custom-control-label {
-          font-weight: 0;
-        }
-      }
   }
 
   input {
     margin-bottom: 5px;
+  }
+}
+
+.custom-control.custom-checkbox {
+  .custom-control-label {
+    font-weight: 0;
+  }
+
+  &:hover {
+    background-color: $brownsmoke;
+  }
+
+  .dropdown-menu {
+    padding: 10px 20px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      margin-top: 5px;
+    }
   }
 }

@@ -1,2 +1,9 @@
+<% if @checklist.errors.present? %>
+  $('#edit-checklist-<%= @checklist.id %>').html('<%= j render "checklists/edit_form", checklist: @checklist %>');
+<% else %>
+  $('#checklist-name-<%= @checklist.id %>').text('<%= @checklist.name %>');
+  $('.dropdown-menu').removeClass('show');
+<% end %>
 $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
 $('.progress-bar').text('<%= progress @tag.checklists %>');
+$('#toastr').html('<%= j render "shared/toastr" %>');

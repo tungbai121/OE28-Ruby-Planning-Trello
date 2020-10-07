@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
 
       resources :tags, only: %i(create edit update) do
-        resources :checklists, only: %i(create update)
+        resources :checklists, only: %i(create update destroy)
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 
