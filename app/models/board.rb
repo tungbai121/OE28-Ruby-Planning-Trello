@@ -1,5 +1,5 @@
 class Board < ApplicationRecord
-  PERMIT_ATTRIBUTES = %i(name description status).freeze
+  PERMIT_ATTRIBUTES = %i(name description status closed).freeze
 
   has_many :user_boards, class_name: UserBoard.name,
     foreign_key: :board_id,

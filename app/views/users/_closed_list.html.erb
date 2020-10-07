@@ -7,10 +7,12 @@
     </div>
   </div>
   <div class="modify">
-    <%#TO DO%>
-    <%#<button class="btn btn-success mr-2">Restore</button>%>
+    <%= link_to t(".restore"), list_path(list.id, list_id: list.id, list: {closed: false}, board_id: list.board.id),
+      class: "btn btn-success",
+      method: :patch,
+      data: {confirm: t(".confirm")} %>
     <%= link_to t(".delete"), list_path(list.id),
-      class: "btn btn-danger",
+      class: "btn btn-danger ml-2",
       method: :delete,
       data: {confirm: t(".confirm")},
       remote: true %>

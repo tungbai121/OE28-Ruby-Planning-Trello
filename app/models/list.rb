@@ -1,5 +1,5 @@
 class List < ApplicationRecord
-  PERMIT_ATTRIBUTES = %i(name).freeze
+  PERMIT_ATTRIBUTES = %i(name closed position).freeze
 
   has_many :tags, ->{order :position}, dependent: :destroy
   belongs_to :board

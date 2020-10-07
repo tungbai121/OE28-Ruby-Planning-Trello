@@ -237,6 +237,8 @@ en:
       user_not_found: User not found!
     closed_board:
       confirm: Are you sure?
+    closed_list:
+      confirm: Are you sure? This will take you to board view
   add_members:
     new:
       success: Email has sended
