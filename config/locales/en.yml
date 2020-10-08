@@ -73,10 +73,22 @@ en:
     create:
       success: Checklist added
       failed: Add checklist failed
+    update:
+      success: Checklist updated
+      failed: Update checklist failed
+    destroy:
+      success: Checklist removed
+      failed: Remove checklist failed
+    checklist:
+      delete: Delete
+      edit: Edit
     add_form:
       checklist: Checklist
       enter_checklist_name: Enter checklist name
       add_checklist: Add checklist
+    edit_form:
+      name: Name
+      change: Change
   labels:
     add:
       add: Add

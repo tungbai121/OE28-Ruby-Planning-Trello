@@ -1,0 +1,6 @@
+<% unless @checklist.errors.any? %>
+  $('div').remove('#checklist-<%= @checklist.id %>');
+  $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
+  $('.progress-bar').text('<%= progress @tag.checklists %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');
