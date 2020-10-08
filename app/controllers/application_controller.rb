@@ -35,4 +35,8 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t ".please_log_in"
     redirect_to login_url
   end
+
+  def load_notifications
+    @notifications = @board.notifications.order_created
+  end
 end

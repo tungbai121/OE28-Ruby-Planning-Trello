@@ -53,7 +53,7 @@ en:
     create:
       success: Board added
       fail: Fail to add new board
-      noti_create: create
+      noti_create: join
       noti_update: update
       to: to
       board: board
@@ -315,6 +315,10 @@ en:
       success: New list has been added
       fail: Fail to add new list
       cant_find: Can't find board
+      list: list
+      to: to
+      noti_update: change
+      noti_create: create
     component:
       move: Move
       rename: Rename

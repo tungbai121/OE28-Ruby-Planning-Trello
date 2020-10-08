@@ -44,11 +44,11 @@ class Board < ApplicationRecord
     notification = notifications.build user_id: user_id
     notification.content = [
       I18n.t(".boards.create.noti_update"),
-      I18n.t(".lists.create.board"),
+      I18n.t(".boards.create.board"),
       attribute,
       I18n.t(".boards.create.to"),
       new_value
-    ]
+    ].join(" ")
     notification.save
   end
 end

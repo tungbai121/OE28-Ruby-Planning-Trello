@@ -3,6 +3,7 @@ class TagsController < ApplicationController
                 :check_permission, only: %i(create edit update)
   before_action :load_list, :check_list_in_board, only: :create
   before_action :load_tag, only: %i(edit update)
+  before_action :load_notifications, only: %i(create update)
 
   def create
     @tag = @list.tags.build tag_params.merge(position: position)
