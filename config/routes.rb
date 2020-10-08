@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 
       resource :tag_users, only: %i(create edit destroy)
+      resources :user_boards, only: :update
     end
 
     patch "/status", to: "boards#update_board_status", as: "status"

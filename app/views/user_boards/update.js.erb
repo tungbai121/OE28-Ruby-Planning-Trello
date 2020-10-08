@@ -1,0 +1,7 @@
+<% if @board.errors.present? %>
+  alert('<%= @board.errors.messages %>');
+<% else %>
+  $('#star-item').html('<%= j render "boards/starred" %>');
+  $('#member-list').html('<%= j render partial: "boards/user", collection: @board.add_users, as: :user %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

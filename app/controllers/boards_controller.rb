@@ -85,6 +85,10 @@ class BoardsController < ApplicationController
 
   def check_board
     @board = Board.find params[:id]
+    return unless @board.closed?
+
+    flash[:danger] = t ".closed"
+    redirect_to root_path
   end
 
   def find_board

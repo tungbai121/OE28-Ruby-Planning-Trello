@@ -1,3 +1,27 @@
-<div class="user">
-  <%= user.name %>
+<div class="user-wrapper">
+  <% if user.user_boards.user_role(user.id, @board.id).leader? %>
+    <div class="user leader">
+      <%= user.name %>
+    </div>
+    <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
+      <div class="user-option">
+        <%= link_to "Change to member",
+          board_user_board_path(@board, user_id: user.id, user_boards: {role_id: :member}),
+          method: :patch,
+          remote: true %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="user member">
+      <%= user.name %>
+    </div>
+    <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
+      <div class="user-option">
+        <%= link_to "Change to leader",
+          board_user_board_path(@board, user_id: user.id, user_boards: {role_id: :leader}),
+          method: :patch,
+          remote: true %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
