@@ -1,0 +1,11 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "users/activities", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<%= provide :title, @user.name %>
+
+<%= render partial: "users/navigation" %>
+
+<div class="container">
+  <%= render partial: "activities/activity", collection: @activities, as: :activity %>
+</div>

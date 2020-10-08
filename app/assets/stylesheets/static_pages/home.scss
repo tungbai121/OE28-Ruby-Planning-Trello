@@ -82,5 +82,5 @@
 
 body {
   background-size: cover;
-  background-image: url(<%= Settings.background.url %>);
+  background-image: asset_url("david-talley-RoXrHRQw-Mc-unsplash.jpg");
 }

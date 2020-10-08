@@ -72,7 +72,9 @@ ActiveRecord::Schema.define(version: 2020_10_03_121127) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "board_id", null: false
+    t.bigint "user_id", null: false
     t.index ["board_id"], name: "index_notifications_on_board_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "tag_labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -131,5 +133,6 @@ ActiveRecord::Schema.define(version: 2020_10_03_121127) do
   add_foreign_key "labels", "boards"
   add_foreign_key "lists", "boards"
   add_foreign_key "notifications", "boards"
+  add_foreign_key "notifications", "users"
   add_foreign_key "tags", "lists"
 end

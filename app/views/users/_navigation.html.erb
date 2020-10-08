@@ -15,8 +15,8 @@
       <% if current_user? @user %>
         <%= link_to t(".profile"), @user, class: "item" %>
       <% end %>
-      <%= link_to t(".activities"), "#", class: "item" %>
-      <%= link_to t(".closed"), user_closed_path(@user), class: "item" %>
+      <%= link_to t(".activities"), user_activities_path(@user), class: "item" %>
+      <%= link_to t(".closed"), user_closed_index_path(@user), class: "item" %>
       <% if current_user? @user %>
         <%= link_to t(".settings"), "#", class: "item" %>
       <% end %>

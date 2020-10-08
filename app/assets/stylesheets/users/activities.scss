@@ -1,0 +1,13 @@
+@import 'users/navigation';
+@import 'color';
+
+.activity {
+  margin-top: 10px;
+  padding: 10px 10px;
+  border-radius: 3px;
+  background-color: rgba($color: $lightblue, $alpha: 0.7);
+
+  .date {
+    color: $gray;
+  }
+}

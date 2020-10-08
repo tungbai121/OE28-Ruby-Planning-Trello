@@ -53,6 +53,8 @@ en:
     create:
       success: Board added
       fail: Fail to add new board
+      noti_create: create
+      noti_update: update
     new:
       submit: Create
       name: Name
@@ -249,10 +251,6 @@ en:
     show:
       please_log_in: Please login!
       user_not_found: User not found!
-    closed_board:
-      confirm: Are you sure?
-    closed_list:
-      confirm: Are you sure? This will take you to board view
   add_members:
     new:
       success: Email has sended
@@ -339,3 +337,8 @@ en:
   error:
     404_error:
       error: There is something wrong
+  closed:
+    closed_board:
+      confirm: Are you sure?
+    closed_list:
+      confirm: Are you sure? This will take you to board view

@@ -29,4 +29,5 @@ class Board < ApplicationRecord
 
   scope :opened, ->{where closed: false}
   scope :closed, ->{where closed: true}
+  scope :order_created, ->{order created_at: :desc}
 end

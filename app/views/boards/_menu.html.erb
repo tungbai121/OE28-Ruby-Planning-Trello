@@ -43,5 +43,9 @@
       </div>
     </div>
     <%= link_to t(".closed"), board_closed_path(board_id: @board.id, closed: Settings.data.confirm), class: "btn btn-danger", method: :patch %>
+    <div class="notifications">
+      <div class="dropdown-divider"></div>
+      <%= render partial: "boards/notification", collection: @data[:notifications], as: :notification %>
+    </div>
   </div>
 </article>

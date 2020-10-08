@@ -4,7 +4,7 @@
 
 <%= provide :title, @user.name %>
 
-<%= render "navigation" %>
+<%= render partial: "users/navigation" %>
 
 <ul id="tab" class="nav nav-tabs" role="tablist">
   <li class="nav-item">
@@ -19,12 +19,12 @@
 </ul>
 <div class="tab-content">
   <div id="board-wrapper" class="container tab-pane active"><br>
-    <%= render partial: "users/closed_board", collection: @closed_board, as: :board %>
+    <%= render partial: "closed/closed_board", collection: @closed_board, as: :board %>
   </div>
   <div id="list-wrapper" class="container tab-pane fade"><br>
-    <%= render partial: "users/closed_list", collection: @closed_list, as: :list %>
+    <%= render partial: "closed/closed_list", collection: @closed_list, as: :list %>
   </div>
   <div id="tag-wrapper" class="container tab-pane fade"><br>
-    <%= render "users/closed_tag" %>
+    <%= render "closed/closed_tag" %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, :load_user, only: %i(show edit update)
   before_action :correct_user, only: %i(edit update)
-  before_action :load_user_closed, only: :closed
 
   def show; end
 
@@ -18,11 +17,6 @@ class UsersController < ApplicationController
     respond_to :js
   end
 
-  def closed
-    @closed_board = @user.join_boards.closed
-    @closed_list = List.closed_lists current_user.join_boards.ids
-  end
-
   private
 
   def load_user
@@ -31,10 +25,6 @@ class UsersController < ApplicationController
 
     flash[:danger] = t ".user_not_found"
     redirect_to root_url
-  end
-
-  def load_user_closed
-    @user = User.find params[:user_id]
   end
 
   def correct_user

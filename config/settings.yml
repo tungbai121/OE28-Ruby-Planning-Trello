@@ -28,6 +28,7 @@ tag:
 number:
   zero: 0
   one: 1
+  two: 2
 validate:
   max_board_name: 40
   max_board_description: 255
@@ -35,8 +36,12 @@ validate:
   max_label_content: 30
 date:
   form: "%d/%m/%Y"
+  hour: "%d/%m/%Y - %H:%M:%S"
 checklist:
   name:
     length: 200
 background:
   url: https://i.pinimg.com/originals/cb/c2/2c/cbc22ca5a3d7568a742262639a9f6b3f.jpg
+noti_action:
+  create: 1
+  update: 2
