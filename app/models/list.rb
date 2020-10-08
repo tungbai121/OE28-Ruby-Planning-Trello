@@ -1,6 +1,8 @@
 class List < ApplicationRecord
   PERMIT_ATTRIBUTES = %i(name closed position).freeze
 
+  attr_accessor :user_id
+
   has_many :tags, ->{order :position}, dependent: :destroy
   belongs_to :board
 
@@ -22,6 +24,36 @@ class List < ApplicationRecord
   scope :order_position, ->{order position: :asc}
   scope :closed_lists, ->(board_ids){where board_id: board_ids, closed: true}
   scope :order_created, ->{order created_at: :desc}
+
+  after_create :create_notification
+  before_update ->{update_notification("name", name_change[1])},
+                if: :will_save_change_to_name?
+  before_update ->{update_notification("position", position_change[1].to_s)},
+                if: :will_save_change_to_position?
+
+  private
+
+  def create_notification
+    notification = board.notifications.build user_id: user_id
+    notification.content = [
+      I18n.t(".lists.create.noti_create"),
+      I18n.t(".lists.create.list"),
+      name
+    ].join(" ")
+    notification.save
+  end
+
+  def update_notification attribute, new_value
+    notification = board.notifications.build user_id: user_id
+    notification.content = [
+      I18n.t(".lists.create.noti_update"),
+      I18n.t(".lists.create.list"),
+      attribute,
+      I18n.t(".lists.create.to"),
+      new_value
+    ].join(" ")
+    notification.save
+  end
 
   class << self
     def increase_position lists

@@ -1,6 +1,6 @@
 <div class="notification">
-  <%= notification.user.name %> <%= notification.content %> <%= notification.board.name %>
+  <span class="text-danger"><%= notification.user.name %></span> <%= notification.content %>
   <div class="time">
-    <small><%= notification.created_at.strftime Settings.date.form %></small>
+    <small><%= notification.created_at.strftime Settings.date.hour %></small>
   </div>
 </div>
