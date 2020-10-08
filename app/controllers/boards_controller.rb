@@ -29,13 +29,14 @@ class BoardsController < ApplicationController
                      .available_positions
                      .order_position
                      .positions,
-      notifications: @board.notifications
+      notifications: @board.notifications.order_created
     }
     @tag = Tag.new
     @checklist = Checklist.new
   end
 
   def update
+    @board.user_id = current_user.id
     if @board.update board_params
       flash.now[:success] = t ".success"
     else

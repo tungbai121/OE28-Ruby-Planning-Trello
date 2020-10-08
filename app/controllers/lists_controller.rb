@@ -5,11 +5,8 @@ class ListsController < ApplicationController
 
   def create
     @list = @board.lists.build list_params
-    @list.position = if @board.lists.max_position.present?
-                       @board.lists.max_position + Settings.data.confirm
-                     else
-                       Settings.data.notconfirm
-                     end
+    @list.user_id = current_user.id
+    @list.position = create_position
     if @list.save
       flash[:success] = t ".success"
     else
@@ -19,6 +16,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    @list.user_id = current_user.id
     restore_position
     if @list.update list_params
       flash[:success] = t ".success"
@@ -39,6 +37,7 @@ class ListsController < ApplicationController
   end
 
   def change_position
+    @list.user_id = current_user.id
     old_position = @list.position
     new_position = params[:position].to_i
     if @list.update_attribute :position, params[:position]
@@ -111,5 +110,13 @@ class ListsController < ApplicationController
                      else
                        @board.lists.max_position + Settings.data.confirm
                      end
+  end
+
+  def create_position
+    if @board.lists.max_position.present?
+      @board.lists.max_position + Settings.data.confirm
+    else
+      Settings.data.notconfirm
+    end
   end
 end

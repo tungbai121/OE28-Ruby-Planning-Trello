@@ -6,7 +6,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = @list.tags.build tag_params.merge(position: position)
-
+    @tag.user_id = current_user.id
     if @tag.save
       flash.now[:success] = t ".success"
     else
@@ -20,6 +20,7 @@ class TagsController < ApplicationController
   end
 
   def update
+    @tag.user_id = current_user.id
     if @tag.update tag_params
       flash.now[:success] = t ".success"
     else

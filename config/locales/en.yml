@@ -55,6 +55,8 @@ en:
       fail: Fail to add new board
       noti_create: create
       noti_update: update
+      to: to
+      board: board
     new:
       submit: Create
       name: Name
@@ -127,6 +129,10 @@ en:
     create:
       success: Tag create successfully
       failed: Tag create failed
+      noti_create: create
+      noti_update: change
+      to: to
+      tag: tag
     load_board:
       board_closed: Board has been closed
       board_not_found: Board not found
