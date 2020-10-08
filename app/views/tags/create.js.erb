@@ -9,5 +9,6 @@
 
   element = document.querySelector('#tags-list-<%= @list.id %>');
   element.scrollTop = element.scrollHeight - element.clientHeight;
+  $('#noti').html('<%= j render partial: "boards/notification", collection: @notifications, as: :notification %>')
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');

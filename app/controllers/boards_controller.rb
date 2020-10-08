@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
   before_action :find_board,
                 only: %i(update update_board_status update_board_closed)
   before_action :check_member, only: %i(show update)
+  before_action :load_notifications, only: :update
 
   def new
     @board = Board.new
