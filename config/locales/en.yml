@@ -93,6 +93,21 @@ en:
     edit_form:
       name: Name
       change: Change
+  deadlines:
+    create:
+      success: Deadline updated
+      failed: Update deadline failed
+    update:
+      success: Deadline updated
+      failed: Update deadline failed
+    destroy:
+      success: Deadline removed
+      failed: Remove deadline failed
+    deadline:
+      remove_deadline: Remove deadline
+    form:
+      deadline: Deadline
+      set_deadline: Set deadline
   labels:
     add:
       add: Add
@@ -198,7 +213,12 @@ en:
       create_new_label: Create a new label
       deadline: Deadline
       set_deadline: Set deadline
-
+    tag:
+      change_label: Change label
+      change_member: Change member
+      change_position: Change position
+      change_deadline: Change deadline
+      close: Close
   registers:
     create:
         failed: Register failed
@@ -295,6 +315,10 @@ en:
                 invalid: is invalid
               decription:
                 blank: is empty
+          tag:
+            attributes:
+              deadline:
+                invalid_datetime: is invalid
   lists:
     change_position:
       success: Moved

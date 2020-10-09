@@ -17,6 +17,7 @@ class Tag < ApplicationRecord
   validates :name, presence: true,
     length: {maximum: Settings.tag.name.length}
   validates :description, length: {maximum: Settings.tag.description.length}
+  validates_datetime :deadline, presence: true, allow_nil: true
 
   scope :opened, ->{where closed: false}
   scope :closed, ->{where closed: true}

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
       resources :tags, only: %i(create edit update) do
         resources :checklists, only: %i(create update destroy)
+        resource :deadline, only: %i(create update destroy)
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 

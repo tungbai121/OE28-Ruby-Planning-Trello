@@ -1,8 +1,8 @@
 <div class="tag-info">
   <div class="tag-name">
     <h1 class="tag-<%= tag.id %>-name"><%= tag.name %></h1>
-    <div class="info">
-      <span><%= tag.deadline %></span>
+    <div id="deadline-info" class="info">
+      <%= render "deadlines/deadline", tag: tag if tag.deadline %>
     </div>
   </div>
   <div class="member">

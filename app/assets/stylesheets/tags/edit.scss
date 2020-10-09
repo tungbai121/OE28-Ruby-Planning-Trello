@@ -4,7 +4,7 @@
   background-color: $brownsmoke;
 
   .tag-name {
-    padding: 50px 0 20px 0;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,6 +52,10 @@
       padding: 10px 10px;
       margin-bottom: 2px;
       display: block;
+
+      a {
+        color: $gray;
+      }
     }
 
     .collapse {
@@ -147,5 +151,23 @@
     .btn {
       margin-top: 5px;
     }
+  }
+}
+
+#deadline-checkbox {
+  #deadline-status {
+    font-style: italic;
+  }
+
+  .overdue {
+    color: $red;
+  }
+
+  .incompleted {
+    color: $orange;
+  }
+
+  .completed {
+    color: $green;
   }
 }

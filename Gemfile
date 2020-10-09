@@ -18,6 +18,7 @@ gem "rails-i18n"
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "validates_timeliness"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do

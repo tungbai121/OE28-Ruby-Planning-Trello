@@ -1,9 +1,5 @@
 <div class="edit-section">
   <div id="deadline">
-    <%= form_for :deadline, url: "#" do |f| %>
-      <%= f.label :deadline, t(".deadline") %>
-      <%= f.text_field :deadline, type: :date, class: "form-control" %>
-      <%= f.submit t(".set_deadline"), class: "btn btn-success form-inline" %>
-    <% end %>
+    <%= render "deadlines/form" %>
   </div>
 </div>

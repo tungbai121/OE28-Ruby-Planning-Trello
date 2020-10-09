@@ -13,5 +13,7 @@ module OE28RubyPlanningTrello
     config.i18n.default_locale = :en
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    config.gem "validates_timeliness"
   end
 end
