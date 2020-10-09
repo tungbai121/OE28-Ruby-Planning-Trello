@@ -52,6 +52,9 @@ $(function() {
     connectWith: '.tags',
     cursor: "grabbing",
     placeholder: "sortable-placeholder",
+    start: function(e, ui){
+      ui.placeholder.height(ui.item.height());
+    },
     update: function(e, ui) {
       tagIds = $(this).sortable('serialize');
       sortableId = $(this).parent().attr('id');

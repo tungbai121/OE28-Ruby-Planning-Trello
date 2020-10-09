@@ -1,0 +1,6 @@
+<% unless @tag.errors.any? %>
+  $('#deadline-status').text('(<%= deadline_status @tag %>)');
+  $('#deadline-status')[0].className = '<%= deadline_status @tag %>';
+  $('#deadline-tag-<%= @tag.id %>').html('<%= j render "deadlines/short_deadline", tag: @tag %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

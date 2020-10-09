@@ -4,7 +4,7 @@
   </div>
   <div class="tag-header">
     <%= link_to edit_board_tag_path(@board, tag.id), class: "tag-name", remote: true do %>
-      <h6 class="tag-<%= tag.id %>-name"><%= tag.name %></h6>
+      <h5 class="tag-<%= tag.id %>-name"><%= tag.name %></h5>
     <% end %>
     <div class="dropdown">
       <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
@@ -13,12 +13,14 @@
         <%= link_to t(".change_member"), "#", class: "dropdown-item", "data-target": "#member-#{tag.id}", "data-toggle": "modal" %>
         <%= link_to t(".change_position"), "#", class: "dropdown-item", "data-target": "#position-#{tag.id}", "data-toggle": "modal" %>
         <%= link_to t(".change_deadline"), "#", class: "dropdown-item", "data-target": "#deadline-#{tag.id}", "data-toggle": "modal" %>
-        <%= link_to t(".archive"), "#", class: "dropdown-item" %>
+        <%= link_to t(".close"), "#", class: "dropdown-item" %>
       </div>
     </div>
   </div>
   <div class="tag-body">
-    <span class="deadline"><%= t ".deadline" %></span>
+    <div id="deadline-tag-<%= tag.id %>" class="deadline">
+      <%= render "deadlines/short_deadline", tag: tag if tag.deadline %>
+    </div>
     <div class="member-wrapper" id="member-wrapper-<%= tag.id %>">
       <%= render partial: "tags/member", collection: tag.users, as: :member, locals: {tag_id: tag.id} %>
     </div>

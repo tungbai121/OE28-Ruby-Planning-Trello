@@ -1,0 +1,6 @@
+<% unless @tag.errors.any? %>
+  $('div').remove('#deadline-checkbox');
+  $('#tag_deadline').val('');
+  $('div').remove('#deadline-tag-<%= @tag.id %> > div');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

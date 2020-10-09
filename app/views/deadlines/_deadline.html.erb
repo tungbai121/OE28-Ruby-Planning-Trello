@@ -1,0 +1,7 @@
+<div id="deadline-checkbox" class="custom-control custom-checkbox checkbox-xl">
+  <%= check_box_tag :completed, nil, tag.completed?, class: "custom-control-input", "data-url": board_tag_deadline_path(@board, @tag) %>
+  <%= label_tag :completed, l(tag.deadline, format: :long), class: "custom-control-label font-weight-bold" %>
+  <span id="deadline-status" class="<%= deadline_status tag %>">(<%= deadline_status tag %>)</span>
+  <%= link_to icon("fas", "times"), board_tag_deadline_path(@board, @tag), method: :delete,
+    remote: true, class: "ml-2 float-right", title: t(".remove_deadline") %>
+</div>
