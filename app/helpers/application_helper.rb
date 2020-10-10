@@ -5,6 +5,8 @@ module ApplicationHelper
       "toastr.error"
     when "success"
       "toastr.success"
+    when "warning"
+      "toastr.warning"
     else
       "toastr.info"
     end

@@ -1,0 +1,214 @@
+.tags {
+  padding: 10px 10px;
+  max-height: 500px;
+  overflow: auto;
+
+  .tag {
+    margin: 10px 0;
+    background-color: $white;
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+    display: list-item;
+    box-shadow: 0 0 1px $tagshadow;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $whitesmoke;
+    }
+
+    .menu-btn {
+      border-radius: 2px;
+      transition: 0.2s;
+      padding: 0 2px;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      z-index: 50;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $lightcoral;
+      }
+
+      &:after {
+        content: none;
+      }
+    }
+
+    .dropdown-item {
+      text-decoration: none;
+      padding: 5px 10px;
+
+      &:hover {
+        color: $chocolate;
+        background-color: $brownsmoke;
+      }
+    }
+
+    .tag-header {
+      padding-top: 10px;
+    }
+
+    .label-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+
+      .label {
+        display: flex;
+        margin: 5px 5px 0 0;
+
+        &:hover > .delete {
+          opacity: 1;
+        }
+
+        &:hover > .content {
+          border-radius: 0 0 0 3px;
+        }
+
+        .content {
+          font-size: 13px;
+          border-radius: 3px;
+          padding: 2px 3px;
+          background-color: $gray;
+          color: $white;
+          min-width: 5em;
+          text-align: center;
+        }
+
+        .delete {
+          color: $white;
+          border-radius: 0 3px 3px 0;
+          padding: 2px 3px;
+          background-color: $gray;
+          font-size: 13px;
+          opacity: 0;
+          transition: 0.2s;
+
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.4);
+            background-color: $main;
+          }
+        }
+      }
+    }
+
+    .tag-header {
+      margin: 0 0 5px 0;
+      justify-content: space-between;
+
+      .tag-name {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: $taner;
+
+        &:hover {
+          color: $tan;
+        }
+      }
+
+      .item-btn {
+        text-decoration: none;
+        padding: 5px 10px;
+      }
+    }
+
+    .tag-body {
+      display: flow-root;
+
+      .overdue {
+        color: $red;
+      }
+
+      .incompleted {
+        color: $orange;
+      }
+
+      .completed {
+        color: $green;
+      }
+
+      .badges {
+        display: flex;
+        max-width: 100%;
+
+        .badge-item {
+          margin-right: 1em;
+          display: inline-flex;
+        }
+      }
+
+      .member-wrapper {
+        margin: 2px 0 4px 0;
+        float: right;
+        display: inline-flex;
+        justify-content: flex-end;
+
+        .dropdown{
+          padding: 0 0 2px 2px;
+
+          .member {
+            .member-avatar {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+
+    .dropdown-menu {
+      cursor: auto;
+
+      .member-options {
+        border-radius: 3px;
+        padding: 0 10px;
+
+        .mini-profile {
+          display: inline-flex;
+
+          .mini-avatar {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+          }
+
+          .member-info {
+            .member-name {
+              color: $black;
+              font-size: larger;
+            }
+
+            .member-email {
+              color: $gray;
+            }
+          }
+        }
+
+        .remove-member {
+          color: $browngray;
+        }
+      }
+    }
+  }
+
+  .tilt.right {
+    transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -webkit-transform: rotate(3deg);
+  }
+
+  .tilt.left {
+    transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+  }
+
+  .tag-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+  }
+}

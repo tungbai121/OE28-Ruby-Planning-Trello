@@ -1,0 +1,4 @@
+<div class="checklist-statistic <%= checklist_status tag.checklists %>">
+  <%= icon "far", "check-circle" %>
+  <span id="checked-checklist"><%= tag.checklists.checked.size %></span>/<span id="total-checklist"><%= tag.checklists.size %></span>
+</div>

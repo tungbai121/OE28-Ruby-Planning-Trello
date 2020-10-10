@@ -16,6 +16,10 @@ class TagUsersController < ApplicationController
     respond_to :js
   end
 
+  def edit
+    respond_to :js
+  end
+
   def destroy
     if @relation.destroy
       flash[:warning] = t ".success"

@@ -13,9 +13,7 @@
                 <%= t ".favoriteboards" %>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board",
-                  collection: @favorite_boards,
-                  as: :board %>
+                <%= render partial: "shared/header_board", collection: @favorite_boards, as: :board %>
               </div>
             </div>
             <div class="table-list">
@@ -23,9 +21,7 @@
                 <%= t ".myboards" %>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board",
-                  collection: @my_boards,
-                  as: :board %>
+                <%= render partial: "shared/header_board", collection: @my_boards, as: :board %>
               </div>
             </div>
           </div>
@@ -33,9 +29,11 @@
       </div>
       <input type="text">
     </div>
+
     <div class="col-lg-4 d-flex justify-content-center header-logo">
       <%= icon "fas", "globe-asia" %>
     </div>
+
     <div class="col-lg-4 d-flex justify-content-end header-right">
       <div class="d-inline dropdown header-item">
         <button id="add-table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
@@ -50,31 +48,23 @@
           </div>
         </div>
       </div>
-      <div id="user" class="d-inline dropleft header-item">
-        <button id="user-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
-          <%= current_user.name %>
-        </button>
+      <div class="current-user header-item dropleft">
+        <%= image_tag "avatar.jpg", alt: "avatar", id: "user-dropdown", class: "rounded rounded-circle dropdown avatar", "data-toggle": :dropdown %>
         <div aria-labelledby="user-dropdown" class="dropdown-menu">
-          <div class="dropdown-header">
-            <%= t ".account" %>
+          <div class="user-info dropdown-header">
+            <span class="user-name"><%= current_user.name %></span>
+            <span class="user-email">
+              <%= icon "fas", "envelope" %>
+              <%= current_user.email %>
+            </span>
           </div>
-          <div class="dropdown-content">
-            <div>
-              <div class="user-info">
-                <div class="user-name">
-                  <p><span><%= icon "fas", "envelope" %></span><%= current_user.email %></p>
-                </div>
-              </div>
-              <%= link_to t(".add_account"), "#" %>
-              <ul class="list-type-none p-0">
-                <li><%= link_to t(".profile"), current_user %></li>
-                <li><%= link_to t(".activities"), user_activities_path(current_user) %></li>
-                <li><%= link_to t(".closed"), user_closed_index_path(current_user) %></li>
-                <li><%= link_to t(".settings"), "#" %></li>
-                <li><%= link_to t(".logout"), "#" %></li>
-              </ul>
-            </div>
-          </div>
+          <ul class="list-type-none p-0">
+            <li><%= link_to t(".profile"), current_user %></li>
+            <li><%= link_to t(".activities"), user_activities_path(current_user) %></li>
+            <li><%= link_to t(".closed"), user_closed_index_path(current_user) %></li>
+            <li><%= link_to t(".settings"), "#" %></li>
+            <li><%= link_to t(".logout"), "#" %></li>
+          </ul>
         </div>
       </div>
     </div>

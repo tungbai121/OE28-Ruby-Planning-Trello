@@ -8,12 +8,9 @@
     </div>
   </div>
   <div class="expand-btn">
-    <%= link_to "#checklists", "data-toggle": :collapse, role: :button, "aria-expanded": false do %>
-      <%= icon "fas", "check-square" %>
-      <%= t(".checklists") %>
-    <% end %>
-    <div class="float-right">
-      <span id="checked-checklist"><%= @tag.checklists.checked.size %></span>/<span id="total-checklist"><%= @tag.checklists.size %></span>
+    <%= link_to t(".checklists"), "#checklists", "data-toggle": :collapse, role: :button, "aria-expanded": false %>
+    <div class="checklist checklist-tag-<%= @tag.id %> float-right">
+      <%= render "checklists/statistic", tag: @tag %>
     </div>
   </div>
   <div class="collapse" id="checklists">

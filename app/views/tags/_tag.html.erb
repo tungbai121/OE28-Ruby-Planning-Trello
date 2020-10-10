@@ -1,30 +1,36 @@
 <li class="tag" id="<%= dom_id tag %>">
+  <div class="dropdown">
+    <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to t(".change_label"), edit_board_tag_labels_path(@board, tag_id: tag.id), remote: true, class: "dropdown-item" %>
+      <%= link_to t(".change_member"), edit_board_tag_users_path(@board, tag_id: tag.id), remote: true, class: "dropdown-item" %>
+      <%#= TO DO link_to t(".change_position"), "#", class: "dropdown-item" %>
+      <%#= TO DO link_to t(".change_deadline"), "#", class: "dropdown-item" %>
+      <%= link_to t(".close"), "#", class: "dropdown-item" %>
+    </div>
+  </div>
   <div class="label-wrapper" id="label-wrapper-<%= tag.id %>">
     <%= render partial: "tags/label", collection: tag.labels, as: :label, locals: {tag_id: tag.id} %>
   </div>
+
   <div class="tag-header">
     <%= link_to edit_board_tag_path(@board, tag.id), class: "tag-name", remote: true do %>
       <h5 class="tag-<%= tag.id %>-name"><%= tag.name %></h5>
     <% end %>
-    <div class="dropdown">
-      <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%= link_to t(".change_label"), "#", class: "dropdown-item", "data-target": "#label-#{tag.id}", "data-toggle": "modal" %>
-        <%= link_to t(".change_member"), "#", class: "dropdown-item", "data-target": "#member-#{tag.id}", "data-toggle": "modal" %>
-        <%= link_to t(".change_position"), "#", class: "dropdown-item", "data-target": "#position-#{tag.id}", "data-toggle": "modal" %>
-        <%= link_to t(".change_deadline"), "#", class: "dropdown-item", "data-target": "#deadline-#{tag.id}", "data-toggle": "modal" %>
-        <%= link_to t(".close"), "#", class: "dropdown-item" %>
-      </div>
-    </div>
   </div>
   <div class="tag-body">
-    <div id="deadline-tag-<%= tag.id %>" class="deadline">
-      <%= render "deadlines/short_deadline", tag: tag if tag.deadline %>
+    <div class="badges form-inline">
+      <div id="deadline-tag-<%= tag.id %>" class="badge-item deadline">
+        <%= render "deadlines/short_deadline", tag: tag if tag.deadline %>
+      </div>
+      <div class="badge-item checklist checklist-tag-<%= tag.id %>">
+        <%= render "checklists/statistic", tag: tag if tag.checklists.present? %>
+      </div>
     </div>
-    <div class="member-wrapper" id="member-wrapper-<%= tag.id %>">
-      <%= render partial: "tags/member", collection: tag.users, as: :member, locals: {tag_id: tag.id} %>
+    <div class="member-wrapper form-inline" id="member-wrapper-<%= tag.id %>">
+      <%= render partial: "tags/member", collection: tag.users, as: :member, locals: {tag_id: tag.id} if tag.users.present? %>
     </div>
   </div>
 </li>
 
-<%= render partial: "tags/modal", locals: {my_tag: tag} %>
+<%#= render partial: "tags/modal", locals: {my_tag: tag} %>

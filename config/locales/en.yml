@@ -167,7 +167,7 @@ en:
     label:
       labeldelete: X
     member:
-      memberdelete: Delete
+      remove: Remove from tag
     load_tag:
       tag_not_found: Tag not found
     update:
@@ -293,6 +293,8 @@ en:
       fail: Can't delete label
       cant_find: Cant't find board
       cant_delete: Delete failed
+    modal:
+      add: Add
   tag_users:
     create:
       success: Added
@@ -300,6 +302,8 @@ en:
     destroy:
       success: Deleted
       fail: Can't delete
+    modal:
+      add: Add
 
   activerecord:
       attributes:
