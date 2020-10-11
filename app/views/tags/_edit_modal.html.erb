@@ -36,7 +36,7 @@
                 <%= render "tags/add_label" %>
                 <%= render "tags/deadline" %>
               </div>
-              <%= link_to "Close tag", "#", class: "btn btn-danger" %>
+              <%= link_to t(".close_tag"), close_board_tag_path(@board, @tag, list_id: @tag.list.id), method: :post, remote: true, class: "btn btn-danger" %>
             </div>
           </div>
         </div>

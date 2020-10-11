@@ -25,6 +25,6 @@
     <%= render partial: "closed/closed_list", collection: @closed_list, as: :list %>
   </div>
   <div id="tag-wrapper" class="container tab-pane fade"><br>
-    <%= render "closed/closed_tag" %>
+    <%= render partial: "closed/closed_tag", collection: @tags, as: :tag %>
   </div>
 </div>

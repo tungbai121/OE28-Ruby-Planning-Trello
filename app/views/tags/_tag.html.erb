@@ -6,7 +6,7 @@
       <%= link_to t(".change_member"), edit_board_tag_users_path(@board, tag_id: tag.id), remote: true, class: "dropdown-item" %>
       <%#= TO DO link_to t(".change_position"), "#", class: "dropdown-item" %>
       <%#= TO DO link_to t(".change_deadline"), "#", class: "dropdown-item" %>
-      <%= link_to t(".close"), "#", class: "dropdown-item" %>
+      <%= link_to t(".close"), close_board_tag_path(@board, tag, list_id: tag.list.id), method: :post, remote: true, class: "dropdown-item" %>
     </div>
   </div>
   <div class="label-wrapper" id="label-wrapper-<%= tag.id %>">

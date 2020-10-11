@@ -1,0 +1,4 @@
+<% if @tag.errors.blank? %>
+  $('#tag-closed-<%= @tag.id %>').remove();
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

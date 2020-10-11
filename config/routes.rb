@@ -18,12 +18,15 @@ Rails.application.routes.draw do
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
 
-      resources :tags, only: %i(create edit update) do
+      resources :tags, except: %i(index show new) do
         resources :checklists, only: %i(create update destroy)
         resource :deadline, only: %i(create update destroy)
 
         post "/join", on: :member, to: "join_tags#create"
         delete "/leave", on: :member, to: "join_tags#destroy"
+        
+        post "/close", on: :member, to: "close_tags#create"
+        delete "/open", on: :member, to: "close_tags#destroy"
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 

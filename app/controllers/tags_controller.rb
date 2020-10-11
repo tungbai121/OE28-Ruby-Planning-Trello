@@ -1,9 +1,9 @@
 class TagsController < ApplicationController
   before_action :logged_in_user, :load_board,
-                :check_permission, only: %i(create edit update)
+                :check_permission, except: %i(index show new)
   before_action :load_list, :check_list_in_board, only: :create
-  before_action :load_tag, only: %i(edit update)
-  before_action :load_notifications, only: %i(create update)
+  before_action :load_tag, only: %i(edit update destroy)
+  before_action :load_notifications, only: %i(create update destroy)
 
   def create
     @tag = @list.tags.build tag_params.merge(position: position)
@@ -23,6 +23,15 @@ class TagsController < ApplicationController
   def update
     @tag.user_id = current_user.id
     if @tag.update tag_params
+      flash.now[:success] = t ".success"
+    else
+      flash.now[:danger] = t ".failed"
+    end
+    respond_to :js
+  end
+
+  def destroy
+    if @tag.destroy
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"

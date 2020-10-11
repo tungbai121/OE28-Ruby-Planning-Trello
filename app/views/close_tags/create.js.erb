@@ -1,0 +1,5 @@
+<% if @tag.errors.blank? %>
+  $('#tag_<%= @tag.id %>').remove();
+  $('#edit-tag-modal').modal('hide');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

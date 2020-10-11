@@ -65,7 +65,7 @@
 </div>
 
 <ul class="tags" id="tags-list-<%= list.id %>" data-url="<%= board_sort_tags_path(@board) %>">
-  <%= render partial: "tags/tag", collection: list.tags %>
+  <%= render partial: "tags/tag", collection: list.tags.opened %>
 </ul>
 <hr>
 <div class="add">

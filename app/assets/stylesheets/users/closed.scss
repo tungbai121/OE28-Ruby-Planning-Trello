@@ -8,7 +8,7 @@
 }
 
 .tab-content {
-  #board-wrapper, #list-wrapper {
+  #board-wrapper, #list-wrapper, #tag-wrapper{
     .board {
       margin-bottom: 15px;
       padding: 10px 10px;
@@ -42,10 +42,27 @@
         }
       }
     }
+
+    .tag {
+      margin-bottom: 15px;
+      padding: 10px 10px;
+      background-color: $whitesmoke;
+      box-shadow: 0 2px 2px $brownsmoke;
+
+      .name {
+        font-weight: 600;
+      }
+
+      .info {
+        small {
+          color: $gray;
+        }
+      }
+    }
   }
 
-  #board-wrapper, #list-wrapper {
-    .board, .list {
+  #board-wrapper, #list-wrapper, #tag-wrapper{
+    .board, .list, .tag{
       border-radius: 5px;
       display: flex;
 
