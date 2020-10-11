@@ -28,13 +28,11 @@ $(function() {
       $('#board-name').css('display', 'none');
       $('#board-name-form').css('display', 'block');
       $('#board-name').removeClass('input');
-      $('#edit').text('edit');
     }
     else {
       $('#board-name').css('display', 'block');
       $('#board-name-form').css('display', 'none');
       $('#board-name').addClass('input');
-      $('#edit').text('close');
     }
   });
 

@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     patch "list/changeposition", to: "lists#change_position", as: "position_list"
     patch "list/closed", to: "lists#closed_list", as: "closed_list"
 
+    resources :search, only: :index
+
     match "*unmatched", to: "application#rescue_404_exception", via: :all
   end
 end

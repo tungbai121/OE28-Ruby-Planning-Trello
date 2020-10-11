@@ -1,0 +1,84 @@
+@import 'color';
+
+.board-list {
+  padding: 10px 0px;
+
+  .header {
+    p {
+      padding: 10px 0px;
+      font-weight: 600;
+      color: $white;
+    }
+
+    .result {
+      color: $main;
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .list-item {
+      width: 25%;
+      height: 100px;
+      margin: 5px 5px;
+      border-radius: 5px;
+      padding: 10px 10px;
+      transition: 0.3s;
+      background-color: rgba($color: $lightblue, $alpha: 0.7);
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .item-name {
+        height: 90%;
+        display: flex;
+        justify-content: center;
+
+        a {
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          text-decoration: none;
+          color: $white;
+        }
+      }
+
+      .member {
+        height: 10%;
+        display: flex;
+        justify-content: flex-end;
+
+        .number {
+          font-size: 13px;
+          padding: 5px 5px;
+          height: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 5px;
+          background-color: rgba($color: $main, $alpha: 0.8);
+          color: $white;
+
+          .user-icon {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+
+    .new-item {
+      background-color: $lightcyan;
+    }
+  }
+}
+
+body {
+  background-size: cover;
+  background-image: asset_url("david-talley-RoXrHRQw-Mc-unsplash.jpg");
+}

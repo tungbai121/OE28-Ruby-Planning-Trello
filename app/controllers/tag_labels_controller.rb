@@ -1,5 +1,5 @@
 class TagLabelsController < ApplicationController
-  before_action :find_board, :find_tag
+  before_action :find_board, :find_tag, :find_user_boards
   before_action :find_relation, only: :destroy
 
   def create

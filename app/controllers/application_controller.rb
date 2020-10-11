@@ -39,4 +39,13 @@ class ApplicationController < ActionController::Base
   def load_notifications
     @notifications = @board.notifications.order_created
   end
+
+  def find_user_boards
+    @user_boards = UserBoard.find_by user_id: current_user.id,
+                                     board_id: @board.id
+    return if @user_boards
+
+    flash[:danger] = t ".nomember"
+    redirect_to @board
+  end
 end

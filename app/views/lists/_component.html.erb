@@ -68,11 +68,13 @@
   <%= render partial: "tags/tag", collection: list.tags.opened %>
 </ul>
 <hr>
-<div class="add">
-  <div class="add-btn" data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>">
-    <%= icon "fas", "plus-circle" %><%= t ".add_tag" %>
+<% if @relation %>
+  <div class="add">
+    <div class="add-btn" data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>">
+      <%= icon "fas", "plus-circle" %><%= t ".add_tag" %>
+    </div>
+    <div class="collapse", id="add-tag-list-<%= list.id %>">
+      <%= render "tags/form", list: list %>
+    </div>
   </div>
-  <div class="collapse", id="add-tag-list-<%= list.id %>">
-    <%= render "tags/form", list: list %>
-  </div>
-</div>
+<% end %>

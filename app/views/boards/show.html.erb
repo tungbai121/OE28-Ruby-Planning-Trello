@@ -5,82 +5,86 @@
 <%= render "boards/menu" %>
 
 <main>
-  <div class="board-info">
-    <div class="item">
-      <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
-        <div id="edit"><%= t ".edit" %></div>
-      <% end %>
-      <div class="item-btn input" id="board-name">
-        <%= @board.name %>
-      </div>
-      <div id="board-name-form">
-        <%= form_with model: @board, method: :patch, url: board_path, remote: true do |f| %>
-          <%= render "shared/error_messages", object: f.object %>
-          <%= hidden_field_tag :board_id, @board.id %>
-          <%= f.text_field :name, class: "form-control", value: "#{@board.name}" %>
-          <%= f.submit t(".submit"), class: "btn btn-primary mt-3" %>
+  <% if @relation %>
+    <div class="board-info">
+      <div class="item">
+        <% if current_user.is_leader? @board %>
+          <div id="edit"><%= icon "far", "edit" %></div>
         <% end %>
-      </div>
-      <div class="dropdown">
-        <button class="item-btn dropdown-toggle" type="button" id="board-status-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% if @board.status %>
-            <%= t ".public" %>
-          <% else %>
-            <%= t ".private" %>
+        <div class="item-btn input" id="board-name">
+          <%= @board.name %>
+        </div>
+        <div id="board-name-form">
+          <%= form_with model: @board, method: :patch, url: board_path, remote: true do |f| %>
+            <%= render "shared/error_messages", object: f.object %>
+            <%= hidden_field_tag :board_id, @board.id %>
+            <%= f.text_field :name, class: "form-control", value: @board.name %>
+            <%= f.submit t(".submit"), class: "btn btn-primary mt-3" %>
           <% end %>
-        </button>
-        <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
-          <div class="dropdown-menu" aria-labelledby="board-status-btn">
-            <%= link_to t(".public"),
-              status_url(board_status: Settings.data.confirm, board_id: @board.id),
-              class: "dropdown-item",
-              method: :patch,
-              remote: true %>
-            <%= link_to t(".private"),
-              status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
-              class: "dropdown-item",
-              method: :patch,
-              remote: true %>
-          </div>
-        <% end %>
-      </div>
-      <div class="dropdown" id="member-btn">
-        <button class="item-btn dropdown-toggle" type="button" id="board-member-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t ".member" %>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="board-member-btn">
-          <div class="member-list" id="member-list">
-            <%= render partial: "boards/user", collection: @board.add_users, as: :user %>
-          </div>
-          <div class="addmember w-100">
-            <%= form_with url: new_add_member_path, method: :get do |f| %>
-              <%= hidden_field_tag :board_id, @board.id %>
-              <%= email_field_tag :email, nil, class: "form-control" %>
-              <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
-            <% end %>
+        </div>
+        <div class="dropdown">
+          <button class="item-btn dropdown-toggle" type="button" id="board-status-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= @board.status ? t(".public") : t(".private") %>
+          </button>
+          <% if current_user.is_leader? @board %>
+            <div class="dropdown-menu" aria-labelledby="board-status-btn">
+              <%= link_to t(".public"),
+                status_url(board_status: Settings.data.confirm, board_id: @board.id),
+                class: "dropdown-item",
+                method: :patch,
+                remote: true %>
+              <%= link_to t(".private"),
+                status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
+                class: "dropdown-item",
+                method: :patch,
+                remote: true %>
+            </div>
+          <% end %>
+        </div>
+        <div class="dropdown" id="member-btn">
+          <button class="item-btn dropdown-toggle" type="button" id="board-member-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t ".member" %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="board-member-btn">
+            <div class="member-list" id="member-list">
+              <%= render partial: "boards/user", collection: @board.add_users, as: :user %>
+            </div>
+            <div class="addmember w-100">
+              <%= form_with url: new_add_member_path, method: :get do |f| %>
+                <%= hidden_field_tag :board_id, @board.id %>
+                <%= email_field_tag :email, nil, class: "form-control" %>
+                <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
+              <% end %>
+            </div>
           </div>
         </div>
+        <div class="star item-btn" id="star-item">
+          <%= render "boards/starred" %>
+        </div>
       </div>
-      <div class="star item-btn" id="star-item">
-        <%= render "boards/starred" %>
+      <div class="item">
+        <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>
       </div>
     </div>
-    <div class="item">
-      <div id="open-menu" class="menu item-btn"><%= t ".menu" %></div>
+  <% else %>
+    <div class="board-info notmember">
+      <div class="notmember-btn"><%= icon "fas", "lock" %> <%= t ".notmember_noti" %></div>
     </div>
-  </div>
+  <% end %>
   <ul class="board-wrapper">
     <%= render partial: "lists/list", collection: @data[:lists], as: :list %>
-    <ul class="board-list list-add">
-      <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
-      <div class="collapse" id="add-list">
-        <%= form_for :list, url: lists_path do |f| %>
-          <%= hidden_field_tag :board_id, @board.id %>
-          <%= f.text_field :name, class: "form-control" %>
-          <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>
-        <% end %>
+    <% if @relation %>
+      <div class="board-list list-add">
+        <div class="add-btn" data-toggle="collapse" data-target="#add-list"><%= t ".addlist" %></div>
+        <div class="collapse" id="add-list">
+          <%= form_for :list, url: lists_path do |f| %>
+            <%= hidden_field_tag :board_id, @board.id %>
+            <%= f.text_field :name, class: "form-control" %>
+            <%= f.submit t(".addlist"), class: "btn btn-success mt-2" %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </main>
 

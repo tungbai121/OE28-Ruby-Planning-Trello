@@ -41,6 +41,10 @@ class User < ApplicationRecord
     UserMailer.user_invitation(self, board_id).deliver_now
   end
 
+  def is_leader? board
+    user_boards.user_role(id, board.id).leader?
+  end
+
   private
 
   def downcase_email
