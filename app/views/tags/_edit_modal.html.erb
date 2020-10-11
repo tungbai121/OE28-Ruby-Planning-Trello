@@ -27,7 +27,11 @@
             </div>
             <div class='col-lg-4'>
               <div class="edit-wrapper">
-                <%= link_to t(".join_tag"), "#", class: "btn btn-success join" %>
+                <% if @tag.users.include? current_user %>
+                  <%= link_to t(".leave_tag"), leave_board_tag_path(@board, @tag), method: :delete, class: "btn btn-danger join-leave" %>
+                <% else %>
+                  <%= link_to t(".join_tag"), join_board_tag_path(@board, @tag), method: :post, class: "btn btn-success join-leave" %>
+                <% end %>
                 <%= render "tags/assignment" %>
                 <%= render "tags/add_label" %>
                 <%= render "tags/deadline" %>
