@@ -22,6 +22,11 @@ class Tag < ApplicationRecord
   scope :opened, ->{where closed: false}
   scope :closed, ->{where closed: true}
   scope :last_position, ->{maximum :position}
+  scope :order_by_updated_at, ->{order updated_at: :desc}
+  scope :of_user, (lambda do |user_id|
+    joins(list: {board: :user_boards})
+      .where(user_boards: {user_id: user_id})
+  end)
 
   after_create :create_notification
   before_update ->{update_notification("name", name_change[1])},

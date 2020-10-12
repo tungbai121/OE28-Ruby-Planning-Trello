@@ -93,6 +93,16 @@ en:
     edit_form:
       name: Name
       change: Change
+  close_tags:
+    create:
+      success: Tag closed
+      failed: Close tag failed
+    destroy:
+      success: Tag restored
+      failed: Restore tag failed
+    check_permission:
+      permission_denied: Permission denied
+      user_not_in_board: User not in board
   deadlines:
     create:
       success: Deadline updated
@@ -183,6 +193,7 @@ en:
       edit_tag: Edit tag
       checklist: Checklist
       join_tag: Join tag
+      close_tag: Close tag
     add_label:
       enter_label_content: Enter label content
       content: Content
@@ -380,3 +391,8 @@ en:
       confirm: Are you sure?
     closed_list:
       confirm: Are you sure? This will take you to board view
+    closed_tag:
+      restore: Restore
+      confirm_restore: Restore this tag?
+      delete: Delete
+      confirm_delete: Delete this tag?
