@@ -1,7 +1,6 @@
 @import 'boards/menu';
 @import 'color';
 @import 'lists/list';
-@import 'tags/edit';
 
 main {
   .board-info {
@@ -91,7 +90,7 @@ main {
 
 body {
   background-size: cover;
-  background-image: asset_url("fuu-j-1GcWQAm9a2I-unsplash.jpg");
+  background-image: asset_url("hands-water-desk-1345089.jpg");
 }
 
 #edit-tag-modal {

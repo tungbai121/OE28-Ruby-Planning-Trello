@@ -3,6 +3,7 @@
 <% else %>
   $('#checklist-name-<%= @checklist.id %>').text('<%= @checklist.name %>');
   $('.dropdown-menu').removeClass('show');
+  $('.checklist-tag-<%= @tag.id %>').html('<%= j render "checklists/statistic", tag: @tag %>');
 <% end %>
 $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
 $('.progress-bar').text('<%= progress @tag.checklists %>');

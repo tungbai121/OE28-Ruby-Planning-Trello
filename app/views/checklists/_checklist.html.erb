@@ -2,10 +2,10 @@
   <%= check_box_tag "checkitem-#{checkitem.id}", nil, checkitem.checked?, class: "custom-control-input input-box",
   "data-url": "#{board_tag_checklist_path(@board, @tag, checkitem)}" %>
   <%= label_tag "checkitem-#{checkitem.id}", checkitem.name, class: "custom-control-label", id: "checklist-name-#{checkitem.id}" %>
-  <%= link_to t(".delete"), board_tag_checklist_path(@board, @tag, checkitem),
+  <%= link_to icon("fas", "trash-alt"), board_tag_checklist_path(@board, @tag, checkitem),
     method: :delete, remote: true, class: "float-right" %>
   <div class="dropdown float-right">
-    <%= link_to t(".edit"), "", class: "mr-2 dropdown", role: :button, "data-toggle": :dropdown, "aria-haspopup": true, "aria-expanded": false %>
+    <%= link_to icon("fas", "pencil-alt"), nil, class: "mr-3 dropdown", role: :button, "data-toggle": :dropdown, "aria-haspopup": true, "aria-expanded": false %>
     <div id="edit-checklist-<%= checkitem.id %>" class="dropdown-menu">
       <%= render "checklists/edit_form", checklist: checkitem %>
     </div>

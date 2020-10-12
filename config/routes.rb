@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :closed, only: :index
     end
     resources :boards do
-      resource :tag_labels, only: %i(create destroy)
+      resource :tag_labels, only: %i(create edit destroy)
       post "labels/create", to: "labels#create", as: "create_label"
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 
-      resource :tag_users, only: %i(create destroy)
+      resource :tag_users, only: %i(create edit destroy)
     end
 
     patch "/status", to: "boards#update_board_status", as: "status"

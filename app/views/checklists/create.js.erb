@@ -8,6 +8,7 @@
   $('<%= j render "checklists/checklist", checkitem: @checklist %>').appendTo('#checklists-card');
   $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
   $('.progress-bar').text('<%= progress @tag.checklists %>');
+  $('.checklist-tag-<%= @tag.id %>').html('<%= j render "checklists/statistic", tag: @tag %>');
 
   $(".input-box").change(function () {
     $.ajax({

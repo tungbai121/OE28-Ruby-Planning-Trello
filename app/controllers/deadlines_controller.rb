@@ -2,8 +2,7 @@ class DeadlinesController < ApplicationController
   before_action :logged_in_user, :load_data,
                 :check_permission, only: %i(create update destroy)
   def create
-    deadline = params[:tag][:deadline]
-    if @tag.update deadline: deadline
+    if @tag.update deadline: params[:tag][:deadline]
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"
@@ -12,13 +11,11 @@ class DeadlinesController < ApplicationController
   end
 
   def update
-    completed = params[:tag][:completed]
-    if completed == "true"
+    if params[:tag][:completed].eql? "true"
       completed_update
     else
       incompleted_update
     end
-
     respond_to :js
   end
 
