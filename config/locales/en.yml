@@ -50,6 +50,7 @@ en:
       addlist: Add list
       member: Member
       add: Add
+      closed: This board is closed
     create:
       success: Board added
       fail: Fail to add new board
@@ -230,6 +231,12 @@ en:
       change_position: Change position
       change_deadline: Change deadline
       close: Close
+  user_boards:
+    update:
+      success: Changed
+      fail: Update failed
+      oneleader: This board only contains 1 leader, you can't change this leader to user
+
   registers:
     create:
         failed: Register failed

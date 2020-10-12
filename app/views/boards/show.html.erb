@@ -7,7 +7,9 @@
 <main>
   <div class="board-info">
     <div class="item">
-      <div id="edit"><%= t ".edit" %></div>
+      <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
+        <div id="edit"><%= t ".edit" %></div>
+      <% end %>
       <div class="item-btn input" id="board-name">
         <%= @board.name %>
       </div>
@@ -27,25 +29,27 @@
             <%= t ".private" %>
           <% end %>
         </button>
-        <div class="dropdown-menu" aria-labelledby="board-status-btn">
-          <%= link_to t(".public"),
-            status_url(board_status: Settings.data.confirm, board_id: @board.id),
-            class: "dropdown-item",
-            method: :patch,
-            remote: true %>
-          <%= link_to t(".private"),
-            status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
-            class: "dropdown-item",
-            method: :patch,
-            remote: true %>
-        </div>
+        <% if current_user.user_boards.user_role(current_user.id, @board.id).leader? %>
+          <div class="dropdown-menu" aria-labelledby="board-status-btn">
+            <%= link_to t(".public"),
+              status_url(board_status: Settings.data.confirm, board_id: @board.id),
+              class: "dropdown-item",
+              method: :patch,
+              remote: true %>
+            <%= link_to t(".private"),
+              status_url(board_status: Settings.data.nonconfirm, board_id: @board.id),
+              class: "dropdown-item",
+              method: :patch,
+              remote: true %>
+          </div>
+        <% end %>
       </div>
       <div class="dropdown" id="member-btn">
         <button class="item-btn dropdown-toggle" type="button" id="board-member-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= t ".member" %>
         </button>
         <div class="dropdown-menu" aria-labelledby="board-member-btn">
-          <div class="member-list">
+          <div class="member-list" id="member-list">
             <%= render partial: "boards/user", collection: @board.add_users, as: :user %>
           </div>
           <div class="addmember w-100">
@@ -56,6 +60,9 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <div class="star item-btn" id="star-item">
+        <%= render "boards/starred" %>
       </div>
     </div>
     <div class="item">

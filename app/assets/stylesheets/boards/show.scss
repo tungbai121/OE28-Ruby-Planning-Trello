@@ -45,36 +45,74 @@ main {
         padding: 0 10px;
       }
 
-      #member-btn{
-        .addmember{
+      #member-btn {
+        .addmember {
           width: 250px;
           padding: 10px 10px;
           display: flex;
           flex-direction: column;
           align-items: center;
 
-          button{
+          button {
             width: 100%;
             margin-top: 5px;
           }
         }
 
-        .member-list{
+        .member-list {
           display: flex;
           justify-content: center;
           width: 400px;
 
-          .user{
+          .user-wrapper {
+            &:hover > .user-option {
+              display: block;
+            }
+          }
+
+          .user {
             margin: 0 5px;
             background-color: $secondary;
             padding: 4px 6px;
             border-radius: 3px;
           }
+
+          .leader {
+            border: 2px solid $main;
+          }
+
+          .user-option {
+            background-color: $white;
+            z-index: 100;
+            position: absolute;
+            display: none;
+            padding: 10px 10px;
+            border-radius: 4px;
+            box-shadow: 0 3px 4px $brownsmoke;
+            border: 1px solid $brownsmoke;
+            cursor: pointer;
+
+            a {
+              color: $main;
+              text-decoration: none;
+            }
+          }
         }
 
-        .addmember{
-          form{
+        .addmember {
+          form {
             width: 100%;
+          }
+        }
+      }
+
+      .star {
+        i {
+          color: $white;
+        }
+        .starred {
+          i {
+            color: $yellow;
           }
         }
       }

@@ -26,7 +26,7 @@ class Board < ApplicationRecord
   scope :nonfavorite, (lambda do |user_id|
     includes(:user_boards)
     .where(user_boards: {user_id: user_id,
-                         starred: nil})
+                         starred: false})
   end)
 
   scope :opened, ->{where closed: false}

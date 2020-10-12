@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_172650) do
     t.integer "user_id"
     t.integer "board_id"
     t.integer "role_id"
-    t.boolean "starred"
+    t.boolean "starred", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "board_id"], name: "index_user_boards_on_user_id_and_board_id", unique: true
