@@ -1,6 +1,7 @@
 class DeadlinesController < ApplicationController
   before_action :logged_in_user, :load_data,
                 :check_permission, only: %i(create update destroy)
+
   def create
     if @tag.update deadline: params[:tag][:deadline]
       flash.now[:success] = t ".success"
