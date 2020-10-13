@@ -41,3 +41,5 @@ spec/requests/
 spec/views
 
 config/application.yml
+
+coverage/
