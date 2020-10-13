@@ -32,6 +32,8 @@ class Board < ApplicationRecord
   scope :opened, ->{where closed: false}
   scope :closed, ->{where closed: true}
   scope :order_created, ->{order created_at: :desc}
+  scope :by_name, ->(result){where("name LIKE ?", "%#{result}%")}
+  scope :by_status, ->(board_status){where status: board_status}
 
   before_update ->{update_notification("name", name_change[1])},
                 if: :will_save_change_to_name?

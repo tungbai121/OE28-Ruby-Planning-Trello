@@ -77,7 +77,7 @@ class BoardsController < ApplicationController
 
   def check_member
     @relation = UserBoard.find_by user_id: current_user.id, board_id: @board.id
-    return if @relation
+    return if @relation || @board.status?
 
     flash[:danger] = t ".nomember"
     redirect_to root_path

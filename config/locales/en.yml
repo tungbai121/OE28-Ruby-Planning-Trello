@@ -22,9 +22,13 @@ en:
       tags: Tags
       settings: Settings
       logout: Logout
+      search: Search
     sidebar:
       board: Board
       home: Home
+  search:
+    index:
+      searchresult: search result for
   boards:
     menu:
       menu: Menu
@@ -51,6 +55,7 @@ en:
       member: Member
       add: Add
       closed: This board is closed
+      notmember_noti: You are not member of this board, you cannot change this board attribute or do anything with it
     create:
       success: Board added
       fail: Fail to add new board
@@ -306,22 +311,28 @@ en:
       success: New label is added
       fail: Can't add some label
       cant_find: Cant't find board
+      nomember: You are not member of this board
     destroy:
       success: Label is deleted
       fail: Can't delete label
       cant_find: Cant't find board
       cant_delete: Delete failed
+      nomember: You are not member of this board
     modal:
       add: Add
+      nomember: You are not member of this board
   tag_users:
     create:
       success: Added
       fail: Can't add this user
+      nomember: You are not member of this board
     destroy:
       success: Deleted
       fail: Can't delete
+      nomember: You are not member of this board
     modal:
       add: Add
+      nomember: You are not member of this board
 
   activerecord:
       attributes:
@@ -365,6 +376,7 @@ en:
       to: to
       noti_update: change
       noti_create: create
+      nomember: You are not member of this board
     component:
       move: Move
       rename: Rename
@@ -375,11 +387,15 @@ en:
     update:
       success: Updated
       fail: Update failed
+      nomember: You are not member of this board
+    change_position:
+      nomember: You are not member of this board
     destroy:
       success: Deleted
       fail: Can't delete
     closed_list:
       closed: Closed
+      nomember: You are not member of this board
   user_mailer:
     user_invitation:
       invitation: You have been invited to join our board

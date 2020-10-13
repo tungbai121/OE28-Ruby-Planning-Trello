@@ -83,12 +83,34 @@ header {
     font-size: 30px;
   }
 
+  .search-form {
+    input {
+      padding: 0 10px;
+      border: none;
+      border-radius: 4px;
+      height: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      height: 100%;
+      border-radius: 3px;
+      padding: 4px 10px;
+      border: none;
+      background-color: rgba($color: $white, $alpha: 0.45);
+
+      i {
+        color: $white;
+      }
+    }
+  }
+
   .header-right {
     .header-item {
       margin: 0px 3px;
 
       .dropdown-header {
-        padding: 10px 0px;
+        padding: 10px 0;
         text-align: center;
         color: $gray;
         border-bottom: 1px solid $gray;

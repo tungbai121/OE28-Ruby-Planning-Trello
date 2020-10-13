@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_action :find_board, except: :destroy
   before_action :find_list, only: %i(update change_position closed_list)
   before_action :find_list_destroy, only: :destroy
+  before_action :find_user_boards
 
   def create
     @list = @board.lists.build list_params
