@@ -1,0 +1,9 @@
+<%= form_for :attachment, url: board_tag_attachments_path(@board, tag), html: {class: "attachment"},
+  method: :post, remote: true do |f| %>
+  <%= f.label :attachment, t(".attachment") %>
+  <div class="form-inline">
+    <%= f.file_field :content, value: "" %>
+    <%= f.submit t(".add_attachment"), class: "btn btn-success add-btn" %>
+  </div>
+  <%= display_error attachment, :content, nil %>
+<% end %>

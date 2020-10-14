@@ -22,7 +22,7 @@
                   <%= render "tags/edit_form", tag: @tag %>
                 </div>
                 <%= render "tags/checklist", checklists: @tag.checklists %>
-                <%= render "tags/attachment" %>
+                <%= render partial: "tags/attachment", locals: {tag: @tag, attachment: @attachment} %>
               </div>
             </div>
             <div class='col-lg-4'>

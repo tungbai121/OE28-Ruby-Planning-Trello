@@ -64,6 +64,71 @@
 
     .card-body {
       padding: 10px 20px;
+
+      .attachment-thumbnail {
+        border-radius: 3px;
+        min-height: 80px;
+        margin: 0 0 8px;
+        overflow: hidden;
+        position: relative;
+
+        &:hover {
+          background-color: $bluegray;
+        }
+
+        .attachment-thumbnail-preview {
+          background-color: $bluegray;
+          background-position: 50%;
+          background-size: contain;
+          background-repeat: no-repeat;
+          border-radius: 3px;
+          height: 80px;
+          margin-top: -40px;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          text-align: center;
+          text-decoration: none;
+          z-index: 1;
+          width: 112px;
+
+          .attachment-thumbnail-preview-ext {
+            color: $browngray;
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            height: 100%;
+            line-height: 80px;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            width: 100%;
+          }
+        }
+
+        .attachment-thumbnail-details {
+          box-sizing: border-box;
+          padding: 8px 8px 8px 128px;
+          min-height: 80px;
+          margin: 0;
+          z-index: 0;
+
+          .attachment-thumbnail-details-title-options {
+            margin-bottom: 8px;
+            display: block;
+            color: $gray;
+            font-size: small;
+          }
+        }
+
+        p {
+          display: block;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+        }
+      }
     }
 
     .add-btn {

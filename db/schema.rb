@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_172650) do
+ActiveRecord::Schema.define(version: 2020_10_15_015334) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
-    t.text "link"
+    t.text "content"
     t.integer "attachmentable_id"
     t.string "attachmentable_type"
     t.datetime "created_at", precision: 6, null: false

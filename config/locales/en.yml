@@ -29,6 +29,11 @@ en:
   search:
     index:
       searchresult: search result for
+  attachments:
+    attachment:
+      added_time: Added %{time} ago
+    form:
+      add_attachment: Add attachment
   boards:
     menu:
       menu: Menu
