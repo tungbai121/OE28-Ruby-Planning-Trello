@@ -1,6 +1,6 @@
 <%= form_for :checklist, url: board_tag_checklist_path(@board, @tag, checklist),
   method: :patch, remote: true do |f| %>
   <%= f.text_field :name, class: "form-control", id: nil, value: checklist.name %>
-  <%= display_error checklist, :name , t(".name") %>
+  <%= display_error checklist, :name, t(".name") %>
   <%= f.submit t(".change"), class: "btn btn-success" %>
 <% end %>

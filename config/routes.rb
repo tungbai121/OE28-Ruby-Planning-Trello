@@ -24,9 +24,11 @@ Rails.application.routes.draw do
 
         post "/join", on: :member, to: "join_tags#create"
         delete "/leave", on: :member, to: "join_tags#destroy"
-        
+
         post "/close", on: :member, to: "close_tags#create"
         delete "/open", on: :member, to: "close_tags#destroy"
+
+        resources :attachments, only: :create
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 

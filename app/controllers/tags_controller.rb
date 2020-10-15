@@ -18,6 +18,7 @@ class TagsController < ApplicationController
   end
 
   def edit
+    @attachment = Attachment.new
     respond_to :js
   end
 

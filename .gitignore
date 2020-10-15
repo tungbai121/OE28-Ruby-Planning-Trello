@@ -43,3 +43,5 @@ spec/views
 config/application.yml
 
 coverage/
+
+public/uploads
