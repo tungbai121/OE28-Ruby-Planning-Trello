@@ -35,22 +35,33 @@ class Board < ApplicationRecord
   scope :by_name, ->(result){where("name LIKE ?", "%#{result}%")}
   scope :by_status, ->(board_status){where status: board_status}
 
-  before_update ->{update_notification("name", name_change[1])},
-                if: :will_save_change_to_name?
-  before_update ->{update_notification("description", description_change[1])},
-                if: :will_save_change_to_description?
+  before_update :update_notification
 
   private
 
-  def update_notification attribute, new_value
+  def update_notification
     notification = notifications.build user_id: user_id
     notification.content = [
       I18n.t(".boards.create.noti_update"),
       I18n.t(".boards.create.board"),
-      attribute,
+      get_changed[:attribute_change],
       I18n.t(".boards.create.to"),
-      new_value
+      get_changed[:value]
     ].join(" ")
     notification.save
+  end
+
+  def get_changed
+    if attribute_changed? :name
+      {
+        attribute_change: "name",
+        value: name_change[1]
+      }
+    elsif attribute_changed? :description
+      {
+        attribute_change: "description",
+        value: description_change[1]
+      }
+    end
   end
 end

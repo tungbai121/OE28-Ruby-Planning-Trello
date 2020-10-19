@@ -45,6 +45,7 @@ group :test do
   gem "database_cleaner-active_record"
   gem "faker"
   gem "selenium-webdriver"
+  gem "shoulda-callback-matchers"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "simplecov-rcov"
