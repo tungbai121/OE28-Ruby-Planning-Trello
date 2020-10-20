@@ -424,3 +424,6 @@ en:
       confirm_restore: Restore this tag?
       delete: Delete
       confirm_delete: Delete this tag?
+
+  create: "create %{name} tag"
+  update: "update %{attribute} of %{tag_name} tag to %{value}"

@@ -29,30 +29,32 @@ class Tag < ApplicationRecord
   end)
 
   after_create :create_notification
-  before_update ->{update_notification("name", name_change[1])},
-                if: :will_save_change_to_name?
+  after_update :deprecation_after_update
 
   private
 
   def create_notification
     notification = list.board.notifications.build user_id: user_id
-    notification.content = [
-      I18n.t(".tags.create.noti_create"),
-      I18n.t(".tags.create.tag"),
-      name
-    ].join(" ")
+    notification.content = I18n.t(".create", name: name)
     notification.save
   end
 
-  def update_notification attribute, new_value
+  def deprecation_after_update
+    if saved_change_to_name? && saved_change_to_description?
+      update_notification "description", saved_changes[:description]
+      update_notification "name", saved_changes[:name]
+    elsif saved_change_to_name?
+      update_notification "name", saved_changes[:name]
+    elsif saved_change_to_description?
+      update_notification "description", saved_changes[:description]
+    end
+  end
+
+  def update_notification attribute, values
     notification = list.board.notifications.build user_id: user_id
-    notification.content = [
-      I18n.t(".tags.create.noti_update"),
-      I18n.t(".tags.create.tag"),
-      attribute,
-      I18n.t(".tags.create.to"),
-      new_value
-    ].join(" ")
+    notification.content = I18n.t(".update", attribute: attribute,
+                                             tag_name: name_before_last_save,
+                                             value: values[1])
     notification.save
   end
 end
