@@ -5,6 +5,7 @@ class Label < ApplicationRecord
     foreign_key: :label_id,
     dependent: :destroy
   has_many :join_tags, through: :tag_labels, source: :tag
+  belongs_to :board
 
   validates :content, presence: true,
     length: {maximum: Settings.validate.max_label_content}

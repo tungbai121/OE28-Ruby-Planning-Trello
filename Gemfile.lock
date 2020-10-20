@@ -168,6 +168,7 @@ GEM
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     json (2.3.1)
+    libv8 (3.16.14.19)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -222,6 +223,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 6.0.3.3)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -249,6 +254,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    ref (2.0.0)
     regexp_parser (1.7.1)
     require_all (3.0.0)
     rspec-core (3.9.2)
@@ -324,6 +330,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -369,6 +378,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   config
   database_cleaner-active_record
+  execjs
   factory_bot_rails
   faker
   figaro
@@ -379,6 +389,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
+  rails-controller-testing
   rails-i18n
   rails_best_practices
   rspec-rails (~> 4.0.1)
@@ -393,6 +404,7 @@ DEPENDENCIES
   simplecov-rcov
   spring
   spring-watcher-listen (~> 2.0.0)
+  therubyracer
   turbolinks (~> 5)
   tzinfo-data
   validates_timeliness

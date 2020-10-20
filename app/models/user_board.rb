@@ -6,6 +6,8 @@ class UserBoard < ApplicationRecord
   belongs_to :user
   belongs_to :board
 
+  validates :role_id, presence: true
+
   scope :by_board_id, (lambda do |board_id|
     where board_id: board_id if board_id.present?
   end)

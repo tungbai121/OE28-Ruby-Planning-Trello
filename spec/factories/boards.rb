@@ -5,5 +5,6 @@ FactoryBot.define do
     f.name {Faker::Name.name}
     f.description {Faker::Quote.famous_last_words}
     f.status {Faker::Boolean.boolean}
+    f.closed {0}
   end
 end

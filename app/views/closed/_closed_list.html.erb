@@ -11,7 +11,7 @@
       class: "btn btn-success",
       method: :patch,
       data: {confirm: t(".confirm")} %>
-    <%= link_to t(".delete"), list_path(list.id),
+    <%= link_to t(".delete"), list_path(list.id, board_id: list.board.id),
       class: "btn btn-danger ml-2",
       method: :delete,
       data: {confirm: t(".confirm")},
