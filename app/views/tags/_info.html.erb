@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="member">
-    <%#= TO DO render "members" %>
+    <%= render partial: "tags/member", collection: tag.users, as: :member, locals: {tag_id: tag.id} if tag.users.present? %>
   </div>
   <div class="tag-description">
     <p id="tag-description"><%= tag.description %></p>

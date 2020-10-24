@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.user.email.regex
 
-  USER_PARAMS = %i(name email password password_confirmation).freeze
+  USER_PARAMS = %i(name email password password_confirmation avatar).freeze
 
   has_many :user_boards, class_name: UserBoard.name,
     foreign_key: :user_id,
@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :join_tags, through: :tag_users, source: :tag
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
+
+  delegate :url, :size, :filename, to: :avatar
 
   validates :email, presence: true,
     length: {maximum: Settings.user.email.length},

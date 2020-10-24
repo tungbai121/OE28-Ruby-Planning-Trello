@@ -23,8 +23,49 @@
     display: flex;
     justify-content: center;
 
-    img {
-      margin: 0 2px;
+    .dropdown {
+      .member {
+        .member-avatar {
+          cursor: pointer;
+          margin: 0 2px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    cursor: auto;
+
+    .member-options {
+      border-radius: 3px;
+      padding: 0 10px;
+
+      .mini-profile {
+        display: inline-flex;
+
+        .mini-avatar {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+        }
+
+        .member-info {
+          .member-name {
+            color: $black;
+            font-size: larger;
+          }
+
+          .member-email {
+            color: $gray;
+          }
+        }
+      }
+
+      .remove-member {
+        color: $browngray;
+      }
     }
   }
 
