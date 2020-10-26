@@ -20,7 +20,10 @@ Rails.application.routes.draw do
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
 
       resources :tags, except: %i(index show new) do
-        resources :checklists, only: %i(create update destroy)
+        resources :checklists, only: %i(create update destroy) do
+          patch "/checked", on: :member, to: "checked_checklists#update"
+        end
+
         resource :deadline, only: %i(create update destroy)
 
         post "/join", on: :member, to: "join_tags#create"
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
         post "/close", on: :member, to: "close_tags#create"
         delete "/open", on: :member, to: "close_tags#destroy"
 
-        resources :attachments, only: :create
+        resources :attachments, only: %i(create update destroy)
       end
       patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
 

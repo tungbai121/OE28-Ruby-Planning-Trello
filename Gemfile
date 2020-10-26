@@ -53,6 +53,4 @@ group :test do
   gem "simplecov-rcov"
   gem "therubyracer"
   gem "webdrivers"
-  gem "therubyracer"
-  gem "execjs"
 end

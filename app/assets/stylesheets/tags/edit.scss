@@ -100,7 +100,7 @@
     }
 
     .collapse {
-      margin-bottom: 20px;;
+      margin-bottom: 20px;
     }
 
     .card-body {
@@ -110,7 +110,6 @@
         border-radius: 3px;
         min-height: 80px;
         margin: 0 0 8px;
-        overflow: hidden;
         position: relative;
 
         &:hover {
@@ -160,14 +159,22 @@
             color: $gray;
             font-size: small;
           }
-        }
 
-        p {
-          display: block;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          margin-inline-start: 0;
-          margin-inline-end: 0;
+          .attachment-thumbnail-details-options {
+            .dropdown-menu {
+              padding: 10px 20px;
+              min-width: 20em;
+
+              div {
+                display: flex;
+                flex-direction: column;
+              }
+
+              .btn {
+                margin-top: 5px;
+              }
+            }
+          }
         }
       }
     }
@@ -247,11 +254,11 @@
 
   .dropdown-menu {
     padding: 10px 20px;
+    min-width: 18em;
 
     div {
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     .btn {

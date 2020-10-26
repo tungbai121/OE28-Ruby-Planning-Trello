@@ -1,12 +1,16 @@
 class Attachment < ApplicationRecord
-  ATTACHMENT_PARAMS = %i(content).freeze
+  ATTACHMENT_PARAMS = %i(name content).freeze
   belongs_to :attachmentable, polymorphic: true
 
   mount_uploader :content, AttachmentUploader
 
   delegate :url, :size, :filename, to: :content
 
-  before_save :update_attachment_attributes
+  validates :name, presence: true,
+    length: {maximum: Settings.attachment.name.length},
+    allow_nil: true
+
+  after_create :update_attachment_attributes
 
   scope :order_by_created_at, ->{order created_at: :desc}
 

@@ -1,4 +1,4 @@
-<div class="attachment-thumbnail">
+<div class="attachment-thumbnail" id="attachment-<%= attachment.id %>">
   <%= link_to attachment.content_url, class: "attachment-thumbnail-preview" do %>
     <% if attachment.content.content_type.start_with? "image" %>
       <%= image_tag attachment.content_url(:thumb) %>
@@ -6,24 +6,23 @@
       <span class="attachment-thumbnail-preview-ext"><%= attachment.content.file.extension %></span>
     <% end %>
   <% end %>
-  <p class="attachment-thumbnail-details">
-    <span class="attachment-thumbnail-name font-weight-bold"><%= attachment.name %></span>
+  <div class="attachment-thumbnail-details">
+    <span id="attachment-name-<%= attachment.id %>" class="attachment-thumbnail-name font-weight-bold"><%= attachment.name %></span>
     <%= link_to attachment.content_url, class: "attachment-thumbnail-details-title-action", target: :blank do %>
       <span class="icon-external-link"><%= icon "fas", "external-link-alt" %></span>
     <% end %>
+
     <span class="attachment-thumbnail-details-title-options">
       <span><%= t ".added_time", time: time_ago_in_words(attachment.created_at) %></span>
     </span>
-    <span class="attachment-thumbnail-details-options">
-      <%= link_to "#", class: "attachment-thumbnail-details-title-options-item" do %>
-        <span class="attachment-thumbnail-details-options-item-text"><%= t ".comment" %></span>
-      <% end %> -
-      <%= link_to "#", class: "attachment-thumbnail-details-title-options-item" do %>
-        <span class="attachment-thumbnail-details-options-item-text"><%= t ".edit" %></span>
-      <% end %> -
-      <%= link_to "#", class: "attachment-thumbnail-details-title-options-item" do %>
-        <span class="attachment-thumbnail-details-options-item-text"><%= t ".delete" %></span>
-      <% end %>
-    </span>
-  </p>
+
+    <div class="attachment-thumbnail-details-options dropup">
+      <%= link_to t(".comment"), "#" %> -
+      <%= link_to t(".edit"), nil, class: "dropdown", "data-toggle": :dropdown, "aria-haspopup": true, "aria-expanded": false%> -
+      <div id="edit-attachment-<%= attachment.id %>" class="dropdown-menu">
+        <%= render "attachments/edit_form", attachment: attachment %>
+      </div>
+      <%= link_to t(".delete"), board_tag_attachment_path(@board, @tag, attachment), method: :delete, data: {confirm: t(".confirm")}, remote: true, class: "" %>
+    </div>
+  </div>
 </div>

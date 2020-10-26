@@ -32,8 +32,11 @@ en:
   attachments:
     attachment:
       added_time: Added %{time} ago
+      confirm: Delete this attachment?
     form:
       add_attachment: Add attachment
+    edit_form:
+      change: Change
   boards:
     menu:
       menu: Menu

@@ -1,0 +1,6 @@
+<% if @attachment.errors.blank? %>
+  $('#attachment-name-<%= @attachment.id %>').text('<%= @attachment.name %>');
+  $('.dropdown-menu').removeClass('show');
+<% end %>
+$('#edit-attachment-<%= @attachment.id %>').html('<%= j render "attachments/edit_form", attachment: @attachment %>');
+$('#toastr').html('<%= j render "shared/toastr" %>');
