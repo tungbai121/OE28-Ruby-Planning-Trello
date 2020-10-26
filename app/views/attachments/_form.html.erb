@@ -2,7 +2,7 @@
   method: :post, remote: true do |f| %>
   <%= f.label :attachment, t(".attachment") %>
   <div class="form-inline">
-    <%= f.file_field :content, value: "" %>
+    <%= f.file_field :content %>
     <%= f.submit t(".add_attachment"), class: "btn btn-success add-btn" %>
   </div>
   <%= display_error attachment, :content, nil %>

@@ -53,4 +53,6 @@ group :test do
   gem "simplecov", require: false
   gem "simplecov-rcov"
   gem "webdrivers"
+  gem "therubyracer"
+  gem "execjs"
 end

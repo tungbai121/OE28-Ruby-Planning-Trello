@@ -1,7 +1,7 @@
 <nav>
   <div class="user-info">
-    <div class="avatar">
-      <%= image_tag "avatar.jpg", alt: "avatar", class: "rounded rounded-circle" %>
+    <div class="user-avatar">
+      <%= image_tag current_user.avatar.url, alt: t(".avatar"), class: "rounded rounded-circle avatar" %>
       <div>
         <div class="name">
           <%= @user.name %>

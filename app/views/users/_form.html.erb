@@ -1,10 +1,26 @@
 <%= form_for @user, remote: true do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
-  <%= f.label :name, t(".name") %>
-  <%= f.text_field :name, class: "form-control" %>
-  <%= f.label :password, t(".password") %>
-  <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
-  <%= f.label :confirm_password, t(".confirm_password") %>
-  <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".confirm_password") %>
-  <%= f.submit t(".save"), class: "btn btn-success form-control" %>
+  <div class = row>
+    <div class="col-lg-6">
+      <div class="section-header">
+        <%= t ".info" %>
+      </div>
+      <%= f.label :name, t(".name") %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= display_error f.object, :name, t(".name") %>
+      <%= f.label :password, t(".password"), class: "mt-3" %>
+      <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
+      <%= display_error f.object, :password, t(".password") %>
+      <%= f.label :confirm_password, t(".confirm_password"), class: "mt-3" %>
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".confirm_password") %>
+      <%= display_error f.object, :password_confirmation, t(".password_confirmation") %>
+      <%= f.submit t(".save"), class: "btn btn-success form-control mt-3" %>
+    </div>
+    <div class="col-lg-6 avatar-upload form-inline">
+      <%= image_tag "avatar.jpg", alt: t(".avatar"), class: "rounded rounded-circle", id: "avatar-preview" %>
+      <div>
+        <%= f.file_field :avatar, accept: Settings.user.avatar.file_types %>
+        <%= display_error f.object, :avatar, "" %>
+      </div>
+    </div>
+  </div>
 <% end %>

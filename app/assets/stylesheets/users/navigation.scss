@@ -3,8 +3,8 @@
 nav {
   background-color: $brownsmoke;
 
-  .avatar {
-    padding: 50px 0px;
+  .user-avatar {
+    padding: 50px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,13 +27,13 @@ nav {
   }
 
   .user-menu {
-    padding: 10px 0px;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
 
     .item {
       border-radius: 3px;
-      margin: 0px 10px;
+      margin: 0 10px;
       padding: 10px 15px;
       background-color: $white;
       text-decoration: none;

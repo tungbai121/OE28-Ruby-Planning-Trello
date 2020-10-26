@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_041711) do
+ActiveRecord::Schema.define(version: 2020_10_22_095606) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_041711) do
     t.integer "label_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id", "label_id"], name: "index_tag_labels_on_tag_id_and_label_id", unique: true
   end
 
   create_table "tag_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -121,7 +122,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_041711) do
     t.string "email"
     t.boolean "admin", default: false
     t.boolean "blocked", default: false
-    t.string "avatar_url"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

@@ -290,6 +290,7 @@ en:
       change_password: Change password
       password: Password
       confirm_password: Confirm password
+      password_confirmation: Password Confirmation
       change: Change
     info:
       heading: Manage your personal information

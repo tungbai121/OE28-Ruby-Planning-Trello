@@ -11,6 +11,10 @@ user:
     length: 50
   password:
     length: 6
+  avatar:
+    accept_types: ["jpg", "jpeg", "gif", "png"]
+    file_types: "image/jpeg, image/jpg, image/gif, image/png"
+    size: 2
 validate:
   max_board_name: 35
   max_board_description: 255
@@ -18,8 +22,6 @@ validate:
 data:
   confirm: 1
   notconfirm: 0
-image:
-  accept_types: "image/jpeg, image/gif, image/png"
 tag:
   name:
     length: 200
