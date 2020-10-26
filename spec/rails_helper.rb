@@ -7,6 +7,7 @@ require "rspec/rails"
 require "rspec/rails"
 require "shoulda/matchers"
 require "support/database_cleaner"
+require "support/spec_test_helper"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 begin
@@ -21,9 +22,11 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = true
 
-  config.infer_spec_type_from_file_location!
-
   config.filter_rails_from_backtrace!
+
+  config.include SpecTestHelper, type: :controller
+
+  config.infer_spec_type_from_file_location!
 
   config.use_transactional_fixtures = false
 

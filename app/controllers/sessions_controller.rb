@@ -13,4 +13,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    log_out if logged_in?
+    flash[:primary] = t ".logout"
+    redirect_to root_url
+  end
 end

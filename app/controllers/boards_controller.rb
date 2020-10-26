@@ -59,16 +59,16 @@ class BoardsController < ApplicationController
 
   def update_board_status
     if params[:board_status].to_i.eql? Settings.data.confirm
-      @board.update_attribute :status, Settings.data.confirm
+      @board.update_column :status, Settings.data.confirm
     else
-      @board.update_attribute :status, nil
+      @board.update_column :status, nil
     end
     flash[:success] = t ".success"
     respond_to :js
   end
 
   def update_board_closed
-    @board.update_attribute :closed, params[:closed].to_i
+    @board.update_column :closed, params[:closed].to_i
     flash[:warning] = t ".closed"
     redirect_to root_path
   end

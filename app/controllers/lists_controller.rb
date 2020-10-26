@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :find_board, except: :destroy
+  before_action :find_board
   before_action :find_list, only: %i(update change_position closed_list)
   before_action :find_list_destroy, only: :destroy
   before_action :find_user_boards
@@ -41,7 +41,7 @@ class ListsController < ApplicationController
     @list.user_id = current_user.id
     old_position = @list.position
     new_position = params[:position].to_i
-    if @list.update_attribute :position, params[:position]
+    if @list.update_column :position, params[:position]
       update_list_position old_position, new_position, @board, @list.id
       flash[:success] = t ".success"
     else
