@@ -52,7 +52,9 @@
             <div class="addmember w-100">
               <%= form_with url: new_add_member_path, method: :get do |f| %>
                 <%= hidden_field_tag :board_id, @board.id %>
-                <%= email_field_tag :email, nil, class: "form-control" %>
+                <div class="ui-widget">
+                  <%= email_field_tag :email, nil, class: "form-control", id: "add-member-input" %>
+                </div>
                 <%= f.submit t(".add"), class: "btn btn-success mt-3" %>
               <% end %>
             </div>
@@ -85,7 +87,6 @@
         </div>
       </div>
     <% end %>
-  </div>
 </main>
 
 <div id="tag-modal">
@@ -96,3 +97,6 @@
 
 <div id="member-modal">
 </div>
+
+<%= content_tag :div, class: "d-none", id: "other_emails", data: {emails: @data[:other_emails]} do %>
+<% end %>

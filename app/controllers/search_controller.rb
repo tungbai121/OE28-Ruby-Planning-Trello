@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
+  before_action :user_board
+
   def index
-    @boards = Board.by_name(params[:search]).by_status true
+    @boards = @search.result(distinct: true).by_status true
   end
 end

@@ -35,7 +35,24 @@ class Board < ApplicationRecord
   scope :by_name, ->(result){where("name LIKE ?", "%#{result}%")}
   scope :by_status, ->(board_status){where status: board_status}
 
+  ransack_alias :board_info, :name_or_description
+  ransack_alias :user_info, :add_users_name_or_add_users_email
+
+  ransacker :created_at do
+    Arel.sql("date(created_at)")
+  end
+
   before_update :update_notification
+
+  class << self
+    def ransackable_attributes _auth_object = nil
+      %w(name description board_info user_info created_at)
+    end
+
+    def ransortable_attributes _auth_object = nil
+      %w(name description created_at)
+    end
+  end
 
   private
 
@@ -61,6 +78,11 @@ class Board < ApplicationRecord
       {
         attribute_change: "description",
         value: description_change[1]
+      }
+    else
+      {
+        attribute_change: "status",
+        value: "changed"
       }
     end
   end

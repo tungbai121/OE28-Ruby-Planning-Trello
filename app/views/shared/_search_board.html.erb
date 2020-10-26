@@ -1,0 +1,19 @@
+<%= link_to board_path(board), class: "board" do %>
+  <div class="col-lg-3 board-name">
+    <div class="number">
+      <span class="user-icon"><%= icon("fas", "users") %></span>
+      <%= board.add_users.size %>
+    </div>
+    <div class="name">
+      <%= board.name %>
+    </div>
+  </div>
+  <div class="col-lg-9 board-info">
+    <div class="description">
+      <small><%= board.description %></small>
+    </div>
+    <div class="created-at">
+      <small><%= board.created_at.strftime Settings.date.form %></small>
+    </div>
+  </div>
+<% end %>

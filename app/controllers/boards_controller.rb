@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   before_action :logged_in_user, :user_board
-  before_action :check_board, only: %i(show destroy)
+  before_action :check_board, only: :show
+  before_action :check_board_destroy, only: :destroy
   before_action :find_board,
                 only: %i(update update_board_status update_board_closed)
   before_action :check_member, only: %i(show update)
@@ -30,7 +31,8 @@ class BoardsController < ApplicationController
                      .available_positions
                      .order_position
                      .positions,
-      notifications: @board.notifications.order_created
+      notifications: @board.notifications.order_created,
+      other_emails: User.exclude_ids(@board.add_users.ids).pluck(:email)
     }
     @tag = Tag.new
     @checklist = Checklist.new
@@ -89,6 +91,10 @@ class BoardsController < ApplicationController
 
     flash[:danger] = t ".closed"
     redirect_to root_path
+  end
+
+  def check_board_destroy
+    @board = Board.find params[:id]
   end
 
   def find_board

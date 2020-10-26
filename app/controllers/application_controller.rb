@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  before_action :set_locale
+  before_action :set_locale, :search_data
 
   private
 
@@ -60,5 +60,9 @@ class ApplicationController < ActionController::Base
       flash[:danger] = t ".user_not_in_board"
       redirect_to root_url
     end
+  end
+
+  def search_data
+    @search = Board.includes(:add_users).ransack params[:q]
   end
 end

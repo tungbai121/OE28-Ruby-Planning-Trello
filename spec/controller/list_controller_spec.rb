@@ -97,8 +97,6 @@ RSpec.describe ListsController, type: :controller do
       it "when move increase" do
         patch :change_position, params: {id: list2.id, board_id: board2.id, list_id: list2.id, position: 2}
         list2.reload
-        list3.reload
-        list4.reload
         expect(list2.position).to eq 2
       end
 

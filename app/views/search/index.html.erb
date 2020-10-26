@@ -17,12 +17,53 @@
               <%= @boards.size %>
               <%= t ".searchresult" %>
               <span class="result">
-                "<%= params[:search] %>"
+                "<%= params[:q][:board_info_cont] %>"
               </span>
             </p>
           </div>
-          <div class="list">
-            <%= render partial: "shared/board",
+          <div class="advance-search">
+            <div class="search-btn" data-toggle="collapse" data-target="#search-form">
+              <span><%= t ".filter" %></span>
+              <%= icon "fas", "filter" %>
+            </div>
+            <div class="collapse show" id="search-form">
+              <div class="search-form-wrapper">
+                <%= search_form_for @search, {url: search_index_path, method: :get, class: "search-form"} do |f| %>
+                  <div class="board-search">
+                    <%= f.label :user_info_cont %>
+                    <%= f.search_field :name_cont, placeholder: t(".name_placeholder"), value: params[:q][:name_cont], class: "form-control" %>
+                  </div>
+                  <div class="board-search">
+                    <%= f.label :description_cont %>
+                    <%= f.search_field :description_cont, placeholder: t(".description_placeholder"), value: params[:q][:description_cont], class: "form-control" %>
+                  </div>
+                  <div class="board-search date-search">
+                    <%= f.label t(".date_search") %>
+                    <div class="date">
+                      <%= f.search_field :created_at_gteq, type: "date", value: params[:q][:created_at_gteq], class: "form-control" %>
+                      <%= f.search_field :created_at_lteq, type: "date", value: params[:q][:created_at_lteq], class: "form-control" %>
+                    </div>
+                  </div>
+                  <div class="board-search">
+                    <%= f.label :created_at_date_equals %>
+                    <%= f.search_field :created_at_date_equals, type: "date", value: params[:q][:created_at_date_equals], class: "form-control" %>
+                  </div>
+                  <div class="user-search">
+                    <%= f.label :user_info_cont %>
+                    <%= f.search_field :user_info_cont, placeholder: t(".user_placeholder"), value: params[:q][:user_info_cont], class: "form-control" %>
+                  </div>
+                  <%= button_tag icon("fas", "search"), class: "btn btn-success" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="sort">
+              <%= sort_link(@search, :name) %>
+              <%= sort_link(@search, :description) %>
+              <%= sort_link(@search, :created_at) %>
+          </div>
+          <div class="search-list">
+            <%= render partial: "shared/search_board",
               collection: @boards,
               as: :board %>
           </div>
