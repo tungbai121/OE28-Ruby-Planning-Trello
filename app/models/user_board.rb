@@ -1,7 +1,7 @@
 class UserBoard < ApplicationRecord
   PERMIT_ATTRIBUTES = %i(role_id starred).freeze
 
-  enum role_id: {leader: 0, member: 1}
+  enum role_id: {guest: -1, leader: 0, member: 1}
 
   belongs_to :user
   belongs_to :board

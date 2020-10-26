@@ -43,19 +43,6 @@ class ChecklistsController < ApplicationController
     @tag = Tag.find params[:tag_id]
   end
 
-  def check_permission
-    permission = current_user.user_boards.find_by board_id: @board.id
-    if permission
-      return if permission.leader? || permission.member?
-
-      flash[:danger] = t ".permission_denied"
-      redirect_to @board
-    else
-      flash[:danger] = t ".user_not_in_board"
-      redirect_to root_url
-    end
-  end
-
   def load_checklist
     @checklist = Checklist.find params[:id]
   end

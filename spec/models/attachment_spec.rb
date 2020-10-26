@@ -7,7 +7,7 @@ describe Attachment, type: :model do
   describe ".update_attachment_attributes" do
     before {attachment.send :update_attachment_attributes}
     it "is expected attachment name is file name" do
-      expect(attachment.name).to eql attachment.content.filename  
+      expect(attachment.name).to eql attachment.content.filename
     end
   end
 end
