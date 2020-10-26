@@ -1,5 +1,5 @@
 class TagLabelsController < ApplicationController
-  before_action :find_board, :find_tag, :find_user_boards
+  before_action :find_board, :find_tag, :check_permission
   before_action :find_relation, only: :destroy
 
   def create
@@ -9,9 +9,9 @@ class TagLabelsController < ApplicationController
       new_relations << TagLabel.new(label_id: item, tag_id: params[:tag_id])
     end
     if TagLabel.import new_relations
-      flash[:success] = t ".success"
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
     respond_to :js
   end
@@ -22,9 +22,9 @@ class TagLabelsController < ApplicationController
 
   def destroy
     if @relation.destroy
-      flash[:warning] = t ".success"
+      flash.now[:warning] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
     respond_to :js
   end

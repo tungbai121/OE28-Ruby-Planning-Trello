@@ -4,10 +4,10 @@ require File.expand_path("../config/environment", __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 
-require "rspec/rails"
 require "shoulda/matchers"
 require "support/database_cleaner"
-require "support/spec_test_helper"
+require "support/login_helper"
+require "support/permission_helper"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 begin
@@ -24,11 +24,13 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include SpecTestHelper, type: :controller
-
   config.infer_spec_type_from_file_location!
 
   config.use_transactional_fixtures = false
+
+  config.include LoginHelper, type: :controller
+
+  config.include PermissionHelper, type: :controller
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|

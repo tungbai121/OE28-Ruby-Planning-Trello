@@ -48,4 +48,17 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t ".nomember"
     redirect_to @board
   end
+
+  def check_permission
+    permission = UserBoard.find_by user_id: current_user.id, board_id: @board.id
+    if permission
+      return if permission.leader? || permission.member?
+
+      flash[:danger] = t ".permission_denied"
+      redirect_to @board
+    else
+      flash[:danger] = t ".user_not_in_board"
+      redirect_to root_url
+    end
+  end
 end

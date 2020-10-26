@@ -9,7 +9,6 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap", "~> 4.0.0"
 gem "carrierwave", "~> 2.0"
 gem "config"
-gem "execjs"
 gem "factory_bot_rails"
 gem "figaro"
 gem "font-awesome-sass", "~> 5.13.0"
@@ -19,7 +18,6 @@ gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.3"
 gem "rails-i18n"
 gem "sass-rails", ">= 6"
-gem "therubyracer"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "validates_timeliness"
@@ -45,6 +43,7 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "database_cleaner-active_record"
+  gem "execjs"
   gem "faker"
   gem "rails-controller-testing"
   gem "selenium-webdriver"
@@ -52,6 +51,7 @@ group :test do
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "simplecov-rcov"
+  gem "therubyracer"
   gem "webdrivers"
   gem "therubyracer"
   gem "execjs"

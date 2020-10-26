@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 unless defined?(Spring)
   require "rubygems"
   require "bundler"
