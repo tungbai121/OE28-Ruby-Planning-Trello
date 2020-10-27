@@ -1,0 +1,6 @@
+<%= form_for :attachment, url: board_tag_attachment_path(@board, @tag, attachment),
+  method: :patch, remote: true do |f| %>
+  <%= f.text_field :name, class: "form-control", id: nil, value: attachment.name %>
+  <%= display_error attachment, :name, t(".name") %>
+  <%= f.submit t(".change"), class: "btn btn-success" %>
+<% end %>

@@ -1,6 +1,6 @@
 <div id="checklist-<%= checkitem.id %>" class="custom-control custom-checkbox">
   <%= check_box_tag "checkitem-#{checkitem.id}", nil, checkitem.checked?, class: "custom-control-input input-box",
-  "data-url": "#{board_tag_checklist_path(@board, @tag, checkitem)}" %>
+  "data-url": "#{checked_board_tag_checklist_path(@board, @tag, checkitem)}" %>
   <%= label_tag "checkitem-#{checkitem.id}", checkitem.name, class: "custom-control-label", id: "checklist-name-#{checkitem.id}" %>
   <%= link_to icon("fas", "trash-alt"), board_tag_checklist_path(@board, @tag, checkitem),
     method: :delete, remote: true, class: "float-right" %>

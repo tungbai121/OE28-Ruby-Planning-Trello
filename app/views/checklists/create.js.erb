@@ -1,5 +1,6 @@
 <% if @checklist.errors.present? %>
   $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
+  $('#toastr').html('<%= j render "shared/toastr" %>');
 <% else %>
   $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
   $('#checklist_name').val('');
@@ -9,15 +10,4 @@
   $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
   $('.progress-bar').text('<%= progress @tag.checklists %>');
   $('.checklist-tag-<%= @tag.id %>').html('<%= j render "checklists/statistic", tag: @tag %>');
-
-  $(".input-box").change(function () {
-    $.ajax({
-      url: $(this).data('url'),
-      type: "PATCH",
-      data: {"checklist": {
-        "checked": this.checked
-      }}
-    });
-  });
 <% end %>
-$('#toastr').html('<%= j render "shared/toastr" %>');

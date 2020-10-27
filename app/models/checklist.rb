@@ -1,5 +1,5 @@
 class Checklist < ApplicationRecord
-  CHECKLIST_PARAMS = %i(name checked).freeze
+  CHECKLIST_PARAMS = %i(name).freeze
 
   belongs_to :tag
 
