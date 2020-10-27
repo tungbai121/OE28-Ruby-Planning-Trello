@@ -27,8 +27,8 @@
           </div>
         </div>
       </div>
-      <%= form_tag search_index_path, method: :get, class: "search-form" do |f| %>
-        <%= text_field_tag :search, params[:search] %>
+      <%= search_form_for @search, {url: search_index_path, method: :get, class: "search-form"} do |f| %>
+        <%= f.search_field :board_info_cont, placeholder: t(".search_placeholder") %>
         <%= button_tag icon("fas", "search") %>
       <% end %>
     </div>

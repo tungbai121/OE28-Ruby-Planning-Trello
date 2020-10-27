@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, :load_user, only: %i(show edit update)
   before_action :correct_user, only: %i(edit update)
+  before_action :user_board
 
   def show; end
 

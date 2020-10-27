@@ -23,12 +23,10 @@ en:
       settings: Settings
       logout: Logout
       search: Search
+      search_placeholder: Board name or description
     sidebar:
       board: Board
       home: Home
-  search:
-    index:
-      searchresult: search result for
   attachments:
     attachment:
       added_time: Added %{time} ago
@@ -428,6 +426,14 @@ en:
       confirm_restore: Restore this tag?
       delete: Delete
       confirm_delete: Delete this tag?
+  search:
+    index:
+      filter: Filter
+      name_placeholder: Name
+      user_placeholder: User name
+      description_placeholder: Description
+      searchresult: search result for
+      date_search: By date
 
   create: "create %{name} tag"
   update: "update %{attribute} of %{tag_name} tag to %{value}"

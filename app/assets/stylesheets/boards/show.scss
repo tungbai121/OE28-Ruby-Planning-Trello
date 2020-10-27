@@ -153,3 +153,18 @@ body {
     max-width: 50%;
   }
 }
+
+.ui-menu {
+  z-index: 10000;
+  background-color: $white;
+  width: 200px;
+  border: 1px solid $secondary;
+  padding: 10px 10px;
+  border-radius: 4px;
+  max-width: 300px;
+  overflow-y: scroll;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}

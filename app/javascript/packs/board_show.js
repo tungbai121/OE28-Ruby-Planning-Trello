@@ -1,4 +1,9 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
+  let other_emails = $('#other_emails').data('emails');
+  $('#add-member-input').autocomplete({
+    source: other_emails
+  });
+
   $('#close-menu').click(function() {
     if ($('#close-menu').hasClass('open')) {
       $('#board-menu').css('width', '0px');
