@@ -13,7 +13,7 @@
   height: 95vh;
 
   .logo {
-    height: 100px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     color: $main;
@@ -25,41 +25,40 @@
     border-radius: 5px;
     background-color: $white;
     width: 400px;
-    height: 450px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 2px $secondary;
 
-    form {
-      width: 100%;
-    }
-
-    .signup {
+    .sign {
       text-align: center;
-      padding: 10px 0px;
+      padding: 10px 0;
       color: $gray;
       font-size: 20px;
     }
 
-    input {
-      margin: 0 0 20px 0;
-    }
-
-    .submit {
-      width: 100%;
-      display: block;
-      margin: 10px 0px;
-    }
-
     .register {
+      margin: 20px;
       display: block;
       text-align: center;
+    }
+
+    .sign-up {
+      input {
+        margin-top: 20px;
+      }
+    }
+
+    .sign-in {
+      input {
+        margin-bottom: 20px;
+      }
     }
   }
 
   .language {
-    padding: 20px 0px;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
 

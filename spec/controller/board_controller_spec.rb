@@ -7,47 +7,45 @@ RSpec.describe BoardsController, type: :controller do
   let(:board_notfound) {FactoryBot.create :board, closed: true}
 
   context "As a guest" do
-    before {nil_session}
-
     describe "GET #new" do
       before {get :new}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
 
     describe "POST #create" do
       before{post :create, params: {board: board1}}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
 
     describe "GET #show" do
       before{post :create, params: {board: board1}}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
 
     describe "PATCH #update" do
       before{patch :update, params: {id: board1.id, board_id: board1.id, board: {user_id: user_1.id, name: "Updated name"}}, xhr: true}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to have_http_status(401)}
     end
 
     describe "DELETE #destroy" do
       let!(:board_destroy) {FactoryBot.create :board}
       before {delete :destroy, params: {id: board_destroy.id}}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
 
     describe "PATCH #update_board_status" do
       before {patch :update_board_status, params: {id: board1.id, board_id: board1.id, board_status: Faker::Number.between(from: 0, to: 1)}}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
 
     describe "PATCH #update_board_closed" do
       before {patch :update_board_closed, params: {id: board1.id, board_id: board1.id, board_status: Faker::Number.between(from: 0, to: 1)}}
-      it {expect(response).to redirect_to login_url}
+      it {expect(response).to redirect_to new_user_session_url}
     end
   end
 
   context "As a authenticated user" do
-    before {login user_1}
+    before {sign_in user_1}
 
     describe "GET #new" do
       before {get :new}

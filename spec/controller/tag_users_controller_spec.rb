@@ -6,7 +6,7 @@ describe TagUsersController, type: :controller do
   let(:tag) {FactoryBot.create :tag}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 

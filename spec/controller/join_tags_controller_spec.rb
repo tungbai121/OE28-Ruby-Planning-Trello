@@ -8,7 +8,7 @@ describe JoinTagsController, type: :controller do
   let(:params) {{board_id: board.id, id: tag.id}}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 

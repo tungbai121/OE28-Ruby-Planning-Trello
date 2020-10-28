@@ -7,7 +7,7 @@ describe TagLabelsController, type: :controller do
   let(:label) {FactoryBot.create :label, board_id: board.id}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 

@@ -8,7 +8,7 @@ RSpec.describe LabelsController, type: :controller do
 
   describe "POST #create" do
     context "as a authenticated user" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when valid params" do
         post :create, params: {board_id: board1.id, label: {content: "new label", board: board1}}, xhr: true
@@ -29,7 +29,7 @@ RSpec.describe LabelsController, type: :controller do
 
   describe "PATCH #update" do
     context "as a authenticated user" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when valid params" do
         patch :update, params: {id: label1.id, board_id: board1.id, label: {content: "Updated content"}}, xhr: true
@@ -54,7 +54,7 @@ RSpec.describe LabelsController, type: :controller do
     let!(:label_destroy) {FactoryBot.create :label}
 
     context "when valid params" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when valid params" do
         delete :destroy, params: {id: label_destroy.id, board_id: board1.id}, xhr: true

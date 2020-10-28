@@ -6,9 +6,7 @@ require "rspec/rails"
 
 require "shoulda/matchers"
 require "support/database_cleaner"
-require "support/login_helper"
 require "support/permission_helper"
-require "support/spec_test_helper"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 begin
@@ -25,13 +23,15 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include SpecTestHelper, type: :controller
-
   config.infer_spec_type_from_file_location!
 
   config.use_transactional_fixtures = false
 
-  config.include LoginHelper, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
+  Devise::Mailer.perform_deliveries = false
 
   config.include PermissionHelper, type: :controller
 

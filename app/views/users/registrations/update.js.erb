@@ -1,8 +1,8 @@
 <% if @user.errors.blank? %>
   $('title').html('<%= @user.name %>');
   $('#user-dropdown').html('<%= @user.name %>');
-  $('.name').html('<%= @user.name %>');
+  $('.user-name').html('<%= @user.name %>');
   $('.avatar').attr('src', '<%= @user.avatar.url %>');
 <% end %>
+$('.edit_user').html('<%= j render "users/form" %>');
 $('#toastr').html('<%= j render "shared/toastr" %>');
-$('.edit_user').html('<%= j render "form" %>');

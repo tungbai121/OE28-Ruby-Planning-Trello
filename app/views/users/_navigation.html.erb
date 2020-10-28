@@ -1,12 +1,12 @@
 <nav>
   <div class="user-info">
     <div class="user-avatar">
-      <%= image_tag current_user.avatar.url, alt: t(".avatar"), class: "rounded rounded-circle avatar" %>
+      <%= image_tag @user.avatar.url, alt: t(".avatar"), class: "rounded rounded-circle avatar" %>
       <div>
-        <div class="name">
+        <div class="user-name">
           <%= @user.name %>
         </div>
-        <div class="email">
+        <div class="user-email">
           <%= @user.email %>
         </div>
       </div>

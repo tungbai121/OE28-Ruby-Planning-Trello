@@ -7,7 +7,7 @@ describe ChecklistsController, type: :controller do
   let(:user) {FactoryBot.create :user}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 

@@ -6,7 +6,7 @@ describe TagsController, type: :controller do
   let(:user) {FactoryBot.create :user}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 
@@ -92,7 +92,7 @@ describe TagsController, type: :controller do
           post :create, params: params, xhr: true
         end
         it "is expected to redirect to root url" do
-          expect(response).to redirect_to root_url
+          expect(response).to redirect_to board
         end
       end
 

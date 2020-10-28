@@ -8,7 +8,7 @@ describe CloseTagsController, type: :controller do
   subject {tag.closed}
 
   before do
-    login user
+    sign_in user
     set_permission user, board
   end
 

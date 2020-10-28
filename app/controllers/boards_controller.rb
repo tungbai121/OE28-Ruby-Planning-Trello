@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :logged_in_user, :user_board
+  before_action :user_board
   before_action :check_board, only: :show
   before_action :check_board_destroy, only: :destroy
   before_action :find_board,

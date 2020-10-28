@@ -1,0 +1,24 @@
+<%= provide :title, t(".sign_up") %>
+
+<div class="background">
+  <div class="logo">
+    <%= icon "fas", "globe-asia" %>
+  </div>
+  <div class="form-wrapper">
+    <div class="form-group sign-up">
+      <div class="sign"><%= t ".sign_up" %></div>
+      <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {method: :post} do |f| %>
+        <%= f.text_field :name, class: "form-control", placeholder: t(".name") %>
+        <%= display_error f.object, :name, t(".name") %>
+        <%= f.email_field :email, class: "form-control", placeholder: t(".email") %>
+        <%= display_error f.object, :email, t(".email") %>
+        <%= f.password_field :password, class: "form-control", placeholder: t(".password") %>
+        <%= display_error f.object, :password, t(".password") %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: t(".confirm_password") %>
+        <%= display_error f.object, :password_confirmation, t(".password_confirmation") %>
+        <%= f.submit t(".register"), class: "btn btn-primary form-control" %>
+      <% end %>
+      <%= link_to t(".login"), new_user_session_path, class: "register" %>
+    </div>
+  </div>
+</div>

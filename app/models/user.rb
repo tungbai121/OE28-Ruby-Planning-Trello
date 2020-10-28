@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = Settings.user.email.regex
+  USER_PARAMS = %i(name avatar).freeze
 
-  USER_PARAMS = %i(name email password password_confirmation avatar).freeze
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :validatable
 
   has_many :user_boards, class_name: UserBoard.name,
     foreign_key: :user_id,
@@ -18,21 +19,10 @@ class User < ApplicationRecord
 
   delegate :url, :size, :filename, to: :avatar
 
-  validates :email, presence: true,
-    length: {maximum: Settings.user.email.length},
-    format: {with: VALID_EMAIL_REGEX},
-    uniqueness: {case_sensitive: false}
   validates :name, presence: true,
     length: {maximum: Settings.user.name.length}
-  validates :password, presence: true,
-    length: {minimum: Settings.user.password.length},
-    allow_nil: true
 
   scope :exclude_ids, ->(ids){where.not(id: ids)}
-
-  before_save :downcase_email
-
-  has_secure_password
 
   def join_board board, type
     check = type.to_i.eql? Settings.data.confirm
@@ -47,11 +37,5 @@ class User < ApplicationRecord
 
   def is_leader? board
     user_boards.user_role(id, board.id).leader?
-  end
-
-  private
-
-  def downcase_email
-    email.downcase!
   end
 end
