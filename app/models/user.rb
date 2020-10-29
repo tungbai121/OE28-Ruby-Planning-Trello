@@ -42,10 +42,6 @@ class User < ApplicationRecord
     board.user_boards.first.update_attribute(:role_id, :leader)
   end
 
-  def send_email_join board_id
-    UserMailer.user_invitation(self, board_id).deliver_now
-  end
-
   def is_leader? board
     user_boards.user_role(id, board.id).leader?
   end

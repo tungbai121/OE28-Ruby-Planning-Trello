@@ -96,6 +96,7 @@ GEM
     config (2.2.1)
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
+    connection_pool (2.2.3)
     crass (1.0.6)
     database_cleaner (1.8.5)
     database_cleaner-active_record (1.8.0)
@@ -292,6 +293,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.2)
     ref (2.0.0)
     regexp_parser (1.8.2)
     require_all (3.0.0)
@@ -355,6 +357,10 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (4.4.1)
       activesupport (>= 4.2.0)
+    sidekiq (6.1.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -446,6 +452,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers
+  sidekiq
   simplecov
   simplecov-rcov
   spring
