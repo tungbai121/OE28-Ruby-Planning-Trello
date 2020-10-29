@@ -54,6 +54,17 @@
       input {
         margin-bottom: 20px;
       }
+
+      .or-text {
+        display: block;
+        text-align: center;
+        color: $gray;
+      }
+
+      .btn-sign-in {
+        margin: 10px 0;
+        font-weight: bold;
+      }
     }
   }
 

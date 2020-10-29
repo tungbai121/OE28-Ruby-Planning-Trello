@@ -84,6 +84,7 @@ en:
         remember_me: Remember me
         remember: Remember
         login: Login
+        or: or
         register: Has no account yet? Sign up now
         forgot: Forgot password?
     unlocks:
