@@ -1,5 +1,5 @@
 class CheckedChecklistsController < ChecklistsController
-  before_action :logged_in_user, :load_data, :load_checklist,
+  before_action :load_data, :load_checklist,
                 :check_permission, only: :update
 
   def update

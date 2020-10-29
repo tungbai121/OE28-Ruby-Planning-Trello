@@ -7,5 +7,6 @@ FactoryBot.define do
     f.admin {Faker::Boolean.boolean}
     f.password {"password"}
     f.password_confirmation {"password"}
+    f.confirmed_at {Date.today}
   end
 end

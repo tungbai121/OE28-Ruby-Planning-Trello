@@ -10,7 +10,7 @@ RSpec.describe UserBoardsController, type: :controller do
   let(:board_notfound) {FactoryBot.create :board, closed: true}
 
   describe "PATCH #update" do
-    before {login user_1}
+    before {sign_in user_1}
     subject(:relation2_role) {user_board2.role_id}
     subject(:relation1_role) {user_board.role_id}
 

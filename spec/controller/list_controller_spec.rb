@@ -13,7 +13,7 @@ RSpec.describe ListsController, type: :controller do
 
   describe "POST #create" do
     context "as a authenticated user" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when valid params" do
         post :create, params: {board_id: board1.id, list: {name: "new list"}}
@@ -39,7 +39,7 @@ RSpec.describe ListsController, type: :controller do
   end
 
   describe "PATCH #update" do
-    before {login user_1}
+    before {sign_in user_1}
 
     context "as a authenticated user" do
       it "when valid params" do
@@ -81,7 +81,7 @@ RSpec.describe ListsController, type: :controller do
     let!(:list_destroy) {FactoryBot.create :list}
 
     context "when valid params" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when valid params" do
         delete :destroy, params: {id: list_destroy.id, board_id: board1.id}, xhr: true
@@ -92,7 +92,7 @@ RSpec.describe ListsController, type: :controller do
 
   describe "PATCH #change_position" do
     context "when valid params" do
-      before {login user_1}
+      before {sign_in user_1}
 
       it "when move increase" do
         patch :change_position, params: {id: list2.id, board_id: board2.id, list_id: list2.id, position: 2}
@@ -111,7 +111,7 @@ RSpec.describe ListsController, type: :controller do
   describe "PATCH #closed_list" do
     context "when valid params" do
       before do
-        login user_1
+        sign_in user_1
         patch :closed_list, params: {id: list2.id, board_id: board2.id, list_id: list2.id}
       end
 

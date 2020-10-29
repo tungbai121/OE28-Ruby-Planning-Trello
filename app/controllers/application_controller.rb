@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  before_action :set_locale, :search_data
+  before_action :set_locale, :authenticate_user!, :search_data
+
+  def self.default_url_options options = {}
+    options.merge locale: I18n.locale
+  end
 
   private
 
@@ -14,10 +18,6 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def default_url_options
-    {locale: I18n.locale}
-  end
-
   def user_board
     opened_board = Board.opened
     @favorite_boards = opened_board.favorite current_user.id
@@ -26,14 +26,6 @@ class ApplicationController < ActionController::Base
 
   def user_params
     params.require(:user).permit User::USER_PARAMS
-  end
-
-  def logged_in_user
-    return if logged_in?
-
-    store_location
-    flash[:danger] = t ".please_log_in"
-    redirect_to login_url
   end
 
   def load_notifications
@@ -55,11 +47,10 @@ class ApplicationController < ActionController::Base
       return if permission.leader? || permission.member?
 
       flash[:danger] = t ".permission_denied"
-      redirect_to @board
     else
       flash[:danger] = t ".user_not_in_board"
-      redirect_to root_url
     end
+    redirect_to @board
   end
 
   def search_data

@@ -1,0 +1,27 @@
+<%= provide :title, t(".sign_in") %>
+
+<div class="background">
+  <div class="logo">
+    <%= icon "fas", "globe-asia" %>
+  </div>
+  <div class="form-wrapper">
+    <div class="form-group sign-in">
+      <div class="sign"><%= t ".sign_in" %></div>
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: {method: :post} do |f| %>
+        <%= f.label :email, t(".email") %>
+        <%= f.email_field :email, placeholder: t(".enter_email"), class: "form-control" %>
+        <%= f.label :password, t(".password") %>
+        <%= f.password_field :password, placeholder: t(".enter_password"), class: "form-control" %>
+        <span>
+          <%= f.label :remember_me, t(".remember_me"), class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span><%= t ".remember" %></span>
+        <% end %>
+          <%= link_to t(".forgot"), new_user_password_path, class: "float-right" %>
+        </span>
+        <%= f.submit t(".login"), class: "btn btn-primary form-control" %>
+      <% end %>
+      <%= link_to t(".register"), new_user_registration_path, class: "register" %>
+    </div>
+  </div>
+</div>

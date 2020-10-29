@@ -1,0 +1,20 @@
+<%= provide :title, t(".recover_password") %>
+
+<div class="background">
+  <div class="logo">
+    <%= icon "fas", "globe-asia" %>
+  </div>
+  <div class="form-wrapper">
+    <div class="form-group sign-up">
+      <div class="sign"><%= t ".recover_password" %></div>
+      <%= form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :patch} do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+        <%= f.password_field :password, autofocus: true, placeholder: t(".enter_new_password"), class: "form-control" %>
+        <%= display_error f.object, :password, t(".password") %>
+        <%= f.password_field :password_confirmation, placeholder: t(".confirm_new_password"), class: "form-control" %>
+        <%= display_error f.object, :password_confirmation, t(".password_confirmation") %>
+        <%= f.submit t(".save_change"), class: "btn btn-primary form-control" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,17 +2,24 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
 
-    get "/login", to: "sessions#new", as: "login"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy", as: "logout"
+    devise_for :users, controllers: {
+      registrations: "users/registrations",
+      confirmations: "users/confirmations",
+      sessions: "users/sessions",
+      passwords: "users/passwords"
+    }
 
-    get "/register", to: "registers#new", as: "register"
-    post "/register", to: "registers#create"
+    devise_scope :user do
+      get "/sign_up", to: "registrations#new"
+      get "/sign_in", to: "sessions#new"
+      get "/recover_password", to: "passwords#new"
+    end
 
-    resources :users, only: %i(show edit update) do
+    resources :users, only: :show do
       resources :activities, only: :index
       resources :closed, only: :index
     end
+
     resources :boards do
       resource :tag_labels, only: %i(create edit destroy)
       post "labels/create", to: "labels#create", as: "create_label"

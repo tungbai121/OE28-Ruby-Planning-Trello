@@ -1,6 +1,5 @@
 class CloseTagsController < ApplicationController
-  before_action :logged_in_user, :load_data,
-                :check_permission, only: %i(create destroy)
+  before_action :load_data, :check_permission, only: %i(create destroy)
   def create
     if @tag.update closed: true, position: nil
       flash.now[:success] = t ".success"

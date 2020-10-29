@@ -287,12 +287,14 @@ en:
     form:
       name: Name
       bio: Bio
-      save: Save
+      save_change: Save change
       change_password: Change password
       password: Password
-      confirm_password: Confirm password
+      enter_new_password: Enter new password
+      confirm_new_password: Confirm new password
       password_confirmation: Password Confirmation
-      change: Change
+      current_password: Current password
+      enter_current_password: Enter current password
     info:
       heading: Manage your personal information
       description: Here's where you can change your profile information and find out what users and other Power-Ups will be able to see. To learn more, see our Terms of Service or Privacy Policy.
