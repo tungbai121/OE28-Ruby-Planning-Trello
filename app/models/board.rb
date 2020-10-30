@@ -39,7 +39,7 @@ class Board < ApplicationRecord
   ransack_alias :user_info, :add_users_name_or_add_users_email
 
   ransacker :created_at do
-    Arel.sql("date(created_at)")
+    Arel.sql("date(boards.created_at)")
   end
 
   before_update :update_notification

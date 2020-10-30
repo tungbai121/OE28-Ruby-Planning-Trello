@@ -3,7 +3,7 @@ class AddMembersController < ApplicationController
   before_action :find_board, only: :edit
 
   def new
-    @user.send_email_join @board.id
+    UserWorker.perform_async @user.id, @board.id
     flash[:success] = t ".success"
     redirect_to @board
   end
