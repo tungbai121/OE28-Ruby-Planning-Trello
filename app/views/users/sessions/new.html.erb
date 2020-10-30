@@ -9,18 +9,22 @@
       <div class="sign"><%= t ".sign_in" %></div>
       <%= form_for resource, as: resource_name, url: session_path(resource_name), html: {method: :post} do |f| %>
         <%= f.label :email, t(".email") %>
-        <%= f.email_field :email, placeholder: t(".enter_email"), class: "form-control" %>
+        <%= f.email_field :email, placeholder: t(".enter_email"), class: "form-control input-box" %>
         <%= f.label :password, t(".password") %>
-        <%= f.password_field :password, placeholder: t(".enter_password"), class: "form-control" %>
-        <span>
+        <%= f.password_field :password, placeholder: t(".enter_password"), class: "form-control input-box" %>
+        <span class="mb-10px">
           <%= f.label :remember_me, t(".remember_me"), class: "checkbox inline" do %>
           <%= f.check_box :remember_me %>
           <span><%= t ".remember" %></span>
         <% end %>
           <%= link_to t(".forgot"), new_user_password_path, class: "float-right" %>
         </span>
-        <%= f.submit t(".login"), class: "btn btn-primary form-control" %>
+        <%= f.submit t(".login"), class: "btn btn-primary form-control btn-sign-in" %>
       <% end %>
+      <span class="or-text"><%= t(".or") %></span>
+      <div class="text-center btn-sign-in">
+        <%= link_to image_tag("btn_google_signin_dark_normal_web.png"), user_google_oauth2_omniauth_authorize_path %>
+      </div>
       <%= link_to t(".register"), new_user_registration_path, class: "register" %>
     </div>
   </div>

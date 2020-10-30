@@ -30,4 +30,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def correct_user
     redirect_to resource unless current_user? resource
   end
+
+  def update_resource resource, params
+    resource.update_without_password params
+  end
 end
