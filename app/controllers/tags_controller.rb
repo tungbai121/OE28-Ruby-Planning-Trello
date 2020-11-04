@@ -4,6 +4,8 @@ class TagsController < ApplicationController
   before_action :load_tag, only: %i(edit update destroy)
   before_action :load_notifications, only: %i(create update destroy)
 
+  authorize_resource
+
   def create
     @tag = @list.tags.build tag_params.merge(position: position)
     @tag.user_id = current_user.id

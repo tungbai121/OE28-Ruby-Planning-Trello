@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe BoardsController, type: :controller do
   let(:user_1) {FactoryBot.create :user}
   let(:board1) {FactoryBot.create :board}
-  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1}
+  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1, role_id: 0}
   let(:board_notfound) {FactoryBot.create :board, closed: true}
 
   context "As a guest" do
@@ -104,6 +104,7 @@ RSpec.describe BoardsController, type: :controller do
     describe "DELETE #destroy" do
       context "when valid params" do
         let!(:board_destroy) {FactoryBot.create :board}
+        let!(:user_board_destroy) {FactoryBot.create :user_board, user: user_1, board: board_destroy, role_id: 0}
 
         it "when valid params" do
           delete :destroy, params: {id: board_destroy.id}, xhr: true
@@ -113,6 +114,7 @@ RSpec.describe BoardsController, type: :controller do
 
       context "when invalid params" do
         let!(:board_destroy_2) {FactoryBot.create :board}
+        let!(:user_board_destroy2) {FactoryBot.create :user_board, user: user_1, board: board_destroy_2, role_id: 0}
 
         before do
           allow_any_instance_of(Board).to receive(:destroy).and_return false

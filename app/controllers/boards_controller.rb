@@ -7,6 +7,8 @@ class BoardsController < ApplicationController
   before_action :check_member, only: %i(show update)
   before_action :load_notifications, only: :update
 
+  authorize_resource
+
   def new
     @board = Board.new
   end
