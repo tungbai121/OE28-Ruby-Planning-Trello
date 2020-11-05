@@ -3,6 +3,8 @@ class LabelsController < ApplicationController
   before_action :find_label, except: :create
   before_action :load_labels
 
+  authorize_resource
+
   def create
     @label = @board.labels.build label_params
     if @label.save

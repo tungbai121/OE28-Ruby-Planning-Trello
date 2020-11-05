@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe LabelsController, type: :controller do
   let(:user_1) {FactoryBot.create :user}
   let(:board1) {FactoryBot.create :board}
-  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1}
+  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1, role_id: 0}
   let(:label1) {FactoryBot.create :label, board: board1}
 
   describe "POST #create" do
@@ -51,7 +51,7 @@ RSpec.describe LabelsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    let!(:label_destroy) {FactoryBot.create :label}
+    let!(:label_destroy) {FactoryBot.create :label, board: board1}
 
     context "when valid params" do
       before {sign_in user_1}

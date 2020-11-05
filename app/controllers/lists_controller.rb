@@ -4,6 +4,8 @@ class ListsController < ApplicationController
   before_action :find_list_destroy, only: :destroy
   before_action :find_user_boards
 
+  authorize_resource
+
   def create
     @list = @board.lists.build list_params
     @list.user_id = current_user.id

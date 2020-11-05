@@ -6,16 +6,18 @@
     </div>
     <div class="description"><%= board.description %></div>
   </div>
-  <div class="modify">
-    <%= link_to t(".restore"), board_path(board.id, board: {closed: false}, board_id: board.id),
-      class: "btn btn-success",
-      method: :patch,
-      data: {confirm: t(".confirm")},
-      remote: true %>
-    <%= link_to t(".delete"), board_path(board.id),
-      class: "btn btn-danger ml-2",
-      method: :delete,
-      data: {confirm: t(".confirm")},
-      remote: true %>
-  </div>
+  <% if can? :update, board %>
+    <div class="modify">
+      <%= link_to t(".restore"), board_path(board.id, board: {closed: false}, board_id: board.id),
+        class: "btn btn-success",
+        method: :patch,
+        data: {confirm: t(".confirm")},
+        remote: true %>
+      <%= link_to t(".delete"), board_path(board.id),
+        class: "btn btn-danger ml-2",
+        method: :delete,
+        data: {confirm: t(".confirm")},
+        remote: true %>
+    </div>
+  <% end %>
 </div>

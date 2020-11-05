@@ -14,7 +14,9 @@
           value: "#{@board.description}",
           class: "form-control",
           id: "board-description-value" %>
-        <%= f.submit t(".description_btn"), class: "btn btn-success mt-3" %>
+        <% if can? :update, @board %>
+          <%= f.submit t(".description_btn"), class: "btn btn-success mt-3" %>
+        <% end %>
       <% end %>
     </div>
     <div class="item label-wrapper">

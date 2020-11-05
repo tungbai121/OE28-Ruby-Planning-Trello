@@ -4,8 +4,8 @@ RSpec.describe ListsController, type: :controller do
   let(:user_1) {FactoryBot.create :user}
   let(:board1) {FactoryBot.create :board}
   let(:board2) {FactoryBot.create :board}
-  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1}
-  let!(:user_board2) {FactoryBot.create :user_board, user: user_1, board: board2}
+  let!(:user_board) {FactoryBot.create :user_board, user: user_1, board: board1, role_id: 0}
+  let!(:user_board2) {FactoryBot.create :user_board, user: user_1, board: board2, role_id: 1}
   let!(:list2) {FactoryBot.create :list, position: 0, board: board2}
   let!(:list3) {FactoryBot.create :list, position: 1, board: board2}
   let!(:list4) {FactoryBot.create :list, position: 2, board: board2}
@@ -78,7 +78,7 @@ RSpec.describe ListsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    let!(:list_destroy) {FactoryBot.create :list}
+    let!(:list_destroy) {FactoryBot.create :list, board: board1}
 
     context "when valid params" do
       before {sign_in user_1}
