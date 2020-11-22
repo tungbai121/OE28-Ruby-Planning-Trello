@@ -47,7 +47,7 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "database_cleaner-active_record"
-  gem "execjs"
+  # gem "execjs"
   gem "faker"
   gem "rails-controller-testing"
   gem "selenium-webdriver"
@@ -55,6 +55,6 @@ group :test do
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "simplecov-rcov"
-  gem "therubyracer"
+  # gem "therubyracer"
   gem "webdrivers"
 end

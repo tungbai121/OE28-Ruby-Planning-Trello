@@ -1,0 +1,10 @@
+host: "localhost:3000"
+host_email: "automailer@mailtrap.io"
+mail_user_name: "196af58c8e6479"
+mail_user_password: "9b2febf725c5fd"
+mail_address: "smtp.mailtrap.io"
+mail_domain: "smtp.mailtrap.io"
+mail_port: "2525"
+mail_authentication: "cram_md5"
+GOOGLE_CLIENT_ID: 511059659026-14s6ud1dm1cddr8roshka9te2b7lplgg.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET: U7knevuFMf8RnkfgoBAzT3jY

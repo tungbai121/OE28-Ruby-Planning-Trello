@@ -1,11 +1,11 @@
 class ChecklistsController < ApplicationController
   before_action :load_data, :check_permission, only: %i(create update destroy)
-  before_action :load_checklist, only: %i(update destroy)
+  before_action :find_checklist, only: %i(update destroy)
 
   authorize_resource
 
   def create
-    @checklist = @tag.checklists.build checklist_params
+    @checklist = @card.checklists.build checklist_params
 
     if @checklist.save
       flash.now[:success] = t ".success"
@@ -41,10 +41,10 @@ class ChecklistsController < ApplicationController
 
   def load_data
     @board = Board.find params[:board_id]
-    @tag = Tag.find params[:tag_id]
+    @card = Card.find params[:card_id]
   end
 
-  def load_checklist
+  def find_checklist
     @checklist = Checklist.find params[:id]
   end
 end

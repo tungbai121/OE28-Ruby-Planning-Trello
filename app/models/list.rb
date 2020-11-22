@@ -3,7 +3,7 @@ class List < ApplicationRecord
 
   attr_accessor :user_id
 
-  has_many :tags, ->{order :position}, dependent: :destroy
+  has_many :cards, ->{order :position}, dependent: :destroy
   belongs_to :board
 
   validates :name, presence: true,
@@ -23,36 +23,36 @@ class List < ApplicationRecord
   scope :positions, ->{select :position}
   scope :order_position, ->{order position: :asc}
   scope :closed_lists, ->(board_ids){where board_id: board_ids, closed: true}
-  scope :order_created, ->{order created_at: :desc}
+  scope :order_by_created_at, ->{order created_at: :desc}
 
-  after_create :create_notification
-  before_update ->{update_notification("name", name_change[1])},
+  after_create :create_activity
+  before_update ->{update_activity("name", name_change[1])},
                 if: :will_save_change_to_name?
-  before_update ->{update_notification("position", position_change[1].to_s)},
+  before_update ->{update_activity("position", position_change[1].to_s)},
                 if: :will_save_change_to_position?
 
   private
 
-  def create_notification
-    notification = board.notifications.build user_id: user_id
-    notification.content = [
+  def create_activity
+    activity = board.activities.build user_id: user_id
+    activity.action = [
       I18n.t(".lists.create.noti_create"),
       I18n.t(".lists.create.list"),
       name
     ].join(" ")
-    notification.save
+    activity.save
   end
 
-  def update_notification attribute, new_value
-    notification = board.notifications.build user_id: user_id
-    notification.content = [
+  def update_activity attribute, new_value
+    activity = board.activities.build user_id: user_id
+    activity.action = [
       I18n.t(".lists.create.noti_update"),
       I18n.t(".lists.create.list"),
       attribute,
       I18n.t(".lists.create.to"),
       new_value
     ].join(" ")
-    notification.save
+    activity.save
   end
 
   class << self

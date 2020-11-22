@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :find_board
   before_action :find_list, only: %i(update change_position closed_list)
   before_action :find_list_destroy, only: :destroy
-  before_action :find_user_boards
+  before_action :check_permission
 
   authorize_resource
 
@@ -35,7 +35,7 @@ class ListsController < ApplicationController
     else
       flash[:danger] = t ".fail"
     end
-    @closed_list = List.closed_lists current_user.join_boards.ids
+    @closed_list = List.closed_lists current_user.boards.ids
     respond_to :js
   end
 

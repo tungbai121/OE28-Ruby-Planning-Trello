@@ -1,7 +1,7 @@
-<% if @tag.errors.present? %>
+<% if @card.errors.present? %>
   $('#toastr').html('<%= j render "shared/toastr" %>');
 <% else %>
-  $('#deadline-status').text('(<%= deadline_status @tag %>)');
-  $('#deadline-status')[0].className = '<%= deadline_status @tag %>';
-  $('#deadline-tag-<%= @tag.id %>').html('<%= j render "deadlines/short_deadline", tag: @tag %>');
+  $('#deadline-status').text('(<%= deadline_status @card %>)');
+  $('#deadline-status')[0].className = '<%= deadline_status @card %>';
+  $('#deadline-card-<%= @card.id %>').html('<%= j render "deadlines/short_deadline", card: @card %>');
 <% end %>

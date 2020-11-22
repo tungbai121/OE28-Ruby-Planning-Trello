@@ -1,13 +1,13 @@
 class ActivitiesController < ApplicationController
-  before_action :load_user, only: %i(index)
+  before_action :find_user, only: %i(index)
 
   def index
-    @activities = current_user.notifications.order_created
+    @activities = current_user.activities.order_by_created_at
   end
 
   private
 
-  def load_user
+  def find_user
     @user = User.find params[:user_id]
   end
 end

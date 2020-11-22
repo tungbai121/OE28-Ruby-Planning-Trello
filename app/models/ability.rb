@@ -5,7 +5,7 @@ class Ability
     user_abilities user
     board_abilities user
     list_abilities user
-    tag_abilities user
+    card_abilities user
 
     can :manage, Label
     cannot %i(create update destroy), Label do |label|
@@ -14,7 +14,7 @@ class Ability
 
     can :manage, Checklist
     cannot %i(create update destroy), Checklist do |checklist|
-      UserBoard.user_role(user.id, checklist.tag.list.board.id).blank?
+      UserBoard.user_role(user.id, checklist.card.list.board.id).blank?
     end
   end
 
@@ -35,10 +35,10 @@ class Ability
     end
   end
 
-  def tag_abilities user
-    can :manage, Tag
-    cannot %i(create update destroy), Tag do |tag|
-      UserBoard.user_role(user.id, tag.list.board.id).blank?
+  def card_abilities user
+    can :manage, Card
+    cannot %i(create update destroy), Card do |card|
+      UserBoard.user_role(user.id, card.list.board.id).blank?
     end
   end
 

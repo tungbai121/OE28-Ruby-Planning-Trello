@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %></title>
+    <title><%= full_title yield :title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render "layouts/css_page" %>
@@ -12,8 +12,14 @@
   </head>
 
   <body>
-    <%= render "layouts/header" if user_signed_in? %>
-    <%= render "shared/toastr" %>
-    <%= yield %>
+    <div class="planning-root">
+      <div class="root-container">
+        <div class="root-content">
+          <%= render "layouts/header" if user_signed_in? %>
+          <%= render "shared/toastr" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

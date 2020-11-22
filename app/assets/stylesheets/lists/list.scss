@@ -1,95 +1,83 @@
-@import 'tags/show';
-@import 'tags/edit';
+@import 'cards/show';
+@import 'cards/edit';
 
-ul li {
-  list-style-type: none;
-}
+.list-wrapper {
+  width: 270px;
+  margin: 0 5px;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
 
-.board-list {
-  align-self: flex-start;
-  box-shadow: $shadow 0 0 10px;
-  width: 20%;
-  margin: 15px 15px 0 0;
-  padding: 10px 10px;
-  background-color: rgba($color: $secondary, $alpha: 0.9);
-  border-radius: 3px;
-
-  .header {
-    justify-content: space-between;
+  .list-content {
+    box-shadow: $shadow 0 0 10px;
+    background-color: rgba($color: $secondary, $alpha: 0.9);
+    border-radius: 3px;
     display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
 
-    .list-menubtn {
-      padding: 5px 5px;
-      border-radius: 2px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $lightblue;
-      }
-    }
-  }
-
-  .add {
-    .add-btn {
+    .list-header {
+      justify-content: space-between;
+      display: inline-flex;
       padding: 5px 0;
-      margin: 5px 0;
-      border-radius: 3px;
       cursor: pointer;
 
-      i {
-        padding-left: 20px;
-        margin-right: 5px;
+      .list-name {
+        margin-left: 20px;
+        span {
+          font-weight: bold;
+          font-size: large;
+        }
       }
 
-      &:hover {
-        background-color: $white;
+      .list-header-extras {
+        margin: 0 5px;
+        .list-menubtn {
+          border-radius: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $grayitemhover;
+          }
+
+          i {
+            padding: 0 8px;
+            font-style: normal;
+            font-size: 12px;
+            color: rgb(77, 74, 74);
+          }
+        }
       }
     }
 
-    input {
-      margin: 10px 0;
+    .list-add-card {
+      padding: 0 5px;
+
+      .add-btn {
+        padding: 5px 5px;
+        margin: 5px 0 5px 0;
+        border-radius: 3px;
+        cursor: pointer;
+
+        i {
+          margin-right: 5px;
+        }
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+
+      .btn {
+        margin: 5px 2px;
+      }
     }
   }
 }
 
-.list-add {
-  width: 20%;
-  background-color: $secondary;
-  margin: 15px 15px 0 0;
-  padding: 0;
-  height: 50px;
-  border-radius: 4px;
-  align-items: center;
-  transition: 0.2s;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $gray;
-  }
-
-  .add-btn {
-    padding: 0 10px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-
-  button{
-    margin-top: 5px;
-    width: 100%;
-  }
-}
-
-.sortable-placeholder {
-  border: 1px dashed $border-tag-placeholder;
-  background-color: $bg-tag-placeholder;
-}
-
-.label-select-wrapper {
-  width: 100%;
-
-  .label-select {
-    padding: 10px 15px;
-  }
+.list-sortable-placeholder {
+  background: rgba(0, 0, 0, 0.274);
 }

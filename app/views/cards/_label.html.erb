@@ -1,0 +1,10 @@
+<div class="label">
+  <div class="content">
+    <%= label.content %>
+  </div>
+  <%= link_to t(".labeldelete"),
+    board_card_labels_path(@board, label_id: label.id, card_id: card_id),
+    method: :delete,
+    class: "delete",
+    remote: true %>
+</div>

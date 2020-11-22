@@ -1,0 +1,46 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag "cards/edit", "data-turbolinks-track": "reload" %>
+<% end %>
+
+<div id="edit-card-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t ".edit_card" %> - <%= @card.list.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <%= render "cards/info", card: @card %>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="form-wrapper">
+                <div id="edit_card">
+                  <%= render "cards/edit_form", card: @card %>
+                </div>
+                <%= render "cards/checklist", checklists: @card.checklists %>
+                <%= render partial: "cards/attachment", locals: {card: @card, attachment: @attachment} %>
+              </div>
+            </div>
+            <div class='col-lg-4'>
+              <div class="edit-wrapper">
+                <% if @card.users.include? current_user %>
+                  <%= link_to t(".leave_card"), leave_board_card_path(@board, @card), method: :delete, class: "btn btn-danger join-leave" %>
+                <% else %>
+                  <%= link_to t(".join_card"), join_board_card_path(@board, @card), method: :post, class: "btn btn-success join-leave" %>
+                <% end %>
+                <%= render "cards/assignment" %>
+                <%= render "cards/add_label" %>
+                <%= render "cards/deadline" %>
+              </div>
+              <%= link_to t(".close_card"), close_board_card_path(@board, @card, list_id: @card.list.id), method: :post, remote: true, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -86,7 +86,7 @@ describe Tag, type: :model do
 
   describe "callbacks" do
     describe "create" do
-      it {is_expected.to callback(:create_notification).after :create}
+      it {is_expected.to callback(:create_activity).after :create}
     end
 
     describe "update" do

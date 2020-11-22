@@ -88,7 +88,7 @@ describe TagsController, type: :controller do
 
       context "when user has not joined the board" do
         before do
-          board.add_users.delete user
+          board.users.delete user
           post :create, params: params, xhr: true
         end
         it "is expected to redirect to root url" do

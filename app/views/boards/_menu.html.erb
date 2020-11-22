@@ -3,7 +3,9 @@
     <p><%= t ".menu" %></p>
     <p id="close-menu"><%= t ".close" %></p>
   </div>
+
   <div class="dropdown-divider"></div>
+
   <div class="content">
     <div class="item description-wrapper">
       <div class="description" data-toggle="collapse" data-target="#board-description"><%= t ".description" %></div>
@@ -19,6 +21,7 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="item label-wrapper">
       <div class="label" data-toggle="collapse" data-target="#board-label"><%= t ".label" %></div>
       <div class="collapse" id="board-label">
@@ -26,30 +29,19 @@
       </div>
       <%= render "labels/add", label: @label %>
     </div>
-    <div class="item search-wrapper">
-      <div class="dropdown">
-        <button class="dropdown-toggle add-btn"
-          type="button"
-          id="dropdownSearch"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-          <%= t ".searchlabel" %>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownSearch">
-          <div>
-            <input type="text">
-            <button class="btn btn-success"><%= t ".search" %></button>
-          </div>
-        </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div class="activities">
+      <div id="noti">
+        <%= render partial: "boards/activity", collection: @data[:activities], as: :activity %>
       </div>
     </div>
-    <%= link_to t(".closed"), board_closed_path(board_id: @board.id, closed: Settings.data.confirm), class: "btn btn-danger", method: :patch %>
-    <div class="notifications">
-      <div class="dropdown-divider"></div>
-      <div id="noti">
-        <%= render partial: "boards/notification", collection: @data[:notifications], as: :notification %>
-      </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div class="close-board">
+      <%= link_to t(".closed"), board_closed_path(board_id: @board.id, closed: Settings.data.confirm), class: "btn btn-danger", method: :patch %>
     </div>
   </div>
 </article>

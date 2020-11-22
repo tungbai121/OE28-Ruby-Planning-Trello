@@ -22,7 +22,7 @@
       <div id="edit-attachment-<%= attachment.id %>" class="dropdown-menu">
         <%= render "attachments/edit_form", attachment: attachment %>
       </div>
-      <%= link_to t(".delete"), board_tag_attachment_path(@board, @tag, attachment), method: :delete, data: {confirm: t(".confirm")}, remote: true, class: "" %>
+      <%= link_to t(".delete"), board_card_attachment_path(@board, @card, attachment), method: :delete, data: {confirm: t(".confirm")}, remote: true, class: "" %>
     </div>
   </div>
 </div>

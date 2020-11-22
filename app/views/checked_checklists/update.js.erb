@@ -1,7 +1,7 @@
 <% if @checklist.errors.present? %>
   $('#toastr').html('<%= j render "shared/toastr" %>');
 <% else %>
-  $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
-  $('.progress-bar').text('<%= progress @tag.checklists %>');
-  $('.checklist-tag-<%= @tag.id %>').html('<%= j render "checklists/statistic", tag: @tag %>');
+  $('.progress-bar').css('width', '<%= progress @card.checklists %>');
+  $('.progress-bar').text('<%= progress @card.checklists %>');
+  $('.checklist-card-<%= @card.id %>').html('<%= j render "checklists/statistic", card: @card %>');
 <% end %>

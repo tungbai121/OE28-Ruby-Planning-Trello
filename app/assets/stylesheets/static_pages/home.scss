@@ -1,4 +1,5 @@
 @import 'color';
+@import 'layouts/sidebar';
 
 .board-list {
   padding: 10px 0px;
@@ -81,6 +82,6 @@
 }
 
 body {
+  background: asset_url("david-talley-RoXrHRQw-Mc-unsplash.jpg") no-repeat center center fixed;
   background-size: cover;
-  background-image: asset_url("david-talley-RoXrHRQw-Mc-unsplash.jpg");
 }

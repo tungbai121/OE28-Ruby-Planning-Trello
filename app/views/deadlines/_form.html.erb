@@ -1,6 +1,6 @@
-<%= form_for :tag, url: board_tag_deadline_path(@board, @tag), method: :post, remote: true do |f| %>
+<%= form_for :card, url: board_card_deadline_path(@board, @card), method: :post, remote: true do |f| %>
   <%= f.label :deadline, t(".deadline") %>
   <%= f.datetime_field :deadline, class: "form-control" %>
-  <%= display_error @tag, :deadline, t(".deadline") %>
+  <%= display_error @card, :deadline, t(".deadline") %>
   <%= f.submit t(".set_deadline"), class: "btn btn-success form-inline" %>
 <% end %>

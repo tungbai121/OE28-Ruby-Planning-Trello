@@ -1,8 +1,8 @@
 <div id="checklist-<%= checkitem.id %>" class="custom-control custom-checkbox">
   <%= check_box_tag "checkitem-#{checkitem.id}", nil, checkitem.checked?, class: "custom-control-input input-box",
-  "data-url": "#{checked_board_tag_checklist_path(@board, @tag, checkitem)}" %>
+  "data-url": "#{checked_board_card_checklist_path(@board, @card, checkitem)}" %>
   <%= label_tag "checkitem-#{checkitem.id}", checkitem.name, class: "custom-control-label", id: "checklist-name-#{checkitem.id}" %>
-  <%= link_to icon("fas", "trash-alt"), board_tag_checklist_path(@board, @tag, checkitem),
+  <%= link_to icon("fas", "trash-alt"), board_card_checklist_path(@board, @card, checkitem),
     method: :delete, remote: true, class: "float-right" %>
   <div class="dropdown float-right">
     <%= link_to icon("fas", "pencil-alt"), nil, class: "mr-3 dropdown", role: :button, "data-toggle": :dropdown, "aria-haspopup": true, "aria-expanded": false %>

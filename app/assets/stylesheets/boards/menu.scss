@@ -1,16 +1,14 @@
 @import 'color';
 
 #board-menu {
-  border-radius: 4px 0px 0px 4px;
   position: fixed;
-  right: 0px;
-  top: 80px;
-  height: 90vh;
-  width: 0px;
-  z-index: 1000;
+  right: 0;
+  height: 100%;
+  width: 0;
   background-color: $white;
-  padding: 0px;
+  padding: 0;
   transition: 0.3s;
+  z-index: 1000;
 
   .header {
     display: flex;
@@ -29,14 +27,15 @@
 
   .content {
     .item {
-      padding: 10px 0px;
-      margin: 10px 0px;
+      padding: 10px 0;
+      margin: 10px 0;
     }
 
     .description-wrapper {
       .description {
         border-radius: 4px;
         padding: 5px 10px;
+        cursor: pointer;
 
         &:hover {
           background-color: $secondary;
@@ -116,11 +115,11 @@
       }
     }
 
-    .notifications{
+    .activities{
       max-height: 400px;
       overflow-y: auto;
 
-      .notification {
+      .activity {
         border-radius: 3px;
         padding: 10px 10px;
         margin-top: 5px;
@@ -132,6 +131,11 @@
           }
         }
       }
+    }
+
+    .close-board {
+      text-align: center;
+      margin: 80px auto;
     }
   }
 }

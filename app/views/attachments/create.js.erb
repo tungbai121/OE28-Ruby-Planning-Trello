@@ -1,7 +1,7 @@
 <% if @attachment.errors.blank? %>
   $('#attachments').addClass('show');
   $('<%= j render "attachments/attachment", attachment: @attachment %>').prependTo('#attachment-list');
-  $('#attachments-tag-<%= @tag.id %>').text('<%= @tag.attachments.size %>');
+  $('#attachments-card-<%= @card.id %>').text('<%= @card.attachments.size %>');
 <% end %>
-$('.attachment').html('<%= j render partial: "attachments/form", locals: {tag: @tag, attachment: @attachment} %>');
+$('.attachment').html('<%= j render partial: "attachments/form", locals: {card: @card, attachment: @attachment} %>');
 $('#toastr').html('<%= j render "shared/toastr" %>');

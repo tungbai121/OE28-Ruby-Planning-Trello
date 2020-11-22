@@ -1,0 +1,29 @@
+@import 'layouts/header';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+
+  .planning-root {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .root-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .root-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    }
+  }
+}

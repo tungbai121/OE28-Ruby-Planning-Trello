@@ -1,1 +1,446 @@
 vi:
+  action:
+    create_board: create this board
+    update_board: "update %{attribute} of %{board_name} board to %{value}"
+
+  activerecord:
+    attributes:
+      board:
+        name: Name
+        description: Description
+    errors:
+      models:
+        board:
+          attributes:
+            name:
+              blank: is empty
+              invalid: is invalid
+            decription:
+              blank: is empty
+        card:
+          attributes:
+            deadline:
+              invalid_datetime: is invalid
+
+  static_pages:
+    home:
+      title: Trang chủ
+      starred_boards: Bảng đã đánh dấu
+      my_boards: Bảng của tôi
+  layouts:
+    application:
+      base_title: Planning
+    header:
+      home: Trang chủ
+      board: Bảng
+      starred_boards: Bảng đã đánh dấu
+      my_boards: Bảng của tôi
+      board_name_or_description: Tên bảng hoặc mô tả...
+      languages: Ngôn ngữ
+      english: Tiếng Anh
+      vietnamese: Tiếng Việt
+      new: Thêm mới
+      new_board: Thêm bảng mới
+      notifications: Thông báo
+      profile: Hồ sơ
+      activities: Hoạt động
+      closed: Lưu trữ
+      settings: Cài đặt
+      logout: Đăng xuất
+    sidebar:
+      home: Trang chủ
+      board: Bảng
+  attachments:
+    attachment:
+      added_time: Added %{time} ago
+      confirm: Delete this attachment?
+    form:
+      add_attachment: Add attachment
+    edit_form:
+      change: Change
+  boards:
+    menu:
+      menu: Menu
+      description: Description
+      addlabel: More
+      label: Labels
+      add: Add
+      searchlabel: Search for labels
+      search: Search
+      description_btn: Save
+      close: X
+      closed: Close board
+    show:
+      cant_find: Can't find board or the board is closed
+      public: Public
+      private: Private
+      nomember: You are not member of this board
+      edit: Edit
+      public: Public
+      private: Private
+      submit: Submit
+      menu: Menu
+      addlist: Add list
+      member: Member
+      add: Add
+      closed: This board is closed
+      notmember_noti: You are not member of this board, you cannot change this board attribute or do anything with it
+    create:
+      success: Board added
+      fail: Fail to add new board
+      noti_create: join
+      noti_update: update
+      to: to
+      board: board
+    new:
+      submit: Create
+      name: Name
+      description: Description
+      newdescribe: This is your new board
+    update:
+      success: Updated
+      error: Update failed, length is invalid
+    update_board_status:
+      success: Status updated
+      error: Failed
+    update_board_closed:
+      closed: Board is closed, you will not be able to view the board from now
+    destroy:
+      success: Deleted
+      fail: Can't delete
+  checklists:
+    create:
+      success: Checklist added
+      failed: Add checklist failed
+    update:
+      success: Checklist updated
+      failed: Update checklist failed
+    destroy:
+      success: Checklist removed
+      failed: Remove checklist failed
+    checklist:
+      delete: Delete
+      edit: Edit
+    add_form:
+      checklist: Checklist
+      enter_checklist_name: Enter checklist name
+      add_checklist: Add checklist
+    edit_form:
+      name: Name
+      change: Change
+  close_cards:
+    create:
+      success: Card closed
+      failed: Close card failed
+    destroy:
+      success: Card restored
+      failed: Restore card failed
+    check_permission:
+      permission_denied: Permission denied
+      user_not_in_board: User not in board
+  deadlines:
+    create:
+      success: Deadline updated
+      failed: Update deadline failed
+    update:
+      success: Deadline updated
+      failed: Update deadline failed
+    destroy:
+      success: Deadline removed
+      failed: Remove deadline failed
+    deadline:
+      remove_deadline: Remove deadline
+    form:
+      deadline: Deadline
+      set_deadline: Set deadline
+  labels:
+    add:
+      add: Add
+      addlabel: Add label
+      enter_content: Enter content...
+      content: Content
+    edit:
+      change: Change
+      delete: Delete
+      confirm: Confirm
+      content: Content
+    create:
+      success: Label created
+      fail: Invalid length
+      cant_find: Can't find board
+    update:
+      success: Label updated
+      fail: Invalid length
+      cant_find: Can't find board
+    destroy:
+      success: Label deleted
+      fail: Failed to delet label
+      cant_find: Can't find board
+  shared:
+    label:
+      change: Change
+      confirm: Are you sure?
+      delete: Delete
+  cards:
+    form:
+      add: Add
+      enter_name: Enter card name...
+      name: Name
+    create:
+      success: Card create successfully
+      failed: Card create failed
+      noti_create: create
+      noti_update: change
+      to: to
+      card: card
+    load_board:
+      board_closed: Board has been closed
+      board_not_found: Board not found
+    load_list:
+      list_closed: List has been closed
+      list_not_found: List not found
+    check_list_in_board:
+      list_not_in_board: List not in board
+    check_permission:
+      permission_denied: Permission denied
+      user_not_in_board: You are not member of this board
+      enter_name: Enter name...
+    modal:
+      add: Add
+      addlabel: Add label
+      adduser: Add member
+    label:
+      labeldelete: X
+    member:
+      remove: Remove from card
+    load_card:
+      card_not_found: Card not found
+    update:
+      success: Card update successfully
+      failed: Card update failed
+    edit_form:
+      name: Name
+      enter_name: Enter card name
+      description: Description
+      enter_description: Enter card description...
+      save_change: Save change
+    edit_modal:
+      edit_card: Edit card
+      checklist: Checklist
+      join_card: Join card
+      close_card: Close card
+    add_label:
+      enter_label_content: Enter label content
+      content: Content
+      label_list: Label list
+      create_new_label: Create a new label
+    assignment:
+      enter_checklist_name: Enter checklist name
+      add_checklist: Add checklist
+      checklists: Checklists
+      add_attachment: Add attachment
+      attachment_list: Attachment list
+      join_card: Join card
+      assignment: Assignment
+      enter_email: Enter member email
+      email: Email
+      add_member: Add member
+    attachment:
+      add_attachment: Add attachment
+      attachment_list: Attachment list
+    checklist:
+      checklists: Checklists
+    deadline:
+      deadline: Deadline
+      set_deadline: Set deadline
+      enter_label_content: Enter label content
+      content: Content
+      label_list: Label list
+      create_new_label: Create a new label
+      deadline: Deadline
+      set_deadline: Set deadline
+    card:
+      change_label: Change label
+      change_member: Change member
+      change_position: Change position
+      change_deadline: Change deadline
+      close: Close
+  user_boards:
+    update:
+      success: Changed
+      fail: Update failed
+      oneleader: This board only contains 1 leader, you can't change this leader to user
+
+  registers:
+    create:
+        failed: Register failed
+    form:
+      name: Name
+      email: Email
+      password: Password
+      confirm_password: Confirm password
+      register: Register
+    new:
+      title: Planning | Register
+      logo: Logo
+      sign_up: Sign Up
+      login: Login
+      english: English
+      vietnamese: Vietnamese
+    new:
+      newboard: New board
+      newdescribe: A board create
+      submit: Create
+      name: Name
+      description: Description
+  sessions:
+    create:
+      error: Account do not exist
+    new:
+      email_label: Email
+      password_label: Password
+      remember: Remember me
+      login: Login
+  users:
+    update:
+      success: Update successfully
+      failed: Update failed
+    activities:
+      activities: Activities
+    form:
+      name: Name
+      bio: Bio
+      save_change: Save change
+      change_password: Change password
+      password: Password
+      enter_new_password: Enter new password
+      confirm_new_password: Confirm new password
+      password_confirmation: Password Confirmation
+      current_password: Current password
+      enter_current_password: Enter current password
+    info:
+      heading: Manage your personal information
+      description: Here's where you can change your profile information and find out what users and other Power-Ups will be able to see. To learn more, see our Terms of Service or Privacy Policy.
+      info: Information
+    navigation:
+      profile: Profile
+      activities: Activities
+      closed: Closed
+      settings: Settings
+    activities:
+      activities: Activities
+    show:
+      please_log_in: Please login!
+      user_not_found: User not found!
+  add_members:
+    new:
+      success: Email has sended
+    edit:
+      success: Join
+      fail: Fail
+  card_labels:
+    create:
+      success: New label is added
+      fail: Can't add some label
+      cant_find: Cant't find board
+      nomember: You are not member of this board
+    destroy:
+      success: Label is deleted
+      fail: Can't delete label
+      cant_find: Cant't find board
+      cant_delete: Delete failed
+      nomember: You are not member of this board
+    modal:
+      add: Add
+      nomember: You are not member of this board
+  card_users:
+    create:
+      success: Added
+      fail: Can't add this user
+      nomember: You are not member of this board
+    destroy:
+      success: Deleted
+      fail: Can't delete
+      nomember: You are not member of this board
+    modal:
+      add: Add
+      nomember: You are not member of this board
+
+  lists:
+    change_position:
+      success: Moved
+      fail: Fail
+    list:
+      activities: Activities
+      moving: Moving
+      add: Add
+      move: Move
+      closed: Close
+      order: Order
+      addcard: Add new card
+      dots: ...
+      addcard  : Add new card
+      rename: Rename
+      close: Close
+    create:
+      success: New list has been added
+      fail: Fail to add new list
+      cant_find: Can't find board
+      list: list
+      to: to
+      noti_update: change
+      noti_create: create
+      nomember: You are not member of this board
+    component:
+      move: Move
+      rename: Rename
+      close: Close
+      dots: ...
+      edit: Edit
+      position: Position
+    update:
+      success: Updated
+      fail: Update failed
+      nomember: You are not member of this board
+    change_position:
+      nomember: You are not member of this board
+    destroy:
+      success: Deleted
+      fail: Can't delete
+    closed_list:
+      closed: Closed
+      nomember: You are not member of this board
+  user_mailer:
+    user_invitation:
+      invitation: You have been invited to join our board
+      title: Invitation
+      hi: Hello,
+      welcome: Welcome to our website
+      activate: Join our board
+    update:
+      success: List has been updated
+      fail: Update failed
+  error:
+    404_error:
+      error: There is something wrong
+  closed:
+    closed_board:
+      confirm: Are you sure?
+    closed_list:
+      confirm: Are you sure? This will take you to board view
+    closed_card:
+      restore: Restore
+      confirm_restore: Restore this card?
+      delete: Delete
+      confirm_delete: Delete this card?
+  search:
+    index:
+      filter: Filter
+      name_placeholder: Name
+      user_placeholder: User name
+      description_placeholder: Description
+      searchresult: search result for
+      date_search: By date
+
+  create: "create %{name} card"
+  update: "update %{attribute} of %{card_name} card to %{value}"

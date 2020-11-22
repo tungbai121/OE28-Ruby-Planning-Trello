@@ -1,13 +1,13 @@
 <% if @checklist.errors.present? %>
-  $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
+  $('#checklist').html('<%= j render "checklists/add_form", card: @card %>');
   $('#toastr').html('<%= j render "shared/toastr" %>');
 <% else %>
-  $('#checklist').html('<%= j render "checklists/add_form", tag: @tag %>');
+  $('#checklist').html('<%= j render "checklists/add_form", card: @card %>');
   $('#checklist_name').val('');
   $('#checklist_name').focus();
   $('#checklists').addClass('show');
   $('<%= j render "checklists/checklist", checkitem: @checklist %>').appendTo('#checklists-card');
-  $('.progress-bar').css('width', '<%= progress @tag.checklists %>');
-  $('.progress-bar').text('<%= progress @tag.checklists %>');
-  $('.checklist-tag-<%= @tag.id %>').html('<%= j render "checklists/statistic", tag: @tag %>');
+  $('.progress-bar').css('width', '<%= progress @card.checklists %>');
+  $('.progress-bar').text('<%= progress @card.checklists %>');
+  $('.checklist-card-<%= @card.id %>').html('<%= j render "checklists/statistic", card: @card %>');
 <% end %>

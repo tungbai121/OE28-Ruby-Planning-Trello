@@ -1,6 +1,6 @@
-<% if @tag.errors.blank? %>
-  $('#deadline-info').html('<%= j render "deadlines/deadline", tag: @tag %>');
-  $('#deadline-tag-<%= @tag.id %>').html('<%= j render "deadlines/short_deadline", tag: @tag %>');
+<% if @card.errors.blank? %>
+  $('#deadline-info').html('<%= j render "deadlines/deadline", card: @card %>');
+  $('#deadline-card-<%= @card.id %>').html('<%= j render "deadlines/short_deadline", card: @card %>');
 <% end %>
 $('#deadline').html('<%= j render "deadlines/form" %>');
 $('#toastr').html('<%= j render "shared/toastr" %>');

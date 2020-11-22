@@ -1,0 +1,280 @@
+.cards {
+  padding: 0 5px 5px 5px;
+  margin: 0 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .card-item {
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 $cardshadow;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 8px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $whitesmoke;
+    }
+
+    .card-wrapper {
+      padding: 5px;
+      position: relative;
+
+      .card-menu-btn {
+        border-radius: 2px;
+        transition: 0.2s;
+        position: absolute;
+        right: 5px;
+
+        .menu-btn {
+          i {
+            padding: 5px;
+            font-size: 13px;
+            color: rgba(146, 109, 84, 0.76);
+            display: none;
+
+            &:hover {
+              color: rgb(146, 109, 84);
+            }
+          }
+
+          &:hover {
+            background-color: rgba(226, 211, 211, 0.5);
+          }
+
+          &:after {
+            content: none;
+          }
+        }
+
+        .dropdown-item {
+          text-decoration: none;
+          padding: 5px 10px;
+
+          &:hover {
+            color: $chocolate;
+            background-color: $brownsmoke;
+          }
+        }
+      }
+
+      .label-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+
+        .label {
+          display: flex;
+          margin: 0 5px 4px 0;
+
+          &:hover > .delete {
+            opacity: 1;
+          }
+
+          &:hover > .content {
+            border-radius: 0 0 0 3px;
+          }
+
+          .content {
+            font-size: 13px;
+            border-radius: 3px;
+            padding: 2px 3px;
+            background-color: $gray;
+            color: $white;
+            min-width: 5em;
+            text-align: center;
+          }
+
+          .delete {
+            color: $white;
+            border-radius: 0 3px 3px 0;
+            padding: 2px 3px;
+            background-color: $gray;
+            font-size: 13px;
+            opacity: 0;
+            transition: 0.2s;
+
+            &:hover {
+              cursor: pointer;
+              transform: scale(1.4);
+              background-color: $main;
+            }
+          }
+        }
+      }
+
+      .card-item-header {
+        justify-content: space-between;
+
+        .card-name {
+          font-size: large;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          color: $card-name-color;
+
+          &:hover {
+            color: $tan;
+          }
+        }
+
+        .item-btn {
+          text-decoration: none;
+          padding: 5px 10px;
+        }
+      }
+
+      .card-item-body {
+        display: flow-root;
+
+        .overdue {
+          color: $red;
+        }
+
+        .incompleted {
+          color: $orange;
+        }
+
+        .completed {
+          color: $green;
+        }
+
+        .badges {
+          display: flex;
+          max-width: 100%;
+          font-size: 14px;
+
+          .badge-item {
+            margin-right: 1em;
+            display: inline-flex;
+          }
+        }
+
+        .member-wrapper {
+          float: right;
+          display: inline-flex;
+          justify-content: flex-end;
+
+          .dropdown{
+            .member {
+              .member-avatar {
+                width: 29px;
+                height: 29px;
+              }
+            }
+          }
+        }
+      }
+
+      .dropdown-menu {
+        cursor: auto;
+
+        .member-options {
+          border-radius: 3px;
+          padding: 0 10px;
+
+          .mini-profile {
+            display: inline-flex;
+
+            .mini-avatar {
+              width: 60px;
+              height: 60px;
+              margin-right: 10px;
+            }
+
+            .member-info {
+              .member-name {
+                color: $black;
+                font-size: larger;
+              }
+
+              .member-email {
+                color: $gray;
+              }
+            }
+          }
+
+          .remove-member {
+            color: $browngray;
+          }
+        }
+      }
+    }
+  }
+
+  .card-item {
+    &:hover {
+      .card-menu-btn {
+        .menu-btn {
+          i {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .card-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+  }
+}
+
+.card-sortable-placeholder {
+  background-color: $bg-card-placeholder;
+  margin-bottom: 8px;
+}
+
+.label-select-wrapper {
+  width: 100%;
+
+  .label-select {
+    padding: 10px 15px;
+  }
+}
+
+.u-fancy-scrollbar {
+  -webkit-overflow-scrolling: initial;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px
+  }
+
+  &::-webkit-scrollbar-button:end:increment,
+  &::-webkit-scrollbar-button:start:decrement {
+    background: transparent;
+    display: none
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: $bg-card-placeholder;
+  }
+
+  &::-webkit-scrollbar-track-piece:vertical:start {
+    border-radius: 4px 4px 0 0;
+  }
+
+  &::-webkit-scrollbar-track-piece:vertical:end {
+    border-radius: 0 0 4px 4px;
+  }
+
+  &::-webkit-scrollbar-track-piece:horizontal:start {
+    border-radius: 4px 0 0 4px;
+  }
+
+  &::-webkit-scrollbar-track-piece:horizontal:end {
+    border-radius: 0 4px 4px 0;
+  }
+
+  &::-webkit-scrollbar-thumb:horizontal,
+  &::-webkit-scrollbar-thumb:vertical {
+    background: rgba(136, 125, 120, 0.637);
+    border-radius: 4px;
+    display: block;
+    height: 48px;
+  }
+}

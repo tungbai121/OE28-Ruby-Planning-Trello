@@ -1,0 +1,6 @@
+<div class="activity">
+  <span class="text-danger"><%= activity.user.name %></span> <%= activity.action %>
+  <div class="time">
+    <small><%= activity.created_at.strftime Settings.date.hour %></small>
+  </div>
+</div>

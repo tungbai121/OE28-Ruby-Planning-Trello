@@ -1,123 +1,32 @@
 @import 'color';
+@import 'notification';
 
 header {
-  background-color: $main;
-  padding: 10px 5px;
-
-  .dropdown-menu {
-    padding: 10px 20px;
-    max-width: 500px;
-  }
-
-  .dropdown-toggle::after {
-    display:none;
-  }
-
-  .header-item-btn {
-    padding: 10px 10px;
-    background-color: $grayitem;
-    border-radius: 3px;
-    margin: 0px 5px;
-    border: none;
-    color: $white;
-    font-weight: 600;
-    transition: 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $grayitemhover;
-    }
-  }
-
-  .header-left {
-    .header-item {
-      margin: 0px 3px;
-    }
-
-    .dropdown-menu {
-      width: 300px;
-    }
-
-    #home {
-      color: $white;
-    }
-
-    #header-table {
-      .table {
-        padding: 0px 5px;
-
-        .table-list {
-          .list-header {
-            margin: 10px 0;
-            padding-left: 10px;
-            color: $gray;
-            text-align: center;
-            font-size: 18px;
-          }
-
-          .collapse-btn {
-            border: none;
-            border-radius: 5px;
-            display: inline;
-            padding: 5px 5px;
-            background-color: $gray;
-          }
-
-          .table-box {
-            border-radius: 3px;
-            margin-bottom: 5px;
-            padding: 10px 10px;
-            display: flex;
-            border: 1px solid $secondary;
-          }
-        }
-      }
-    }
-  }
-
-  .header-logo {
+  .header-container {
+    background-color: $main;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $white;
-    font-size: 30px;
-  }
+    padding: 2px;
 
-  .search-form {
-    input {
-      padding: 0 10px;
-      border: none;
-      border-radius: 4px;
-      height: 100%;
+    .header-item-container {
+      display: flex;
+      flex-grow: 1;
+      flex-basis: 100%;
     }
 
-    button {
-      cursor: pointer;
-      height: 100%;
-      border-radius: 3px;
-      padding: 4px 10px;
-      border: none;
-      background-color: rgba($color: $white, $alpha: 0.45);
-
-      i {
-        color: $white;
-      }
-    }
-  }
-
-  .header-right {
     .header-item {
-      margin: 0px 3px;
+      margin: 0 3px;
 
       .dropdown-header {
         padding: 10px 0;
         text-align: center;
         color: $gray;
+        font-size: 18px;
         border-bottom: 1px solid $gray;
       }
 
       .dropdown-content {
-        margin-top: 10px;
+        margin: 10px 0;
 
         a {
           color: $main;
@@ -134,50 +43,127 @@ header {
       }
     }
 
-    .current-user {
-      .avatar {
-        width: 40px;
-        height: 40px;
+    .header-item-btn {
+      background-color: $grayitem;
+      border-radius: 3px;
+      color: $white;
+      font-weight: 600;
+      transition: 0.3s;
 
-        cursor: pointer;
+      &:hover {
+        background-color: $grayitemhover;
       }
+    }
 
-      .user-info {
-        margin-bottom: 10px;
-        border-bottom: 1px solid $gray;
-
-        .user-name {
-          font-size: 20px;
-          color: $black;
-          display: block;
-        }
-
-        .user-email {
-          display: block;
-          color: $gray;
-        }
+    .home-button {
+      a {
+        color: $white;
       }
+    }
 
-      ul {
-        list-style-type: none;
-        margin-bottom: 0;
+    .board-options {
+      .dropdown-menu {
+        width: 300px;
 
-        li {
-          a {
-            line-height: 2em;
-            text-decoration: none;
-            color: $gray;
-          }
+        .table {
+          padding: 0px 5px;
 
-          &:hover{
-            background-color: $secondary;
+          .table-list {
+            .list-header {
+              margin: 10px 0;
+              padding-left: 10px;
+              color: $gray;
+              text-align: center;
+              font-size: 18px;
+            }
 
-            a {
-              color: $chocolate;
+            .collapse-btn {
+              border: none;
+              border-radius: 5px;
+              display: inline;
+              padding: 5px 5px;
+              background-color: $gray;
+            }
+
+            .table-box {
+              border-radius: 3px;
+              margin-bottom: 5px;
+              padding: 10px 10px;
+              display: flex;
+              border: 1px solid $secondary;
             }
           }
         }
       }
+    }
+
+    .search-form {
+      margin: 0 3px 1px 3px;
+      display: inline-flex;
+
+      input {
+        padding: 0 10px;
+        border: none;
+        border-radius: 4px;
+        height: 100%;
+      }
+
+      button {
+        border: none;
+        border-radius: 3px;
+        padding: 7px 12px;
+        margin: 0 3px;
+        cursor: pointer;
+      }
+    }
+
+    .header-logo {
+      display: block;
+      margin: auto;
+      position: relative;
+      flex-shrink: 0;
+      color: $white;
+      font-size: 30px;
+    }
+
+    .current-user {
+      .avatar {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      .user-info {
+        border-bottom: 1px solid $gray;
+
+        .user-name {
+          display: block;
+          font-size: 20px;
+          color: $black;
+        }
+
+        .user-email {
+          display: block;
+          font-size: 16px;
+          color: $gray;
+        }
+      }
+
+      .dropdown-menu {
+        width: 250px;
+
+        ul {
+          list-style-type: none;
+        }
+      }
+    }
+
+    .dropdown-toggle::after {
+      display:none;
+    }
+
+    .dropdown-menu {
+      padding: 0 20px;
     }
   }
 }

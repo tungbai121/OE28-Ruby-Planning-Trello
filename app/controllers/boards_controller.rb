@@ -1,11 +1,10 @@
 class BoardsController < ApplicationController
-  before_action :user_board
   before_action :check_board, only: :show
   before_action :check_board_destroy, only: :destroy
   before_action :find_board,
                 only: %i(update update_board_status update_board_closed)
   before_action :check_member, only: %i(show update)
-  before_action :load_notifications, only: :update
+  before_action :load_activities, only: :update
 
   authorize_resource
 
@@ -15,12 +14,12 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new board_params
+    @board.user_id = current_user.id
     if @board.save
-      current_user.join_board @board, params[:type]
       flash[:success] = t ".success"
-      redirect_to root_path
+      redirect_to root_url
     else
-      flash[:danger] = t ".fail"
+      flash[:danger] = t ".failed"
       render :new
     end
   end
@@ -33,10 +32,10 @@ class BoardsController < ApplicationController
                      .available_positions
                      .order_position
                      .positions,
-      notifications: @board.notifications.order_created,
-      other_emails: User.exclude_ids(@board.add_users.ids).pluck(:email)
+      activities: @board.activities.order_by_created_at,
+      other_emails: User.exclude_ids(@board.users.ids).pluck(:email)
     }
-    @tag = Tag.new
+    @card = Card.new
     @checklist = Checklist.new
   end
 
@@ -47,7 +46,7 @@ class BoardsController < ApplicationController
     else
       flash.now[:danger] = t ".error"
     end
-    @closed_board = current_user.join_boards.closed
+    @closed_board = current_user.boards.closed
     respond_to :js
   end
 
@@ -57,7 +56,7 @@ class BoardsController < ApplicationController
     else
       flash[:danger] = t ".fail"
     end
-    @closed_board = current_user.join_boards.closed
+    @closed_board = current_user.boards.closed
     respond_to :js
   end
 

@@ -33,15 +33,15 @@ describe Board, type: :model do
     end
   end
 
-  describe "#update_notification" do
+  describe "#update_activity" do
     it "valid factory" do
       list.update name: "Update name"
-      expect(board.notifications.build user_id: user.id, content: "Notification content").to be_valid
+      expect(board.activities.build user_id: user.id, content: "activity content").to be_valid
     end
 
     it "invalid factory" do
       list.update name: "Update name"
-      expect(board.notifications.build user_id: user.id, content: nil).not_to be_valid
+      expect(board.activities.build user_id: user.id, content: nil).not_to be_valid
     end
   end
 

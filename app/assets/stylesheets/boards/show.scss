@@ -2,132 +2,220 @@
 @import 'color';
 @import 'lists/list';
 
+body {
+  background: asset_url("hands-water-desk-1345089.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 main {
-  .board-info {
-    padding: 10px 10px;
-    display: flex;
-    justify-content: space-between;
+  position: relative;
+  overflow-y: auto;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 
-    .item {
-      align-self: flex-start;
-      padding: 5px 10px;
+  .board-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .board-main-content {
+      height: 100%;
       display: flex;
+      flex-direction: column;
+      margin-right: 0;
+      position: relative;
+      transition: margin .1s ease-in;
 
-      #edit {
-        background-color: $main;
-        border-radius: 10px;
-        padding: 7px 7px 8px 8px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        align-self: flex-start;
-        cursor: pointer;
-
-        i {
-          color: $white;
-        }
-      }
-
-      .item-btn {
+      .board-header {
+        height: auto;
         padding: 10px 10px;
-        background-color: $grayitem;
-        border-radius: 3px;
-        margin: 0 5px;
-        border: none;
-        color: $white;
-        font-weight: 600;
-        transition: 0.3s;
-        cursor: pointer;
-        align-self: flex-start;
+        position: relative;
+        transition: padding .1s ease-in;
+        justify-content: space-between;
+        display: inline-flex;
 
-        &:hover {
-          background-color: $grayitemhover;
-        }
-      }
-
-      #board-name-form {
-        display: none;
-        padding: 0 10px;
-      }
-
-      #member-btn {
-        .addmember {
-          width: 250px;
-          padding: 10px 10px;
+        .board-header-item {
           display: flex;
-          flex-direction: column;
-          align-items: center;
 
-          button {
-            width: 100%;
-            margin-top: 5px;
-          }
-        }
-
-        .member-list {
-          display: flex;
-          justify-content: center;
-          width: 400px;
-
-          .user-wrapper {
-            &:hover > .user-option {
-              display: block;
-            }
-          }
-
-          .user {
-            margin: 0 5px;
-            background-color: $secondary;
-            padding: 4px 6px;
-            border-radius: 3px;
-          }
-
-          .leader {
-            border: 2px solid $main;
-          }
-
-          .user-option {
-            background-color: $white;
-            z-index: 100;
-            position: absolute;
-            display: none;
-            padding: 10px 10px;
-            border-radius: 4px;
-            box-shadow: 0 3px 4px $brownsmoke;
-            border: 1px solid $brownsmoke;
+          #edit-board-name {
+            background-color: $main;
+            border-radius: 10px;
+            padding: 7px 7px 8px 8px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            align-self: flex-start;
             cursor: pointer;
 
-            a {
-              color: $main;
-              text-decoration: none;
+            i {
+              color: $white;
             }
           }
-        }
 
-        .addmember {
-          form {
-            width: 100%;
+          .item-btn {
+            padding: 10px 10px;
+            background-color: $grayitem;
+            border-radius: 3px;
+            margin: 0 5px;
+            border: none;
+            color: $white;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            align-self: flex-start;
+
+            &:hover {
+              background-color: $grayitemhover;
+            }
+          }
+
+          #board-name-form {
+            display: none;
+            padding: 0 10px;
+          }
+
+          #member-btn {
+            .addmember {
+              width: 250px;
+              padding: 10px 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              button {
+                width: 100%;
+                margin-top: 5px;
+              }
+            }
+
+            .member-list {
+              display: flex;
+              justify-content: center;
+              width: 400px;
+
+              .user-wrapper {
+                &:hover > .user-option {
+                  display: block;
+                }
+              }
+
+              .user {
+                margin: 0 5px;
+                background-color: $secondary;
+                padding: 4px 6px;
+                border-radius: 3px;
+              }
+
+              .leader {
+                border: 2px solid $main;
+              }
+
+              .user-option {
+                background-color: $white;
+                z-index: 100;
+                position: absolute;
+                display: none;
+                padding: 10px 10px;
+                border-radius: 4px;
+                box-shadow: 0 3px 4px $brownsmoke;
+                border: 1px solid $brownsmoke;
+                cursor: pointer;
+
+                a {
+                  color: $main;
+                  text-decoration: none;
+                }
+              }
+            }
+
+            .addmember {
+              form {
+                width: 100%;
+              }
+            }
+          }
+
+          .star {
+            i {
+              color: $white;
+            }
+
+            .starred {
+              i {
+                color: $yellow;
+              }
+            }
+          }
+
+          #open-menu {
+            margin: 0;
           }
         }
       }
 
-      .star {
-        i {
-          color: $white;
-        }
-        .starred {
-          i {
-            color: $yellow;
+      .board-canvas {
+        position: relative;
+        flex-grow: 1;
+
+        .board {
+          -webkit-user-select: none;
+          user-select: none;
+          white-space: nowrap;
+          margin-bottom: 0;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding: 0 6px 30px 6px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          .list-add-wrapper {
+            width: 270px;
+            margin: 0 5px 0 2px;
+            display: inline-block;
+            vertical-align: top;
+            white-space: nowrap;
+
+            .content-adding {
+              padding: 0 5px;
+              box-shadow: $shadow 0 0 10px;
+              background-color: $grayitem;
+              color: $white;
+              border-radius: 3px;
+              display: flex;
+              flex-direction: column;
+              max-height: 100%;
+              position: relative;
+              white-space: normal;
+
+              &:hover {
+                cursor: pointer;
+                background-color: $grayitemhover;
+              }
+
+              .add-btn {
+                padding: 5px 5px;
+                margin: 5px;
+
+                i {
+                  margin-right: 5px;
+                }
+              }
+
+              .btn {
+                margin: 5px 2px;
+              }
+            }
           }
         }
       }
     }
-  }
-
-  .board-wrapper {
-    padding: 10px 20px;
-    display: flex;
-    flex-wrap: wrap;
   }
 
   .notmember {
@@ -143,12 +231,7 @@ main {
   }
 }
 
-body {
-  background-size: cover;
-  background-image: asset_url("hands-water-desk-1345089.jpg");
-}
-
-#edit-tag-modal {
+#edit-card-modal {
   .modal-xl {
     max-width: 50%;
   }
@@ -167,4 +250,39 @@ body {
 
 .ui-helper-hidden-accessible {
   display: none;
+}
+
+.board-x-scrollbar {
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: 12px
+  }
+
+  &::-webkit-scrollbar-thumb:horizontal,
+  &::-webkit-scrollbar-thumb:vertical {
+    background: rgba(255, 255, 255, 0.486);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: rgba(0, 0, 0, 0.301)
+  }
+
+  &::-webkit-scrollbar-button {
+    display: block;
+    height: 4px;
+    width: 4px;
+  }
+}
+
+.tilt.right {
+  transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+}
+
+.tilt.left {
+  transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
 }

@@ -6,11 +6,11 @@
     $('#board-description-value').html('<%= @board.description %>');
   }
   else {
-    $('#edit').click();
+    $('#edit-board-name').click();
     $('#board-name').html('<%= @board.name %>');
     $('#board-description-value').val('<%= @board.description %>');
   }
   $('#board-wrapper').html('<%= j render partial: "closed/closed_board", collection: @closed_board, as: :board %>');
-  $('#noti').html('<%= j render partial: "boards/notification", collection: @notifications, as: :notification %>')
+  $('#noti').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>')
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');

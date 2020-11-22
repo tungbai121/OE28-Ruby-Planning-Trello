@@ -1,0 +1,8 @@
+<% if @error.present? %>
+  alert('<%= @error %>');
+<% else %>
+  $('#label-wrapper-<%= @edited_card.id %>').html('<%= j render partial: "cards/label", collection: @card_labels, as: :label, locals: {card_id: @edited_card.id} %>');
+  $('#labels_checkbox-<%= @edited_card.id %>').html('<%= j render partial: "cards/label_checkbox", collection: @board.labels.exclude_ids(@edited_card.labels), as: :label %>')
+  $('#close-<%= @edited_card.id %>').click();
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

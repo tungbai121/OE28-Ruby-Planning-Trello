@@ -10,7 +10,7 @@ describe User, type: :model do
   describe "#join_board" do
     before {user.join_board board, Faker::Number.between(from: 0, to: 1)}
     it "join success" do
-      expect(user.join_boards).to include board
+      expect(user.boards).to include board
     end
   end
 

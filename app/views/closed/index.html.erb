@@ -14,7 +14,7 @@
     <a class="nav-link" data-toggle="tab" href="#list-wrapper"><%= t ".list" %></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#tag-wrapper"><%= t ".tag" %></a>
+    <a class="nav-link" data-toggle="tab" href="#card-wrapper"><%= t ".card" %></a>
   </li>
 </ul>
 <div class="tab-content">
@@ -24,7 +24,7 @@
   <div id="list-wrapper" class="container tab-pane fade"><br>
     <%= render partial: "closed/closed_list", collection: @closed_list, as: :list %>
   </div>
-  <div id="tag-wrapper" class="container tab-pane fade"><br>
-    <%= render partial: "closed/closed_tag", collection: @tags, as: :tag %>
+  <div id="card-wrapper" class="container tab-pane fade"><br>
+    <%= render partial: "closed/closed_card", collection: @cards, as: :card %>
   </div>
 </div>

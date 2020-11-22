@@ -4,68 +4,31 @@
 
 <% provide :title, t(".title") %>
 
-<main>
+<main class="">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
         <%= render "layouts/sidebar" %>
       </div>
       <div class="col-lg-9">
-        <% if @favorite_boards.present? %>
-          <div class="board-list">
-            <div class="header">
-              <p><%= t ".favoriteboards" %><span>(<%= @favorite_boards.size %>)</span></p>
-            </div>
-            <div class="list">
-              <%= render partial: "shared/board",
-                collection: @favorite_boards,
-                as: :board %>
-              <%= link_to icon("fas", "plus-circle"),
-                new_board_path(type: Settings.data.confirm),
-                class: "list-item new-item" %>
-            </div>
+        <div class="board-list">
+          <div class="header">
+            <p><%= t ".starred_boards" %><span> (<%= @starred_boards.size %>)</span></p>
           </div>
-        <% else %>
-          <div class="board-list">
-            <div class="header">
-              <p><%= t ".favoriteboards" %><span>(<%= @favorite_boards.size %>)</span></p>
-            </div>
-            <div class="list">
-              <%= link_to icon("fas", "plus-circle"),
-                new_board_path(type: Settings.data.confirm),
-                class: "list-item new-item" %>
-            </div>
+          <div class="list">
+            <%= render partial: "boards/board", collection: @starred_boards, as: :board if @starred_boards.present? %>
           </div>
-        <% end %>
-        <% if @my_boards.present? %>
-          <div class="board-list">
-            <div class="header">
-              <p><%= t ".myboards" %><span>(<%= @my_boards.size %>)</span></p>
-            </div>
-            <div class="list">
-              <%= render partial: "shared/board",
-                collection: @my_boards,
-                as: :board %>
-              <%= link_to icon("fas", "plus-circle"),
-                new_board_path(type: Settings.data.notconfirm),
-                class: "list-item new-item" %>
-            </div>
+        </div>
+
+        <div class="board-list">
+          <div class="header">
+            <p><%= t ".my_boards" %><span> (<%= @my_boards.size %>)</span></p>
           </div>
-        <% else %>
-          <div class="board-list">
-            <div class="header">
-              <p><%= t ".myboards" %><span>(<%= @my_boards.size %>)</span></p>
-            </div>
-            <div class="list">
-              <%= render partial: "shared/board",
-                collection: @my_boards,
-                as: :board %>
-              <%= link_to icon("fas", "plus-circle"),
-                new_board_path(type: Settings.data.notconfirm),
-                class: "list-item new-item" %>
-            </div>
+          <div class="list">
+            <%= render partial: "boards/board", collection: @my_boards, as: :board if @my_boards.present? %>
+            <%= link_to icon("fas", "plus-circle"), new_board_path, class: "list-item new-item" %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

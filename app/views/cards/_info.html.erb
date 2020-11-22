@@ -1,0 +1,14 @@
+<div class="card-info">
+  <div class="card-name">
+    <h1 class="card-<%= card.id %>-name"><%= card.name %></h1>
+    <div id="deadline-info" class="info">
+      <%= render "deadlines/deadline", card: card if card.deadline %>
+    </div>
+  </div>
+  <div class="member">
+    <%= render partial: "cards/member", collection: card.users, as: :member, locals: {card_id: card.id} if card.users.present? %>
+  </div>
+  <div class="card-description">
+    <p id="card-description"><%= card.description %></p>
+  </div>
+</div>

@@ -24,7 +24,7 @@ describe Board, type: :model do
   end
 
   describe "Associations" do
-    [:user_boards, :add_users, :lists, :notifications, :labels].each do |model|
+    [:user_boards, :users, :lists, :activities, :labels].each do |model|
       it "has many model" do
         expect(board).to have_many model
       end
@@ -32,15 +32,15 @@ describe Board, type: :model do
   end
 
   describe "Scopes" do
-    describe ".favorite" do
-      it "is favorite board" do
-        expect(Board.favorite user.id).to include board2
+    describe ".starred" do
+      it "is starred board" do
+        expect(Board.starred user.id).to include board2
       end
     end
 
-    describe ".nonfavorite" do
-      it "is not favorite board" do
-        expect(Board.nonfavorite user.id).to include board
+    describe ".nonstarred" do
+      it "is not starred board" do
+        expect(Board.nonstarred user.id).to include board
       end
     end
   end
@@ -50,8 +50,8 @@ describe Board, type: :model do
       let(:board3) {FactoryBot.create :board}
       before {board3.update name: "Update name"}
 
-      it "update notification" do
-        is_expected.to callback(:update_notification).before(:update)
+      it "update activity" do
+        is_expected.to callback(:update_activity).before(:update)
       end
     end
 
@@ -59,8 +59,8 @@ describe Board, type: :model do
       let(:board3) {FactoryBot.create :board}
       before {board3.update description: "Update description"}
 
-      it "update notification" do
-        is_expected.to callback(:update_notification).before(:update)
+      it "update activity" do
+        is_expected.to callback(:update_activity).before(:update)
       end
     end
   end

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  before_action :set_locale, :authenticate_user!, :search_data
+  before_action :set_locale, :authenticate_user!, :user_board, :search_data
 
   def self.default_url_options options = {}
     options.merge locale: I18n.locale
@@ -19,26 +19,18 @@ class ApplicationController < ActionController::Base
   end
 
   def user_board
-    opened_board = Board.opened
-    @favorite_boards = opened_board.favorite current_user.id
-    @my_boards = opened_board.nonfavorite current_user.id
+    return unless current_user
+
+    @starred_boards = Board.of_user(current_user.id).opened.starred
+    @my_boards = Board.of_user(current_user.id)
   end
 
   def user_params
     params.require(:user).permit User::USER_PARAMS
   end
 
-  def load_notifications
-    @notifications = @board.notifications.order_created
-  end
-
-  def find_user_boards
-    @user_boards = UserBoard.find_by user_id: current_user.id,
-                                     board_id: @board.id
-    return if @user_boards
-
-    flash[:danger] = t ".nomember"
-    redirect_to @board
+  def load_activities
+    @activities = @board.activities.order_by_created_at
   end
 
   def check_permission
@@ -54,6 +46,6 @@ class ApplicationController < ActionController::Base
   end
 
   def search_data
-    @search = Board.includes(:add_users).ransack params[:q]
+    @search = Board.includes(:users).ransack params[:q]
   end
 end

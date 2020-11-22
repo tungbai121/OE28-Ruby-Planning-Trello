@@ -1,0 +1,6 @@
+<%= form_for @card, url: board_cards_path(@board), method: :post, remote: true, html: {id: "list-#{list.id}-new_card"} do |f| %>
+  <%= f.text_field :name, placeholder: t(".enter_name"), class: "form-control", id: "input-list-#{list.id}" %>
+  <%= display_error f.object, :name , t(".name") %>
+  <%= hidden_field_tag :list_id, list.id, id: "list-#{list.id}" %>
+  <%= f.submit t(".add"), class: "btn btn-success" %>
+<% end %>

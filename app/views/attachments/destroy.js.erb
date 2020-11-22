@@ -1,5 +1,5 @@
 <% if @attachment.errors.blank? %>
   $('#attachment-<%= @attachment.id %>').remove();
-  $('#attachments-tag-<%= @tag.id %>').text('<%= @tag.attachments.size %>');
+  $('#attachments-card-<%= @card.id %>').text('<%= @card.attachments.size %>');
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     require "sidekiq/web"
     mount Sidekiq::Web => "/sidekiq"
 
+    # mount ActionCable.server => "/cable"
+
     root "static_pages#home"
 
     devise_for :users, skip: :omniauth_callbacks, controllers: {
@@ -26,29 +28,30 @@ Rails.application.routes.draw do
     end
 
     resources :boards do
-      resource :tag_labels, only: %i(create edit destroy)
+      resource :card_labels, only: %i(create edit destroy)
       post "labels/create", to: "labels#create", as: "create_label"
       patch "labels/:id", to: "labels#update", as: "update_label"
       delete "labels/:id", to: "labels#destroy", as: "destroy_label"
 
-      resources :tags, except: %i(index show new) do
+      resources :cards, except: %i(index show new) do
         resources :checklists, only: %i(create update destroy) do
           patch "/checked", on: :member, to: "checked_checklists#update"
         end
 
         resource :deadline, only: %i(create update destroy)
 
-        post "/join", on: :member, to: "join_tags#create"
-        delete "/leave", on: :member, to: "join_tags#destroy"
+        post "/join", on: :member, to: "join_cards#create"
+        delete "/leave", on: :member, to: "join_cards#destroy"
 
-        post "/close", on: :member, to: "close_tags#create"
-        delete "/open", on: :member, to: "close_tags#destroy"
+        post "/close", on: :member, to: "close_cards#create"
+        delete "/open", on: :member, to: "close_cards#destroy"
 
         resources :attachments, only: %i(create update destroy)
       end
-      patch "sort/tags", to: "sortable_tags#update", as: "sort_tags"
+      patch "sort/lists", to: "sortable_lists#update", as: "sort_lists"
+      patch "sort/cards", to: "sortable_cards#update", as: "sort_cards"
 
-      resource :tag_users, only: %i(create edit destroy)
+      resource :card_users, only: %i(create edit destroy)
       resources :user_boards, only: :update
     end
 

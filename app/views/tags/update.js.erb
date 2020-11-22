@@ -1,7 +1,0 @@
-<% unless @tag.errors.any? %>
-  $('.tag-<%= @tag.id %>-name').text('<%= @tag.name %>');
-  $('#tag-description').text('<%= @tag.description %>');
-<% end %>
-$('#edit_tag').html('<%= j render "tags/edit_form", tag: @tag %>');
-$('#noti').html('<%= j render partial: "boards/notification", collection: @notifications, as: :notification %>');
-$('#toastr').html('<%= j render "shared/toastr" %>');

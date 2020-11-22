@@ -1,3 +1,40 @@
+<div class="header">
+  <% if can? :update, list %>
+    <div data-target="#list-name-<%= list.id %>" data-toggle="modal" class="edit-list" id="edit-list-<%= list.id %>"><%= t ".edit" %></div>
+  <% end %>
+  <h5 class="list-name font-weight-bold" id="list-name-<%= list.id %>"><%= list.name %></h5>
+  <div class="dropdown">
+    <% if can? :update, list %>
+      <a class="list-menubtn" type="button" id="list-menubtn-<%= list.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= t ".dots" %>
+      </a>
+    <% end %>
+    <div class="dropdown-menu" aria-labelledby="list-menubtn-1">
+      <a class="header"><%= t ".activities" %></a>
+      <div class="dropdown-divider"></div>
+      <a data-toggle="collapse" data-target="#add-card-list-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
+      <a class="dropdown-item" href="#" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></a>
+      <a class="dropdown-item" href="#"><%= t ".order" %></a>
+      <%= link_to t(".close"), closed_list_path(list_id: list.id, board_id: @board.id), method: :patch, class: "dropdown-item" %>
+    </div>
+  </div>
+</div>
+
+<ul class="list-cards" id="cards-list-<%= list.id %>" data-url="<%= board_sort_cards_path(@board) %>">
+  <%= render partial: "cards/card", collection: list.cards.opened %>
+</ul>
+<hr>
+<% if @relation %>
+  <div class="add">
+    <div class="add-btn" data-toggle="collapse" data-target="#add-card-list-<%= list.id %>">
+      <%= icon "fas", "plus-circle" %><%= t ".add_card" %>
+    </div>
+    <div class="collapse", id="add-card-list-<%= list.id %>">
+      <%= render "cards/form", list: list %>
+    </div>
+  </div>
+<% end %>
+
 <% if can? :update, list %>
   <div id="list-position-<%= list.id %>" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -23,6 +60,7 @@
       </div>
     </div>
   </div>
+
   <div id="list-name-<%= list.id %>" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -44,43 +82,6 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t ".close" %></button>
         </div>
       </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="header">
-  <% if can? :update, list %>
-    <div data-target="#list-name-<%= list.id %>" data-toggle="modal" class="edit-list" id="edit-list-<%= list.id %>"><%= t ".edit" %></div>
-  <% end %>
-  <h5 class="list-name font-weight-bold" id="list-name-<%= list.id %>"><%= list.name %></h5>
-  <div class="dropdown">
-    <% if can? :update, list %>
-      <a class="list-menubtn" type="button" id="list-menubtn-<%= list.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= t ".dots" %>
-      </a>
-    <% end %>
-    <div class="dropdown-menu" aria-labelledby="list-menubtn-1">
-      <a class="header"><%= t ".activities" %></a>
-      <div class="dropdown-divider"></div>
-      <a data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
-      <a class="dropdown-item" href="#" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></a>
-      <a class="dropdown-item" href="#"><%= t ".order" %></a>
-      <%= link_to t(".close"), closed_list_path(list_id: list.id, board_id: @board.id), method: :patch, class: "dropdown-item" %>
-    </div>
-  </div>
-</div>
-
-<ul class="tags" id="tags-list-<%= list.id %>" data-url="<%= board_sort_tags_path(@board) %>">
-  <%= render partial: "tags/tag", collection: list.tags.opened %>
-</ul>
-<hr>
-<% if @relation %>
-  <div class="add">
-    <div class="add-btn" data-toggle="collapse" data-target="#add-tag-list-<%= list.id %>">
-      <%= icon "fas", "plus-circle" %><%= t ".add_tag" %>
-    </div>
-    <div class="collapse", id="add-tag-list-<%= list.id %>">
-      <%= render "tags/form", list: list %>
     </div>
   </div>
 <% end %>

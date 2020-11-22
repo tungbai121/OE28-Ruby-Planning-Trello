@@ -1,0 +1,8 @@
+<div class="list-add-card">
+  <div class="add-btn" data-toggle="collapse" data-target="#add-card-list-<%= list.id %>">
+    <%= icon "fas", "plus-circle" %><%= t ".add_card" %>
+  </div>
+  <div class="collapse", id="add-card-list-<%= list.id %>">
+    <%= render "cards/form", list: list %>
+  </div>
+</div>

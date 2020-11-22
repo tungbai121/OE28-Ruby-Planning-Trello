@@ -1,32 +1,55 @@
 en:
+  action:
+    create_board: create this board
+    update_board: "update %{attribute} of %{board_name} board to %{value}"
+
+  activerecord:
+    attributes:
+      board:
+        name: Name
+        description: Description
+    errors:
+      models:
+        board:
+          attributes:
+            name:
+              blank: is empty
+              invalid: is invalid
+            decription:
+              blank: is empty
+        card:
+          attributes:
+            deadline:
+              invalid_datetime: is invalid
+
   static_pages:
     home:
       title: Home
-      favoriteboards: Favorite Boards
-      myboards: My Boards
+      starred_boards: Starred Boards
+      my_boards: My Boards
   layouts:
+    application:
+      base_title: Planning
     header:
       home: Home
-      boards: Board
-      favoriteboards: Favorite Boards
-      myboards: My Boards
-      add: Add
-      new: new
-      newboard: New Board
-      username: User
-      account: Account
-      newuser: New User
-      add_account: Add account
+      board: Board
+      starred_boards: Starred Boards
+      my_boards: My Boards
+      board_name_or_description: Board name or description...
+      languages: Languages
+      english: English
+      vietnamese: Vietnamese
+      new: New
+      new_board: New board
+      notifications: Notifications
       profile: Profile
       activities: Activities
-      tags: Tags
+      closed: Closed
       settings: Settings
       logout: Logout
-      search: Search
-      search_placeholder: Board name or description
     sidebar:
-      board: Board
       home: Home
+      board: Board
   attachments:
     attachment:
       added_time: Added %{time} ago
@@ -105,13 +128,13 @@ en:
     edit_form:
       name: Name
       change: Change
-  close_tags:
+  close_cards:
     create:
-      success: Tag closed
-      failed: Close tag failed
+      success: Card closed
+      failed: Close card failed
     destroy:
-      success: Tag restored
-      failed: Restore tag failed
+      success: Card restored
+      failed: Restore card failed
     check_permission:
       permission_denied: Permission denied
       user_not_in_board: User not in board
@@ -158,18 +181,18 @@ en:
       change: Change
       confirm: Are you sure?
       delete: Delete
-  tags:
+  cards:
     form:
       add: Add
-      enter_name: Enter tag name...
+      enter_name: Enter card name...
       name: Name
     create:
-      success: Tag create successfully
-      failed: Tag create failed
+      success: Card create successfully
+      failed: Card create failed
       noti_create: create
       noti_update: change
       to: to
-      tag: tag
+      card: card
     load_board:
       board_closed: Board has been closed
       board_not_found: Board not found
@@ -189,23 +212,23 @@ en:
     label:
       labeldelete: X
     member:
-      remove: Remove from tag
-    load_tag:
-      tag_not_found: Tag not found
+      remove: Remove from card
+    load_card:
+      card_not_found: Card not found
     update:
-      success: Tag update successfully
-      failed: Tag update failed
+      success: Card update successfully
+      failed: Card update failed
     edit_form:
       name: Name
-      enter_name: Enter tag name
+      enter_name: Enter card name
       description: Description
-      enter_description: Enter tag description...
+      enter_description: Enter card description...
       save_change: Save change
     edit_modal:
-      edit_tag: Edit tag
+      edit_card: Edit card
       checklist: Checklist
-      join_tag: Join tag
-      close_tag: Close tag
+      join_card: Join card
+      close_card: Close card
     add_label:
       enter_label_content: Enter label content
       content: Content
@@ -217,7 +240,7 @@ en:
       checklists: Checklists
       add_attachment: Add attachment
       attachment_list: Attachment list
-      join_tag: Join tag
+      join_card: Join card
       assignment: Assignment
       enter_email: Enter member email
       email: Email
@@ -236,7 +259,7 @@ en:
       create_new_label: Create a new label
       deadline: Deadline
       set_deadline: Set deadline
-    tag:
+    card:
       change_label: Change label
       change_member: Change member
       change_position: Change position
@@ -315,7 +338,7 @@ en:
     edit:
       success: Join
       fail: Fail
-  tag_labels:
+  card_labels:
     create:
       success: New label is added
       fail: Can't add some label
@@ -330,7 +353,7 @@ en:
     modal:
       add: Add
       nomember: You are not member of this board
-  tag_users:
+  card_users:
     create:
       success: Added
       fail: Can't add this user
@@ -343,24 +366,6 @@ en:
       add: Add
       nomember: You are not member of this board
 
-  activerecord:
-      attributes:
-        board:
-          name: Name
-          description: Description
-      errors:
-        models:
-          board:
-            attributes:
-              name:
-                blank: is empty
-                invalid: is invalid
-              decription:
-                blank: is empty
-          tag:
-            attributes:
-              deadline:
-                invalid_datetime: is invalid
   lists:
     change_position:
       success: Moved
@@ -372,9 +377,9 @@ en:
       move: Move
       closed: Close
       order: Order
-      addtag: Add new tag
+      addcard: Add new card
       dots: ...
-      addtag  : Add new tag
+      addcard  : Add new card
       rename: Rename
       close: Close
     create:
@@ -423,11 +428,11 @@ en:
       confirm: Are you sure?
     closed_list:
       confirm: Are you sure? This will take you to board view
-    closed_tag:
+    closed_card:
       restore: Restore
-      confirm_restore: Restore this tag?
+      confirm_restore: Restore this card?
       delete: Delete
-      confirm_delete: Delete this tag?
+      confirm_delete: Delete this card?
   search:
     index:
       filter: Filter
@@ -437,5 +442,5 @@ en:
       searchresult: search result for
       date_search: By date
 
-  create: "create %{name} tag"
-  update: "update %{attribute} of %{tag_name} tag to %{value}"
+  create: "create %{name} card"
+  update: "update %{attribute} of %{card_name} card to %{value}"

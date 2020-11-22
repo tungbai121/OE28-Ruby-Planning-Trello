@@ -1,0 +1,21 @@
+<div class="edit-section">
+  <div id="checklist">
+    <%= render "checklists/add_form", card: @card %>
+  </div>
+  <div class="progress mb-2">
+    <div class="progress-bar" role="progressbar" style="width: <%= progress checklists %>;">
+      <%= progress checklists %>
+    </div>
+  </div>
+  <div class="expand-btn">
+    <%= link_to t(".checklists"), "#checklists", "data-toggle": :collapse, role: :button, "aria-expanded": false %>
+    <div class="checklist checklist-card-<%= @card.id %> float-right">
+      <%= render "checklists/statistic", card: @card %>
+    </div>
+  </div>
+  <div class="collapse" id="checklists">
+    <div id="checklists-card" class="card card-body">
+      <%= render partial: "checklists/checklist", collection: checklists, as: :checkitem if checklists %>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="activity">
   <%= link_to board_path(activity.board) do %>
-    <div class="content">
-      <%= activity.content %> - <%= activity.board.name %>
+    <div class="action">
+      <%= activity.action %> - <%= activity.board.name %>
     </div>
     <small class="date"><%= activity.created_at.strftime Settings.date.hour %></small>
   <% end %>

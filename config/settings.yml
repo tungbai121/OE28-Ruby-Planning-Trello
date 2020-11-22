@@ -22,7 +22,7 @@ validate:
 data:
   confirm: 1
   notconfirm: 0
-tag:
+card:
   name:
     length: 200
   description:

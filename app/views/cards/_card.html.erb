@@ -1,0 +1,36 @@
+<div class="card-item" id="<%= dom_id card %>">
+  <div class="card-wrapper">
+    <div class="dropdown card-menu-btn">
+      <div aria-expanded="false" class="menu-btn dropdown-toggle" id="dropdownMenuCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= icon "fas", "pencil-alt" %></div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuCard">
+        <%= link_to t(".change_label"), edit_board_card_labels_path(@board, card_id: card.id), remote: true, class: "dropdown-item" %>
+        <%= link_to t(".change_member"), edit_board_card_users_path(@board, card_id: card.id), remote: true, class: "dropdown-item" %>
+        <%#= TO DO link_to t(".change_position"), "#", class: "dropdown-item" %>
+        <%#= TO DO link_to t(".change_deadline"), "#", class: "dropdown-item" %>
+        <%= link_to t(".close"), close_board_card_path(@board, card, list_id: card.list.id), method: :post, remote: true, class: "dropdown-item" %>
+      </div>
+    </div>
+    <div class="label-wrapper" id="label-wrapper-<%= card.id %>">
+      <%= render partial: "cards/label", collection: card.labels, as: :label, locals: {card_id: card.id} %>
+    </div>
+
+    <div class="card-item-header">
+      <%= link_to edit_board_card_path(@board, card.id), class: "card-name", remote: true do %>
+        <span class="card-<%= card.id %>-name"><%= card.name %></span>
+      <% end %>
+    </div>
+    <div class="card-item-body">
+      <div class="badges form-inline">
+        <div id="deadline-card-<%= card.id %>" class="badge-item deadline">
+          <%= render "deadlines/short_deadline", card: card if card.deadline %>
+        </div>
+        <div class="badge-item checklist checklist-card-<%= card.id %>">
+          <%= render "checklists/statistic", card: card if card.checklists.present? %>
+        </div>
+      </div>
+      <div class="member-wrapper form-inline" id="member-wrapper-<%= card.id %>">
+        <%= render partial: "cards/member", collection: card.users, as: :member, locals: {card_id: card.id} if card.users.present? %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<% list = card.list %>
+
+<div id="card-closed-<%= card.id %>" class="card-item">
+  <div class="content">
+    <span class="name"><%= card.name %></span> -
+    <span><%= list.name %></span> -
+    <span><%= list.board.name %></span>
+    <div class="info">
+      <small><%= l(card.updated_at, format: :long) %></small>
+    </div>
+    <div class="description"><%= card.description %></div>
+  </div>
+
+  <div class="modify">
+    <%= link_to t(".restore"), open_board_card_path(list.board.id, card.id, list_id: list.id), class: "btn btn-success", method: :delete, data: {confirm: t(".confirm_restore")}, remote: true %>
+    <%= link_to t(".delete"), board_card_path(list.board.id, card.id), class: "btn btn-danger ml-2", method: :delete, remote: true, data: {confirm: t(".confirm_delete")} %>
+  </div>
+</div>

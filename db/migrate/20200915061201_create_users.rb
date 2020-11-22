@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.boolean :admin
       t.boolean :blocked
-      t.string :avatar_url
+      t.string :avatar
 
       t.timestamps
     end

@@ -1,7 +1,7 @@
 class Checklist < ApplicationRecord
   CHECKLIST_PARAMS = %i(name).freeze
 
-  belongs_to :tag
+  belongs_to :card
 
   validates :name, presence: true,
     length: {maximum: Settings.checklist.name.length}

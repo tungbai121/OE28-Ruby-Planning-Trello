@@ -1,0 +1,7 @@
+<% if @error.present? %>
+  alert('<%= @error %>');
+<% else %>
+  $('#member-wrapper-<%= @edited_card.id %>').html('<%= j render partial: "cards/member", collection: @card_users, as: :member, locals: {card_id: @edited_card.id} %>');
+  $('#users-checkbox-<%= @edited_card.id %>').html('<%= j render partial: "cards/user_checkbox", collection: @board.users.exclude_ids(@edited_card.users), as: :member %>');
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

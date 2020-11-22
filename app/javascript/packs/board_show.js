@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  $('#edit').click(function() {
+  $('#edit-board-name').click(function() {
     if ($('#board-name').hasClass('input')) {
       $('#board-name').css('display', 'none');
       $('#board-name-form').css('display', 'block');
@@ -51,20 +51,44 @@ $(document).on('turbolinks:load', function() {
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
   });
 
-  $('.tags').sortable({
-    connectWith: '.tags',
+  $('.lists').sortable({
     cursor: 'grabbing',
-    placeholder: 'sortable-placeholder',
-    start: function(e, ui){
+    items: '.list',
+    handle: '.list-content',
+    placeholder: 'list-wrapper list list-sortable-placeholder',
+    start: function(e, ui) {
+      ui.placeholder.height(ui.item.children().height());
+      ui.item.children().addClass('tilt');
+      tilt_direction(ui.item.children());
+    },
+    update: function(e, ui) {
+      params = $(this).sortable('serialize');
+
+      $.ajax({
+        url: $(this).data('url'),
+        type: 'PATCH',
+        data: params
+      });
+    },
+    stop: function (event, ui) {
+      ui.item.children().removeClass('tilt');
+    }
+  });
+
+  $('.cards').sortable({
+    connectWith: '.cards',
+    cursor: 'grabbing',
+    placeholder: 'card-sortable-placeholder',
+    start: function(e, ui) {
       ui.placeholder.height(ui.item.height());
       ui.item.addClass('tilt');
       tilt_direction(ui.item);
     },
     update: function(e, ui) {
-      tagIds = $(this).sortable('serialize');
-      sortableId = $(this).parent().attr('id');
+      cardIds = $(this).sortable('serialize');
+      sortableId = $(this).attr('id');
       listId = sortableId.split('-').pop();
-      params = tagIds.concat('&&list[]=', listId);
+      params = cardIds.concat('&&list[]=', listId);
 
       $.ajax({
         url: $(this).data('url'),
@@ -93,14 +117,14 @@ $(document).on('turbolinks:load', function() {
     item.data('move_handler', move_handler);
   };
 
-  $('.tag').addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all')
-           .find('.tag-header')
+  $('.card').addClass('ui-widget ui-widget-content ui-helper-clearfix ui-corner-all')
+           .find('.card-header')
            .addClass('ui-widget-header ui-corner-all')
-           .prepend('<span class="ui-icon ui-icon-minusthick tag-toggle"></span>');
+           .prepend('<span class="ui-icon ui-icon-minusthick card-toggle"></span>');
 
-  $('.tag-toggle').click(function() {
+  $('.card-toggle').click(function() {
     var icon = $(this);
     icon.toggleClass('ui-icon-minusthick ui-icon-plusthick');
-    icon.closest('.tag').find('.tag-body').toggle();
+    icon.closest('.card').find('.card-body').toggle();
   });
 });

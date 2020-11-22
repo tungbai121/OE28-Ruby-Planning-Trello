@@ -1,0 +1,19 @@
+<div class="edit-section">
+  <div id="add-label-to-card">
+    <%= form_for :label, url: "#" do |f| %>
+      <%= f.label :label, t(".label") %>
+      <%= f.text_field :content, placeholder: t(".enter_label_content"), class: "form-control" %>
+      <%= display_error f.object, :content , t(".content") %>
+      <%= link_to t(".label_list"), "#labels", class: "expand-btn form-control", "data-toggle": :collapse, role: :button, "aria-expanded": false %>
+      <div class="collapse" id="labels">
+        <div class="card card-body">
+            <div class="checkbox">
+              <!-- TO DO <span>label 1</span>
+              <input type="checkbox"> -->
+            </div>
+          </div>
+        </div>
+      <%= f.submit t(".create_new_label"), class: "btn btn-success form-control" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="noti-message">
+  <div class="message-header custom-control custom-checkbox checkbox-xl">
+    <span>Card - Board: List</span>
+    <%= check_box_tag :readed, nil, nil, class: "custom-control-input" %>
+    <%= label_tag nil, nil, class: "custom-control-label" %>
+  </div>
+  <div class="message-content">
+    <div class="sender">
+      <div class="user-ava-sender">
+        <%= image_tag "avatar.jpg", class: "rounded rounded-circle" %>
+      </div>
+      <div class="user-name-sender">
+        <strong>User name</strong>
+      </div>
+    </div>
+    <div class="action-noti">
+      <span class="action-content">Action content</span>
+      <span class="action-time">5 hours ago</span>
+    </div>
+  </div>
+</div>

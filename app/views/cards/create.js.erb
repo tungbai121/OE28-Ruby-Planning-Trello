@@ -1,0 +1,14 @@
+<% if @card.errors.present? %>
+  $('#add-card-list-<%= @list.id %>').html('<%= j render "cards/form", list: @list %>');
+<% else %>
+  $('<%= j render "cards/card", card: @card %>').appendTo('#cards-list-<%= @list.id %>');
+  $('#add-card-list-<%= @list.id %>').html('<%= j render "cards/form", list: @list %>');
+  $('#input-list-<%= @list.id %>').val('');
+  $('#add-card-list-<%= @list.id %>').addClass('show');
+  $('#input-list-<%= @list.id %>').focus();
+
+  element = document.querySelector('#cards-list-<%= @list.id %>');
+  element.scrollTop = element.scrollHeight - element.clientHeight;
+  $('#noti').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>')
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

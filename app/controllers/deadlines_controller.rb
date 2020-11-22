@@ -2,7 +2,7 @@ class DeadlinesController < ApplicationController
   before_action :load_data, :check_permission, only: %i(create update destroy)
 
   def create
-    if @tag.update deadline: params[:tag][:deadline]
+    if @card.update deadline: params[:card][:deadline]
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"
@@ -11,7 +11,7 @@ class DeadlinesController < ApplicationController
   end
 
   def update
-    if params[:tag][:completed].eql? "true"
+    if params[:card][:completed].eql? "true"
       completed_update
     else
       incompleted_update
@@ -20,7 +20,7 @@ class DeadlinesController < ApplicationController
   end
 
   def destroy
-    if @tag.update deadline: nil, completed: false, completed_at: nil
+    if @card.update deadline: nil, completed: false, completed_at: nil
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"
@@ -32,11 +32,11 @@ class DeadlinesController < ApplicationController
 
   def load_data
     @board = Board.find params[:board_id]
-    @tag = Tag.find params[:tag_id]
+    @card = Card.find params[:card_id]
   end
 
   def completed_update
-    if @tag.update completed: true, completed_at: DateTime.now
+    if @card.update completed: true, completed_at: DateTime.now
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"
@@ -44,7 +44,7 @@ class DeadlinesController < ApplicationController
   end
 
   def incompleted_update
-    if @tag.update completed: false, completed_at: nil
+    if @card.update completed: false, completed_at: nil
       flash.now[:success] = t ".success"
     else
       flash.now[:danger] = t ".failed"

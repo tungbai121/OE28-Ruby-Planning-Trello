@@ -1,10 +1,10 @@
 module DeadlinesHelper
-  def deadline_status tag
-    return unless tag.deadline
+  def deadline_status card
+    return unless card.deadline
 
-    if !tag.completed && tag.deadline < DateTime.now
+    if !card.completed && card.deadline < DateTime.now
       "overdue"
-    elsif tag.completed
+    elsif card.completed
       "completed"
     else
       "incompleted"

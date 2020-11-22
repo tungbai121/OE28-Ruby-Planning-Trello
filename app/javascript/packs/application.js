@@ -13,4 +13,4 @@ global.jQuery = $
 require('jquery-ui')
 require('packs/board_show')
 require('packs/user_show')
-require('packs/tag_edit')
+require('packs/card_edit')

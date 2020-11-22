@@ -181,7 +181,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.3.1)
     jwt (2.2.2)
-    libv8 (3.16.14.19)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -295,7 +294,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.2)
-    ref (2.0.0)
     regexp_parser (1.8.2)
     require_all (3.0.0)
     responders (3.0.1)
@@ -379,9 +377,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -430,7 +425,6 @@ DEPENDENCIES
   config
   database_cleaner-active_record
   devise
-  execjs
   factory_bot_rails
   faker
   figaro
@@ -459,7 +453,6 @@ DEPENDENCIES
   simplecov-rcov
   spring
   spring-watcher-listen (~> 2.0.0)
-  therubyracer
   turbolinks (~> 5)
   tzinfo-data
   validates_timeliness

@@ -1,0 +1,54 @@
+.noti-message-wrapper {
+  width:300px;
+
+  .noti-message {
+    background-color: #f4f5f7;
+    border-bottom: 1px solid rgba(9,45,66,.13);
+    border-radius: 3px;
+    border: 0;
+    box-shadow: 0 1px 1px rgba(9,45,66,.25), 0 0 0 1px rgba(9,45,66,.08);
+    min-height: 32px;
+    padding: 0 0 8px;
+    margin-bottom: 10px;
+
+    .message-header {
+      display: flex;
+      padding: 5px 0;
+      justify-content: center;
+      background-color: #0078BF;
+      color: $white;
+    }
+
+    .message-content {
+      .sender {
+        align-items: baseline;
+        display: flex;
+        margin: 10px 5px;
+
+        .user-ava-sender {
+          margin-right: 5px;
+
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .user-name-sender {
+          strong {
+            line-height: 30px;
+          }
+        }
+      }
+    }
+
+    .action-noti {
+      padding: 0 10px;
+
+      .action-time {
+        color: #6b778c;
+        font-size: 12px;
+      }
+    }
+  }
+}

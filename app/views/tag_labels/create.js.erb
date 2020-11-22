@@ -1,8 +1,0 @@
-<% if @error.present? %>
-  alert('<%= @error %>');
-<% else %>
-  $('#label-wrapper-<%= @edited_tag.id %>').html('<%= j render partial: "tags/label", collection: @tag_labels, as: :label, locals: {tag_id: @edited_tag.id} %>');
-  $('#labels_checkbox-<%= @edited_tag.id %>').html('<%= j render partial: "tags/label_checkbox", collection: @board.labels.exclude_ids(@edited_tag.labels), as: :label %>')
-  $('#close-<%= @edited_tag.id %>').click();
-<% end %>
-$('#toastr').html('<%= j render "shared/toastr" %>');

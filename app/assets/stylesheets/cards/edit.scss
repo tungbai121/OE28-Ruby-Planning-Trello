@@ -1,0 +1,290 @@
+@import 'color';
+
+.card-info {
+  background-color: $brownsmoke;
+
+  .card-name {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      display: block;
+    }
+
+    .info {
+      display: block;
+    }
+  }
+
+  .member {
+    display: flex;
+    justify-content: center;
+
+    .dropdown {
+      .member {
+        .member-avatar {
+          cursor: pointer;
+          margin: 0 2px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    cursor: auto;
+
+    .member-options {
+      border-radius: 3px;
+      padding: 0 10px;
+
+      .mini-profile {
+        display: inline-flex;
+
+        .mini-avatar {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+        }
+
+        .member-info {
+          .member-name {
+            color: $black;
+            font-size: larger;
+          }
+
+          .member-email {
+            color: $gray;
+          }
+        }
+      }
+
+      .remove-member {
+        color: $browngray;
+      }
+    }
+  }
+
+  .card-description {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.form-wrapper {
+  #edit_card {
+    label {
+      font-weight: 600;
+      margin: 10px 10px 0 0;
+    }
+  }
+
+  .edit-section {
+    .expand-btn {
+      border-radius: 3px;
+      color: $gray;
+      width: 100%;
+      background-color: $brownsmoke;
+      padding: 10px 10px;
+      margin-bottom: 2px;
+      display: block;
+
+      a {
+        color: $gray;
+      }
+    }
+
+    .collapse {
+      margin-bottom: 20px;
+    }
+
+    #attachments {
+      margin-bottom: 0;
+    }
+
+    .card-body {
+      padding: 10px 20px;
+
+      .attachment-thumbnail {
+        border-radius: 3px;
+        min-height: 80px;
+        margin: 0 0 8px;
+        position: relative;
+
+        &:hover {
+          background-color: $bluegray;
+        }
+
+        .attachment-thumbnail-preview {
+          background-color: $bluegray;
+          background-position: 50%;
+          background-size: contain;
+          background-repeat: no-repeat;
+          border-radius: 3px;
+          height: 80px;
+          margin-top: -40px;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          text-align: center;
+          text-decoration: none;
+          z-index: 1;
+          width: 112px;
+
+          .attachment-thumbnail-preview-ext {
+            color: $browngray;
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            height: 100%;
+            line-height: 80px;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            width: 100%;
+          }
+        }
+
+        .attachment-thumbnail-details {
+          box-sizing: border-box;
+          padding: 8px 8px 8px 128px;
+          min-height: 80px;
+          margin: 0;
+          z-index: 0;
+
+          .attachment-thumbnail-details-title-options {
+            margin-bottom: 8px;
+            display: block;
+            color: $gray;
+            font-size: small;
+          }
+
+          .attachment-thumbnail-details-options {
+            .dropdown-menu {
+              padding: 10px 20px;
+              min-width: 20em;
+
+              div {
+                display: flex;
+                flex-direction: column;
+              }
+
+              .btn {
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .add-btn {
+      margin: 10px 0;
+    }
+
+    .checkbox {
+      span, input {
+        display: inline;
+        margin: 0 5px;
+      }
+    }
+
+    .checklist {
+      label {
+        font-weight: 600;
+        margin: 20px 10px 0 0;
+      }
+    }
+
+    .attachment {
+      margin-top: 20px;
+
+      label {
+        font-weight: 600;
+        margin: 0 10px 0 0;
+      }
+
+      .form-inline {
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.edit-wrapper {
+  label {
+    font-weight: 600;
+    margin: 10px 10px 0 0;
+  }
+
+  .join-leave {
+    margin-top: 34px;
+  }
+
+  .edit-section {
+    margin-bottom: 25px;
+
+    .expand-btn {
+      border-radius: 3px;
+      color: $gray;
+      background-color: $brownsmoke;
+      padding: 10px 10px;
+      margin-bottom: 2px;
+    }
+
+    .card {
+      margin-bottom: 2px;
+    }
+  }
+
+  input {
+    margin-bottom: 5px;
+  }
+}
+
+.custom-control.custom-checkbox {
+  .custom-control-label {
+    font-weight: 0;
+  }
+
+  &:hover {
+    background-color: $brownsmoke;
+  }
+
+  .dropdown-menu {
+    padding: 10px 20px;
+    min-width: 18em;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn {
+      margin-top: 5px;
+    }
+  }
+}
+
+#deadline-checkbox {
+  #deadline-status {
+    font-style: italic;
+  }
+
+  .overdue {
+    color: $red;
+  }
+
+  .incompleted {
+    color: $orange;
+  }
+
+  .completed {
+    color: $green;
+  }
+}

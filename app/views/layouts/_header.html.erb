@@ -1,73 +1,108 @@
 <header class="sticky-top">
-  <div class="row">
-    <div class="col-lg-4 d-flex justify-content-start header-left">
-      <%= link_to icon("fas", "home"), root_path, class: "header-item-btn" %>
-      <div id="header-table" class="dropdown header-item">
-        <button id="table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
-          <%= t ".boards" %>
+  <div class="header-container">
+    <div class="header-item-container justify-content-start">
+      <div class="home-button header-item">
+        <%= link_to icon("fas", "home"), root_path, class: "btn header-item-btn" %>
+      </div>
+
+      <div class="dropdown board-options header-item">
+        <button id="board-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= t ".board" %>
         </button>
-        <div aria-labelledby="table-dropdown" class="dropdown-menu collapse-dropdown">
+        <div aria-labelledby="board-dropdown" class="dropdown-menu collapse-dropdown">
           <div class="table">
             <div class="table-list">
               <div class="list-header">
-                <%= t ".favoriteboards" %>
+                <p><%= t ".starred_boards" %><span> (<%= @starred_boards.size %>)</span></p>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board", collection: @favorite_boards, as: :board %>
+                <%= render partial: "shared/header_board", collection: @starred_boards, as: :board if @starred_boards.present? %>
               </div>
             </div>
             <div class="table-list">
               <div class="list-header">
-                <%= t ".myboards" %>
+                <p><%= t ".my_boards" %><span> (<%= @my_boards.size %>)</span></p>
               </div>
               <div class="list">
-                <%= render partial: "shared/header_board", collection: @my_boards, as: :board %>
+                <%= render partial: "shared/header_board", collection: @my_boards, as: :board if @my_boards.present? %>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <%= search_form_for @search, {url: search_index_path, method: :get, class: "search-form"} do |f| %>
-        <%= f.search_field :board_info_cont, placeholder: t(".search_placeholder") %>
-        <%= button_tag icon("fas", "search") %>
+        <%= f.search_field :board_info_cont, placeholder: t(".board_name_or_description") %>
+        <%= button_tag icon("fas", "search"), class: "btn header-item-btn" %>
       <% end %>
     </div>
 
-    <div class="col-lg-4 d-flex justify-content-center header-logo">
-      <%= icon "fas", "globe-asia" %>
-    </div>
+    <%= icon "fas", "globe-asia", class: "header-logo" %>
 
-    <div class="col-lg-4 d-flex justify-content-end header-right">
-      <div class="d-inline dropdown header-item">
-        <button id="add-table-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+    <div class="header-item-container justify-content-end">
+      <div class="dropdown header-item language">
+        <button id="switch-language-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= icon "fas", "language" %>
+        </button>
+        <div aria-labelledby="switch-language-dropdown" class="dropdown-menu-right dropdown-menu">
+          <div class="dropdown-header">
+            <%= t ".languages" %>
+          </div>
+          <div class="dropdown-content">
+            <%= link_to t(".english"), locale: :en %>
+            <%= link_to t(".vietnamese"), locale: :vi %>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown header-item">
+        <button id="add-new-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
           <%= icon "fas", "plus-circle" %>
         </button>
-        <div aria-labelledby="add-table-dropdown" class="dropdown-menu-right dropdown-menu">
+        <div aria-labelledby="add-new-dropdown" class="dropdown-menu-right dropdown-menu">
           <div class="dropdown-header">
             <%= t ".new" %>
           </div>
           <div class="dropdown-content">
-            <%= link_to t(".newboard"), new_board_path %>
+            <%= link_to t(".new_board"), new_board_path %>
           </div>
         </div>
       </div>
-      <div class="current-user header-item dropleft">
-        <%= image_tag current_user.avatar.url, alt: t(".avatar"), id: "user-dropdown", class: "rounded rounded-circle dropdown avatar", "data-toggle": :dropdown %>
-        <div aria-labelledby="user-dropdown" class="dropdown-menu">
+
+      <div class="dropdown header-item">
+        <button id="notification-dropdown" class="btn dropdown-toggle header-item-btn" data-toggle="dropdown">
+          <%= icon "fas", "bell" %>
+        </button>
+        <div aria-labelledby="notification-dropdown" class="dropdown-menu-right dropdown-menu notification">
+          <div class="dropdown-header">
+            <%= t ".notifications" %>
+          </div>
+          <div class="dropdown-content">
+            <div class="noti-message-wrapper" id="notification">
+              <%= render "layouts/notification" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="current-user header-item">
+        <%= image_tag current_user.avatar.url, id: "user-dropdown", class: "rounded rounded-circle dropdown avatar", "data-toggle": :dropdown %>
+        <div aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
           <div class="user-info dropdown-header">
             <span class="user-name"><%= current_user.name %></span>
             <span class="user-email">
-              <%= icon "fas", "envelope" %>
               <%= current_user.email %>
             </span>
           </div>
-          <ul class="list-type-none p-0">
-            <li><%= link_to t(".profile"), current_user %></li>
-            <li><%= link_to t(".activities"), user_activities_path(current_user) %></li>
-            <li><%= link_to t(".closed"), user_closed_index_path(current_user) %></li>
-            <li><%= link_to t(".settings"), "#" %></li>
-            <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
-          </ul>
+          <div class="dropdown-content">
+            <ul class="list-type-none p-0">
+              <li><%= link_to t(".profile"), current_user %></li>
+              <li><%= link_to t(".activities"), user_activities_path(current_user) %></li>
+              <li><%= link_to t(".closed"), user_closed_index_path(current_user) %></li>
+              <li><%= link_to t(".settings"), "#" %></li>
+              <li><%= link_to t(".logout"), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

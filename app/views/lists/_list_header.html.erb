@@ -1,0 +1,24 @@
+<div class="list-header">
+  <!-- <% if can? :update, list %>
+    <div data-target="#list-name-<%= list.id %>" data-toggle="modal" class="edit-list" id="edit-list-<%= list.id %>"><%= t ".edit" %></div>
+  <% end %> -->
+  <div class="list-name">
+    <span id="list-name-<%= list.id %>"><%= list.name %></span>
+  </div>
+
+  <div class="dropdown list-header-extras">
+    <% if can? :update, list %>
+      <a class="list-menubtn" type="button" id="list-menubtn-<%= list.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= icon "fas", "ellipsis-h" %>
+      </a>
+    <% end %>
+    <div class="dropdown-menu" aria-labelledby="list-menubtn-<%= list.id %>">
+      <a class="header"><%= t ".activities" %></a>
+      <div class="dropdown-divider"></div>
+      <a data-toggle="collapse" data-target="#add-card-list-<%= list.id %>" class="dropdown-item" href="#"><%= t ".add" %></a>
+      <a class="dropdown-item" href="#" data-target="#list-position-<%= list.id %>" data-toggle="modal"><%= t ".moving" %></a>
+      <a class="dropdown-item" href="#"><%= t ".order" %></a>
+      <%= link_to t(".close"), closed_list_path(list_id: list.id, board_id: @board.id), method: :patch, class: "dropdown-item" %>
+    </div>
+  </div>
+</div>

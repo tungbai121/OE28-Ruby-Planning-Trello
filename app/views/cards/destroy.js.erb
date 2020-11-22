@@ -1,0 +1,4 @@
+<% if @card.errors.blank? %>
+  $('#card-closed-<%= @card.id %>').remove();
+<% end %>
+$('#toastr').html('<%= j render "shared/toastr" %>');

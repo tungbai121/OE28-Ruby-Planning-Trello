@@ -6,15 +6,15 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i(google_oauth2)
 
   has_many :user_boards, class_name: UserBoard.name,
+    foreign_key: :user_id, dependent: :destroy
+  has_many :boards, through: :user_boards, source: :board
+  has_many :card_users, class_name: CardUser.name,
     foreign_key: :user_id,
     dependent: :destroy
-  has_many :join_boards, through: :user_boards, source: :board
-  has_many :tag_users, class_name: TagUser.name,
-    foreign_key: :user_id,
-    dependent: :destroy
-  has_many :join_tags, through: :tag_users, source: :tag
+  has_many :cards, through: :card_users, source: :card
   has_many :comments, dependent: :destroy
-  has_many :notifications, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :annoucements, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
@@ -33,13 +33,6 @@ class User < ApplicationRecord
     result = update params, *options
     clean_up_passwords
     result
-  end
-
-  def join_board board, type
-    check = type.to_i.eql? Settings.data.confirm
-    join_boards << board
-    board.user_boards.first.update_attribute(:starred, true) if check
-    board.user_boards.first.update_attribute(:role_id, :leader)
   end
 
   def is_leader? board
