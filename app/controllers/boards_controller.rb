@@ -35,6 +35,7 @@ class BoardsController < ApplicationController
       activities: @board.activities.order_by_created_at,
       other_emails: User.exclude_ids(@board.users.ids).pluck(:email)
     }
+    @list = List.new
     @card = Card.new
     @checklist = Checklist.new
   end

@@ -72,25 +72,10 @@
         </div>
 
         <div class="board-canvas">
-          <div class="board lists board-x-scrollbar" data-url="<%= board_sort_lists_path @board %>">
-            <!--<%= render partial: "lists/list", collection: @data[:lists], as: :list if @data[:lists].present? %>-->
-            <% if @relation %>
-              <div class="list-add-wrapper">
-                <div class="content-adding">
-                  <div class="add-btn" data-toggle="collapse" data-target="#add-list">
-                    <%= icon "fas", "plus-circle" %><%= t ".addlist" %>
-                  </div>
-                  <div class="collapse" id="add-list">
-                    <%= form_for :list, url: lists_path do |f| %>
-                      <%= hidden_field_tag :board_id, @board.id %>
-                      <%= f.text_field :name, class: "form-control", placeholder: t(".enter_list_title") %>
-                      <%= f.submit t(".addlist"), class: "btn btn-success" %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <ul class="board lists board-x-scrollbar" data-url="<%= board_sort_lists_path @board %>">
+            <%= render partial: "lists/list", collection: @data[:lists], as: :list if @data[:lists].present? %>
+            <%= render "lists/add", list: @list if @relation %>
+          </ul>
         </div>
       <% else %>
         <div class="board-info notmember">

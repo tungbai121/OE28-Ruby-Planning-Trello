@@ -3,5 +3,5 @@
   $('#card-description').text('<%= @card.description %>');
 <% end %>
 $('#edit_card').html('<%= j render "cards/edit_form", card: @card %>');
-$('#noti').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>');
+$('.activities-log').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>');
 $('#toastr').html('<%= j render "shared/toastr" %>');

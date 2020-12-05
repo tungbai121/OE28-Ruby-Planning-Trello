@@ -367,6 +367,12 @@ en:
       nomember: You are not member of this board
 
   lists:
+    add:
+      add_new_list: Add new List
+    form:
+      add_list: Add List
+      enter_list_title: Enter list title
+      name: Name
     change_position:
       success: Moved
       fail: Fail

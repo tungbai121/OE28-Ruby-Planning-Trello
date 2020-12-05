@@ -1,0 +1,13 @@
+<% if @list.errors.present? %>
+  $('#add-list').html('<%= j render "lists/form", list: @list %>');
+<% else %>
+  $('<%= j render "lists/list", list: @list %>').insertBefore('.list-add-wrapper');
+  $('#add-list').html('<%= j render "lists/form", list: List.new %>');
+  $('#list_name').val('');
+  $('#add-list').addClass('show');
+  $('#list_name').focus();
+
+  $('.activities-log').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>')
+<% end %>
+
+$('#toastr').html('<%= j render "shared/toastr" %>');

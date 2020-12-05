@@ -1,0 +1,10 @@
+<li class="list-add-wrapper">
+  <div class="content-adding">
+    <div class="add-btn" data-toggle="collapse" data-target="#add-list">
+      <%= icon "fas", "plus-circle" %><%= t ".add_new_list" %>
+    </div>
+    <div class="collapse" id="add-list">
+      <%= render "lists/form", list: list %>
+    </div>
+  </div>
+</li>

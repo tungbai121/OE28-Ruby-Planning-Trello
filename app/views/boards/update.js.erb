@@ -11,6 +11,6 @@
     $('#board-description-value').val('<%= @board.description %>');
   }
   $('#board-wrapper').html('<%= j render partial: "closed/closed_board", collection: @closed_board, as: :board %>');
-  $('#noti').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>')
+  $('.activities-log').html('<%= j render partial: "boards/activity", collection: @activities, as: :activity %>')
 <% end %>
 $('#toastr').html('<%= j render "shared/toastr" %>');

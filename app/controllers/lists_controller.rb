@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   before_action :find_list, only: %i(update change_position closed_list)
   before_action :find_list_destroy, only: :destroy
   before_action :check_permission
+  before_action :check_member
 
   authorize_resource
 
@@ -11,11 +12,12 @@ class ListsController < ApplicationController
     @list.user_id = current_user.id
     @list.position = create_position
     if @list.save
-      flash[:success] = t ".success"
+      @card = Card.new
+      flash.now[:success] = t ".success"
     else
-      flash[:danger] = t ".fail"
+      flash.now[:danger] = t ".fail"
     end
-    redirect_to @board
+    respond_to :js
   end
 
   def update
@@ -121,5 +123,13 @@ class ListsController < ApplicationController
     else
       Settings.data.notconfirm
     end
+  end
+
+  def check_member
+    @relation = UserBoard.find_by user_id: current_user.id, board_id: @board.id
+    return if @relation || @board.status?
+
+    flash[:danger] = t ".nomember"
+    redirect_to root_path
   end
 end

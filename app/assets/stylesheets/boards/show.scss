@@ -177,16 +177,13 @@ main {
 
           .list-add-wrapper {
             width: 270px;
-            margin: 0 5px 0 2px;
+            margin: 0 5px 0 5px;
             display: inline-block;
             vertical-align: top;
             white-space: nowrap;
 
             .content-adding {
-              padding: 0 5px;
               box-shadow: $shadow 0 0 10px;
-              background-color: $grayitem;
-              color: $white;
               border-radius: 3px;
               display: flex;
               flex-direction: column;
@@ -194,22 +191,29 @@ main {
               position: relative;
               white-space: normal;
 
-              &:hover {
-                cursor: pointer;
-                background-color: $grayitemhover;
-              }
-
               .add-btn {
-                padding: 5px 5px;
-                margin: 5px;
+                padding: 10px 10px;
+                background-color: $grayitem;
+                color: $white;
+                transition: 0.3s;
 
                 i {
                   margin-right: 5px;
                 }
+
+                &:hover {
+                  cursor: pointer;
+                  background-color: $grayitemhover;
+                }
               }
 
-              .btn {
-                margin: 5px 2px;
+              #add-list {
+                padding: 5px 5px;
+                background-color: $grayitem;
+
+                .btn {
+                  margin-top: 5px;
+                }
               }
             }
           }
@@ -255,23 +259,23 @@ main {
 .board-x-scrollbar {
   &::-webkit-scrollbar {
     height: 12px;
-    width: 12px
+    width: 12px;
   }
 
   &::-webkit-scrollbar-thumb:horizontal,
   &::-webkit-scrollbar-thumb:vertical {
     background: rgba(255, 255, 255, 0.486);
-    border-radius: 3px;
   }
 
   &::-webkit-scrollbar-track-piece {
-    background: rgba(0, 0, 0, 0.301)
+    background: rgba(0, 0, 0, 0.301);
   }
 
   &::-webkit-scrollbar-button {
     display: block;
     height: 4px;
     width: 4px;
+    margin-bottom: 0;
   }
 }
 
