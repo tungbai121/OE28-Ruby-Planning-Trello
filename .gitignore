@@ -44,3 +44,4 @@ config/application.yml
 coverage/
 
 public/uploads
+..
